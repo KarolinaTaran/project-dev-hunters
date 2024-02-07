@@ -49,5 +49,10 @@
 <symbol id="icon-x" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.6667" d="M22.667 9.333l-13.333 13.333M9.333 9.333l13.333 13.333"></path>
 </symbol>
+<symbol id="search" viewBox="0 0 18 18" fill="none">
+<path d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z" stroke="#1B1B1B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.7498 15.75L12.4873 12.4875" stroke="#1B1B1B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
 </defs>
 </svg>
+
