@@ -5,8 +5,15 @@
   |============================
 */
 @import url('./reset.css');
-@import url('./vite-promo.css');
-@import url('./header.css');
+@import url('./header-hero.css');
+@import url('./modal-menu.css');
+@import url('./quote-of-the-day.css');
+@import url('./exercises-muscules.css');
+@import url('./exercises-body-parts.css');
+@import url('./exercises-equipment.css');
+@import url('./exercises-modal.css');
+@import url('./recommendation-section.css');
+@import url('./footer.css');
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
