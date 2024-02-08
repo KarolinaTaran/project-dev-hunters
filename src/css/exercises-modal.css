@@ -15,19 +15,44 @@
 .exercises-modal {
     display: block;
     position: absolute;
-    background-color: #f6f6f6;
+    background-color: var(--primary-white-color);
     border-radius: 20px;
     padding: 40px 20px;
+}
+
+@media screen and (min-width:768px) and (max-width:1439px) {
+    .exercises-modal {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        padding: 40px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .exercises-modal {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        padding: 40px;
+    }
 }
 
 /* -------------------------  modal-gif  ------------------------- */
 
 .exercises-modal-gif-container {
-    background-color: #E8E8E8;
+    background-color: var(--light-gray-color);
     width: 295px;
     height: 258px;
     overflow: hidden;
     border-radius: 12px;
+}
+
+@media screen and (min-width:768px) {
+    .exercises-modal-gif-container {
+        width: 270px;
+        height: 259px;
+    }
 }
 
 /* -------------------------  modal-title  ------------------------- */
@@ -35,9 +60,18 @@
 .exercises-modal-title {
     font-size: 20px;
     font-weight: 500;
-    color: #1b1b1b;
+    line-height: 1.0;
+    color: var(--main-black-color);
     margin-top: 20px;
     margin-bottom: 10px;
+}
+
+@media screen and (min-width:768px) {
+    .exercises-modal-title {
+        font-size: 24px;
+        line-height: 1.33;
+        margin: 0 0 8px;
+    }
 }
 
 /* -------------------------  rating  ------------------------- */
@@ -47,6 +81,12 @@
     align-items: center;
     gap: 5px;
     margin-bottom: 20px;
+}
+
+@media screen and (min-width:768px) {
+    .exercises-modal-rating {
+        margin-bottom: 16px;
+    }
 }
 
 .exercises-modal-rating-number {
@@ -70,7 +110,7 @@
 }
 
 .exercises-modal-star-icon {
-    fill: rgba(27, 27, 27, 0.2);
+    fill: var(--main-black-modal-elements);
     width: 100%;
     height: 100%;
 }
@@ -82,36 +122,61 @@
 /* -------------------------  exercises-modal-block  ------------------------- */
 
 .exercises-modal-block-list {
-    width: 295px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 10px 0;
-    border-top: 1px solid rgba(27, 27, 27, 0.2);
-    border-bottom: 1px solid rgba(27, 27, 27, 0.2);
+    border-top: 1px solid var(--main-black-modal-elements);
+    border-bottom: 1px solid var(--main-black-modal-elements);
+}
+
+@media screen and (min-width:320px) and (max-width:767px) {
+    .exercises-modal-block-list {
+        width: 295px;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .exercises-modal-block-list {
+        width: 342px;
+        gap: 16px;
+        padding: 8px 0;
+    }
 }
 
 .exercises-modal-block-title {
     font-size: 12px;
     line-height: 1.5;
-    color: rgba(27, 27, 27, 0.4);
+    color: var(--main-black-color-disable);
 }
 
 .exercises-modal-block-paragraf {
     font-size: 14px;
     font-weight: 500;
     line-height: 1.3;
-    color: #1B1B1B;
+    color: var(--main-black-color);
     
 }
 
 /* -------------------------  exercises-modal-text  ------------------------- */
 
 .exercises-modal-text {
-    margin: 20px 0;
-    width: 295px;
+    margin: 20px 0 40px;
     font-size: 14px;
     line-height: 1.3;
+}
+
+@media screen and (min-width:320px) and (max-width:767px) {
+    .exercises-modal-text {
+        width: 295px;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .exercises-modal-text {
+        margin: 16px 0 32px;
+        width: 342px;
+    }
 }
 
 /* -------------------------  buttons  ------------------------- */
@@ -128,6 +193,13 @@
     padding: 0;
 }
 
+@media screen and (min-width:768px) {
+    .exercises-modal-close-button {
+        top: 16px;
+        right: 16px;
+    }
+}
+
 .exercises-modal-close-button:hover,
 .exercises-modal-close-button:focus {
     transform: scale(1.1);
@@ -135,12 +207,21 @@
 }
 
 .exercises-modal-close-icon {
-    stroke: #1B1B1B; 
+    stroke: var(--main-black-color);
+    width: 24px;
+    width: 24px;
+}
+
+@media screen and (min-width:768px) {
+    .exercises-modal-close-icon {
+        width: 28px;
+        height: 28px;
+    }
 }
 
 .exercises-modal-close-icon:hover,
 .exercises-modal-close-icon:focus {
-    stroke: #7E847F;
+    stroke: var(--dark-gray-color);
 }
 
 .exercises-modal-buttons {
@@ -151,10 +232,17 @@
     gap: 9px;
 }
 
+@media screen and (min-width:768px) {
+    .exercises-modal-buttons {
+        flex-direction: row;
+        gap: 7px;
+    }
+}
+
 .exercises-modal-button-favorites {
-    background-color: #7E847F;
+    background-color: var(--dark-gray-color);
     border-style: none;
-    color: #f6f6f6;
+    color: var(--primary-white-color);
     font-size: 14px;
     line-height: 1.3;
     width: 295px;
@@ -165,15 +253,36 @@
     justify-content: center;
 }
 
+@media screen and (min-width:768px) {
+    .exercises-modal-button-favorites {
+        font-size: 16px;
+        line-height: 1.5;
+        width: 194px;
+        height: 48px;
+    }
+}
+
 .exercises-modal-button-favorites:hover,
 .exercises-modal-button-favorites:focus {
     background-color: #5F6560;
 }
 
+.exercises-modal-button-icon {
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+}
+
+@media screen and (min-width:768px) {
+    .exercises-modal-button-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
 .exercises-modal-button-rating {
-    gap: 8px;
-    border: 1px solid #1b1b1b;
-    color: #1b1b1b;
+    border: 1px solid var(--main-black-color);
+    color: var(--main-black-color);
     font-size: 14px;
     line-height: 1.3;
     width: 295px;
@@ -182,14 +291,18 @@
     padding: 12px 0;
 }
 
-.exercises-modal-button-rating:hover,
-.exercises-modal-button-rating:focus {
-    border: 1px solid #7E847F;
-    color: #7E847F;
+@media screen and (min-width:768px) {
+    .exercises-modal-button-rating {
+        font-size: 16px;
+        line-height: 1.5;
+        width: 141px;
+        height: 48px;
+    }
 }
 
-.exercises-modal-button-icon {
-    width: 18px;
-    height: 18px;
-    margin-left: 8px;
+.exercises-modal-button-rating:hover,
+.exercises-modal-button-rating:focus {
+    border: 1px solid var(--dark-gray-color);
+    color: var( --dark-gray-color);
 }
+
