@@ -80,24 +80,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .container {
   width: 100%;
   margin: 0 auto;
@@ -114,7 +96,7 @@
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1287.98px) {
+@media screen and (min-width: 768px) and (max-width: 1439.98px) {
   .container {
     max-width: 768px;
     padding: 0 15px;
@@ -125,9 +107,9 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1440px) {
   .container {
-    max-width: 1280px;
+    max-width: 1440px;
     padding: 0 16px;
   }
 }
