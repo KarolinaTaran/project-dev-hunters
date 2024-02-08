@@ -76,7 +76,7 @@
 }
 
 .selected-stars {
-    fill: #EEA10C;
+    fill: var(--yellow-star);
 }
 
 /* -------------------------  exercises-modal-block  ------------------------- */
