@@ -1,0 +1,123 @@
+.recom-section-text {
+  background-color: var(--main-black-color);
+  color: var(--primary-white-color-secondary-text);
+  width: 335px;
+  height: 269px;
+  flex-shrink: 0;
+  border-radius: 30px;
+}
+
+.recom-section-container {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 2px;
+  padding-top: 40px;
+  padding-left: 20px;
+}
+
+.recom-sec-svg {
+  background-color: rgba(49, 49, 49, 255);
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.recom-section-text-container {
+  padding: 0px 20px 40px 70px;
+}
+
+.recom-section-title {
+  margin-bottom: 14px;
+  color: var(--primary-white-color-secondary-text);
+  font-size: 14px;
+  line-height: 18px;
+}
+
+
+.recom-section-main-text {
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
+}
+
+.recom-section-heading {
+  color: var(--primary-white-color);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  font-feature-settings: 'clig' off, 'liga' off;
+}
+
+@media screen and (min-width:768px) and (max-width:1439.98px) {
+
+  .recom-section-text {
+    width: 736px;
+    height: 302px;
+    border-radius: 50px;
+  }
+
+  .recom-section-heading {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .recom-section-main-text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .recom-section-container {
+    padding-top: 65px;
+    padding-left: 64px;
+  }
+
+  .recom-section-title {
+    margin-bottom: 25px;
+  }
+
+  .recom-section-text-container {
+    padding: 0px 96px 64px 114px;
+  }
+}
+
+@media screen and (min-width:1440px) {
+  .recom-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .recom-section-text {
+    width: 704px;
+    height: 302px;
+    border-radius: 50px;
+  }
+
+  .recom-section-heading {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .recom-section-title {
+    margin-bottom: 25px;
+  }
+
+  .recom-section-main-text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .recom-section-container {
+    padding-top: 65px;
+    padding-left: 64px;
+  }
+
+  .recom-section-text-container {
+    padding: 0px 64px 64px 114px;
+  }
+}
