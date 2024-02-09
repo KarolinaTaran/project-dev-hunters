@@ -18,7 +18,6 @@
 }
 
 .exercises-modal {
-    display: block;
     position: absolute;
     background-color: var(--primary-white-color);
     border-radius: 20px;
@@ -29,23 +28,37 @@
 
 @media screen and (min-width:768px) and (max-width:1439px) {
     .exercises-modal {
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-        padding: 40px;
         width: 716px;
         min-height: 470px;
+        padding: 40px;
     }
 }
 
 @media screen and (min-width:1440px) {
     .exercises-modal {
+        width: 732px;
+        min-height: 433px;
+        padding: 40px;
+    }
+}
+
+.exercises-modal-content {
+    display: block;
+}
+
+@media screen and (min-width:768px) and (max-width:1439px) {
+    .exercises-modal-content {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .exercises-modal-content {
         display: flex;
         justify-content: center;
         gap: 40px;
-        padding: 40px;
-        width: 732px;
-        min-height: 433px;
     }
 }
 

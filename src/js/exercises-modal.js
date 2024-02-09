@@ -3,15 +3,17 @@ import axios from 'axios';
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-const openModalBtn = document.querySelector('[data-modal-open]');
-const closeModalBtn = document.querySelector('[data-modal-close]');
-const backdrop = document.querySelector('[data-modal]');
+const openModalBtn = document.querySelector('[data-exercise-modal-open]');
+const closeModalBtn = document.querySelector('[data-exercise-modal-close]');
+const backdrop = document.querySelector('[data-exercise-modal]');
 const modal = document.querySelector('.exercises-modal');
+const modalContent = document.querySelector('.exercises-modal-content');
 
 
 let idExercisesModal = "64f389465ae26083f39b17a2";      // !!!взяти id з об'єкту відповіді запиту відповідної вправи в секції
 
 openModalBtn.addEventListener('click', () => {
+  modalContent.innerHTML = '';
   backdrop.classList.add('is-open');
   createExersiceCard();
   modalClose();
@@ -127,7 +129,7 @@ function drawExercisesModal(obj) {
       </div>
   </div>
   `
-  modal.insertAdjacentHTML('beforeend', modalContentHtml);
+  modalContent.insertAdjacentHTML('beforeend', modalContentHtml);
   drawStars(ratingOfExercise);
 }
 
@@ -162,7 +164,7 @@ function modalClose() {
   }
 
   function closeByBackdrop(event) {
-    if (!event.target.hasAttribute('data-modal')) {
+    if (!event.target.hasAttribute('data-exercise-modal')) {
       return;
     }
     closeByBtn();
