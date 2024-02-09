@@ -11,7 +11,8 @@ async function showTrainingsMZ(event) {
   let query;
   if (event.target.nodeName === 'DIV') query = event.target;
   if (event.target.nodeName === 'SPAN') query = event.target.parentNode;
-  if (!query.classList.value === 'list-history') return;
+
+  if (!query) return;
 
   const { data: resultExercises } = await getExercisesMZ(query);
   if (!resultExercises.results) {
@@ -82,10 +83,14 @@ function resultSearchMakrUp({ results }) {
             <p class=>Body part: <span class="info-from-back">${
               bodyPart[0].toUpperCase() + bodyPart.slice(1)
             }</span></p>
-            <p class=>Target: <span class="info-from-back">${target}</span></p>
+            <p class=>Target: <span class="info-from-back">${
+              target[0].toUpperCase() + target.slice(1)
+            }</span></p>
         </div>
      
           </li>`;
     })
     .join('');
 }
+
+// pagination
