@@ -1,15 +1,14 @@
 import axios from 'axios';
 
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const openModalBtn = document.querySelector('[data-modal-open]');
 const closeModalBtn = document.querySelector('[data-modal-close]');
 const backdrop = document.querySelector('[data-modal]');
 const modal = document.querySelector('.exercises-modal');
 
-
-let idExercisesModal = "64f389465ae26083f39b17a2";      // !!!взяти id з об'єкту відповіді запиту відповідної вправи в секції
+let idExercisesModal = '64f389465ae26083f39b17a2'; // !!!взяти id з об'єкту відповіді запиту відповідної вправи в секції
 
 openModalBtn.addEventListener('click', () => {
   backdrop.classList.add('is-open');
@@ -20,22 +19,22 @@ openModalBtn.addEventListener('click', () => {
 // ---------------   functions of geting datas from server   ---------------
 
 async function getData() {
-  axios.defaults.baseURL = "https://energyflow.b.goit.study";
+  axios.defaults.baseURL = 'https://energyflow.b.goit.study';
   return await axios.get(`/api/exercises/${idExercisesModal}`);
 }
 
 async function createExersiceCard() {
   try {
-      const response = await getData();
-      console.log(response.data);
-      const objDataOfExercise = response.data;
-      drawExercisesModal(objDataOfExercise);
-  } catch(error) {
-      catchError(error);
-  // } finally {
-  //     loader.classList.remove("loader");
+    const response = await getData();
+    console.log(response.data);
+    const objDataOfExercise = response.data;
+    drawExercisesModal(objDataOfExercise);
+  } catch (error) {
+    catchError(error);
+    // } finally {
+    //     loader.classList.remove("loader");
   }
-};
+}
 
 // ---------------   functions for drawing modal content   ---------------
 
@@ -50,7 +49,7 @@ function drawExercisesModal(obj) {
     popularity,
     rating,
     target,
-    time
+    time,
   } = obj;
 
   let ratingOfExercise = rating.toFixed(1);
@@ -126,7 +125,7 @@ function drawExercisesModal(obj) {
           <button class="exercises-modal-button-rating" type="button">Give a rating</button>
       </div>
   </div>
-  `
+  `;
   modal.insertAdjacentHTML('beforeend', modalContentHtml);
   drawStars(ratingOfExercise);
 }
@@ -136,7 +135,7 @@ function drawStars(number) {
   const arrOfStars = [...star];
   console.log(arrOfStars);
   for (let i = 0; i <= number; i += 1) {
-    arrOfStars[i].classList.add("selected-stars"); 
+    arrOfStars[i].classList.add('selected-stars');
   }
 }
 
@@ -146,7 +145,7 @@ function catchError(error) {
   const errText = error.message;
   iziToast.error({
     position: 'topRight',
-    message: `${errName}: ${errText}.`
+    message: `${errName}: ${errText}.`,
   });
 }
 
@@ -167,9 +166,9 @@ function modalClose() {
     }
     closeByBtn();
   }
-  
+
   function closeByEsc(event) {
-    if (event.code === "Escape") {
+    if (event.code === 'Escape') {
       backdrop.classList.remove('is-open');
       document.removeEventListener('keydown', closeByEsc);
     }
