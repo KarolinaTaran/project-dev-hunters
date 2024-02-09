@@ -1,0 +1,262 @@
+.exercises {
+    margin: 20px auto;
+    width: 375px;
+    padding: 0 20px;
+}
+
+.exercises-container {
+    border-radius: 30px;
+    background-color: #E8E8E8;
+    padding: 40px 20px;
+    min-height: 760px;
+    display: flex;
+    flex-direction: column;
+}
+
+.exercises-title {
+    margin-bottom: 20px;
+    color: #1B1B1B;
+    font-family: "DM Sans";
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.buttons-and-form-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.button-container {
+    display: flex;
+    gap: 6px;
+}
+
+.choose-category-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 14px;
+    border-radius: 30px;
+    border: none;
+    background-color: #F6F6F6;
+    color: #1B1B1B;
+    font-family: "DM Sans";
+    font-size: 14px;
+    line-height: 1.28;
+    transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+        trasform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.choose-category-button:hover,
+.active-category {
+    background-color: #7E847F;
+    color: #F6F6F6;
+    transform: scale(1.03);
+}
+
+.search-container {
+    /* margin-bottom: 40px; */
+}
+
+.training-search-form {
+    position: relative;
+}
+
+.training-search-form input {
+    display: block;
+    width: 100%;
+    padding: 12px 60px 12px 14px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    color: #1B1B1B;
+    font-family: "DM Sans";
+    font-size: 14px;
+    line-height: 1.28;
+}
+
+.training-search-form input::placeholder {
+    color: #1B1B1B;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 1.28
+}
+
+.training-search-form button {
+    padding: 6px;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 8px;
+    top: 6px
+}
+
+.placeholder-container {
+    flex: 1;
+}
+
+.placeholder-container p {
+    width: 295px;
+    color: #1B1B1B;
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 14px;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    padding-top: 164px;
+}
+
+.placeholder-container p span {
+    color: #7E847F;
+}
+
+/*search-list*/
+.search-list {
+    padding-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.list-item {
+    width: 100%;
+    position: relative;
+    height: 232px;
+    cursor: pointer;
+}
+
+.list-image {
+    object-fit: cover;
+    position: absolute;
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+}
+
+.list-history {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(246, 246, 246, 0.30);
+    background: linear-gradient(0deg, rgba(16, 16, 16, 0.70) 0%, rgba(16, 16, 16, 0.70) 100%);
+
+    color: #F6F6F6;
+    font-family: "DM Sans";
+    font-size: 24px;
+    line-height: 1;
+    text-transform: capitalize;
+}
+
+.list-history span {
+    color: rgba(246, 246, 246, 0.40);
+    font-family: "DM Sans";
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+@media screen and (min-width:768px) {
+    .exercises {
+        margin: 16px auto;
+        max-width: 768px;
+        width: 100%;
+    }
+
+    .exercises-container {
+        border-radius: 50px;
+        padding: 64px 40px;
+        min-height: 1091px;
+    }
+
+    .exercises-title {
+        font-size: 44px;
+        line-height: 1.08;
+        margin-bottom: 32px;
+    }
+
+    .buttons-and-form-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .button-container {
+        margin-bottom: 0;
+        gap: 8px
+    }
+
+    .search-container {
+        margin-bottom: 0;
+    }
+
+    .choose-category-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .training-search-form input,
+    .training-search-form input::placeholder {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .training-search-form button {
+        top: 8px
+    }
+
+    .placeholder-container p {
+        width: 536px;
+        font-size: 18px;
+        line-height: 1.33;
+        margin: 0 auto;
+        padding-top: 222px;
+    }
+
+    .search-list {
+        gap: 14px;
+    }
+
+    .list-item {
+        width: calc((100% - 14px) / 2);
+    }
+
+
+
+}
+
+/* STYLES FOR JS .button-active {
+    background-color: #7E847F;
+    color: #F6F6F6;
+    padding: 0 16px;
+} */
+
+@media screen and (min-width:1440px) {
+    .exercises {
+        margin: 16px auto;
+        max-width: 1440px;
+        width: 100%;
+    }
+
+    .exercises-container {
+        border-radius: 50px;
+        padding: 64px 48px;
+        min-height: 827px;
+    }
+
+    .search-container {
+        width: 273px;
+    }
+
+    .list-item {
+        width: calc((100% - 60px) / 4);
+    }
+}
