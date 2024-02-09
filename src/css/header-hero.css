@@ -2,6 +2,21 @@
   padding: 20px 0;
 }
 
+.header-section {
+  display: flex;
+  justify-content: center;
+  max-width: 375px;
+  min-width: 320px;
+  width: 335px;
+  height: 387px;
+  align-items: center;
+
+  margin: 20px auto;
+  padding-bottom: 20px;
+  background-color: rgb(232, 232, 232);
+  border-radius: 30px;
+}
+
 .nav-list {
   display: flex;
   align-items: center;
@@ -18,4 +33,12 @@
 .nav-link:hover,
 .nav-link:focus {
   color: #747bff;
+}
+
+.button-header {
+  background-color: #e8e8e8;
+}
+
+.button-header-icon {
+  color: #7e847f;
 }
