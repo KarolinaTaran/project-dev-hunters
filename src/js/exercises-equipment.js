@@ -4,7 +4,6 @@ const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
 const searchCategoryMZ = document.querySelector('.placeholder-container');
 const placeholder = document.querySelector('.placeholder-container');
 searchCategoryMZ.addEventListener('click', showTrainingsMZ);
-let pageMZ = 1;
 
 async function showTrainingsMZ(event) {
   if (event.target.nodeName === 'UL') return;
@@ -23,7 +22,10 @@ async function showTrainingsMZ(event) {
     query = event.target.parentNode;
   if (!query) return;
 
-  const { data: resultExercises } = await getExercisesMZ(query);
+  const { data: resultExercises } = await getExercisesMZ(
+    query.firstChild.textContent,
+    query.lastElementChild.textContent
+  );
   if (!resultExercises.results) {
     placeholder.innerHTML =
       '<p>Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
@@ -34,12 +36,11 @@ async function showTrainingsMZ(event) {
   resList.innerHTML = resultSearchMakrUp(resultExercises);
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
+  pageConter(resList, resultExercises);
+  console.log(resultExercises);
 }
 
-async function getExercisesMZ({
-  firstChild: { textContent: searchItemName },
-  lastElementChild: { textContent: searchGroupName },
-}) {
+async function getExercisesMZ(searchItemName, searchGroupName, page = 1) {
   searchGroupName = searchGroupName.toLowerCase();
   if (searchGroupName === 'body parts') {
     searchGroupName = searchGroupName
@@ -49,7 +50,7 @@ async function getExercisesMZ({
 
   try {
     const exerciseSearchResult = await axios.get(
-      `${BASE_URL}?${searchGroupName.toLowerCase()}=${searchItemName.toLowerCase()}&page=${pageMZ}&limit=12`
+      `${BASE_URL}?${searchGroupName.toLowerCase()}=${searchItemName.toLowerCase()}&page=${page}&limit=12`
     );
     return exerciseSearchResult;
   } catch (error) {
@@ -103,4 +104,26 @@ function resultSearchMakrUp({ results }) {
 }
 
 // pagination
-function pagination() {}
+
+function pageConter(resList, { totalPages }) {
+  if (totalPages === 1) return;
+  const counter = document.createElement('ul');
+  counter.classList.add('pagination-counter');
+  counter.addEventListener('click', changePage);
+  for (let i = 0; i < totalPages; i++) {
+    const oneCounter = document.createElement('li');
+    oneCounter.textContent = i + 1;
+    oneCounter.classList.add('one-count');
+    counter.append(oneCounter);
+    if (i === 0) {
+      oneCounter.classList.add('active-count');
+    }
+  }
+  resList.after(counter);
+  resList.classList.add('exercises-margin-for-pagin');
+}
+
+function changePage(event) {
+  if (event.target.nodeName === 'UL') return;
+  console.log('click');
+}
