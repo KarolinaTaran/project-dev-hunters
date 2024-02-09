@@ -9,9 +9,18 @@ let pageMZ = 1;
 async function showTrainingsMZ(event) {
   if (event.target.nodeName === 'UL') return;
   let query;
-  if (event.target.nodeName === 'DIV') query = event.target;
-  if (event.target.nodeName === 'SPAN') query = event.target.parentNode;
-
+  if (
+    event.target.nodeName === 'DIV' &&
+    (event.target.classList.value === '' ||
+      event.target.classList.value === 'list-history')
+  )
+    query = event.target;
+  if (
+    event.target.nodeName === 'SPAN' &&
+    (event.target.classList.value === '' ||
+      event.target.classList.value === 'list-history')
+  )
+    query = event.target.parentNode;
   if (!query) return;
 
   const { data: resultExercises } = await getExercisesMZ(query);
@@ -94,3 +103,4 @@ function resultSearchMakrUp({ results }) {
 }
 
 // pagination
+function pagination() {}
