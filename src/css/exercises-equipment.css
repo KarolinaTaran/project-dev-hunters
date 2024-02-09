@@ -1,0 +1,112 @@
+li {
+    list-style-type: none;
+}
+
+.search-result-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.exercises-serch-result {
+    width: 100%;
+    border-radius: 15px;
+    background-color: #ffffff;
+    padding: 16px;
+    max-height: 165px;
+}
+
+.rating-start-container {
+    display: flex;
+    margin-bottom: 25px;
+    justify-content: space-between;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 16px
+}
+
+.rating p {
+    padding: 0;
+    width: auto;
+}
+
+.rating .workout {
+    border-radius: 15px;
+    background-color: #7E847F;
+    padding: 5px 8px;
+    text-transform: uppercase;
+    color: #F6F6F6;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.rating-cont {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.rating .rating-num {
+    color: #1B1B1B;
+    font-size: 12px;
+    line-height: 1.5px;
+}
+
+.rating-star-svg {
+    fill: #EEA10C;
+    padding-bottom: 2px;
+}
+
+.start-button-container button {
+    padding: 0;
+    gap: 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    line-height: 1.28
+}
+
+.exercise-name {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.exercise-name h2 {
+    overflow: hidden;
+    color: #1B1B1B;
+    font-size: 20px;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    width: 216px;
+    white-space: nowrap;
+}
+
+.additional-information {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px
+}
+
+.additional-information p {
+    width: auto;
+    padding: 0;
+    text-align: start;
+    color: rgba(27, 27, 27, 0.40);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.additional-information .info-from-back {
+    color: #1B1B1B;
+}
