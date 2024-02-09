@@ -1,9 +1,14 @@
 import axios from 'axios';
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
-
 const searchCategoryMZ = document.querySelector('.placeholder-container');
 const placeholder = document.querySelector('.placeholder-container');
 searchCategoryMZ.addEventListener('click', showTrainingsMZ);
+const resList = document.createElement('ul');
+resList.classList.add('search-result-list');
+const searchParams = {
+  group: '',
+  item: '',
+};
 
 async function showTrainingsMZ(event) {
   if (event.target.nodeName === 'UL') return;
@@ -22,35 +27,31 @@ async function showTrainingsMZ(event) {
     query = event.target.parentNode;
   if (!query) return;
 
-  const { data: resultExercises } = await getExercisesMZ(
-    query.firstChild.textContent,
-    query.lastElementChild.textContent
-  );
+  searchParams.group = query.lastElementChild.textContent;
+  searchParams.item = query.firstChild.textContent;
+
+  const { data: resultExercises } = await getExercisesMZ(searchParams);
   if (!resultExercises.results) {
     placeholder.innerHTML =
       '<p>Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
     return;
   }
-  const resList = document.createElement('ul');
-  resList.classList.add('search-result-list');
+
   resList.innerHTML = resultSearchMakrUp(resultExercises);
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
   pageConter(resList, resultExercises);
-  console.log(resultExercises);
 }
 
-async function getExercisesMZ(searchItemName, searchGroupName, page = 1) {
-  searchGroupName = searchGroupName.toLowerCase();
-  if (searchGroupName === 'body parts') {
-    searchGroupName = searchGroupName
-      .slice(0, searchGroupName.length - 1)
-      .replace(/\s/g, '');
+async function getExercisesMZ({ group, item }, page = 1) {
+  group = group.toLowerCase();
+  if (group === 'body parts') {
+    group = group.slice(0, group.length - 1).replace(/\s/g, '');
   }
 
   try {
     const exerciseSearchResult = await axios.get(
-      `${BASE_URL}?${searchGroupName.toLowerCase()}=${searchItemName.toLowerCase()}&page=${page}&limit=12`
+      `${BASE_URL}?${group.toLowerCase()}=${item.toLowerCase()}&page=${page}&limit=12`
     );
     return exerciseSearchResult;
   } catch (error) {
@@ -105,7 +106,7 @@ function resultSearchMakrUp({ results }) {
 
 // pagination
 
-function pageConter(resList, { totalPages }) {
+function pageConter(resList, { totalPages }, activePage = 0) {
   if (totalPages === 1) return;
   const counter = document.createElement('ul');
   counter.classList.add('pagination-counter');
@@ -115,7 +116,9 @@ function pageConter(resList, { totalPages }) {
     oneCounter.textContent = i + 1;
     oneCounter.classList.add('one-count');
     counter.append(oneCounter);
-    if (i === 0) {
+
+    console.log(i == activePage);
+    if (i + 1 == activePage) {
       oneCounter.classList.add('active-count');
     }
   }
@@ -123,7 +126,17 @@ function pageConter(resList, { totalPages }) {
   resList.classList.add('exercises-margin-for-pagin');
 }
 
-function changePage(event) {
+async function changePage(event) {
   if (event.target.nodeName === 'UL') return;
-  console.log('click');
+
+  const { data: newData } = await getExercisesMZ(
+    searchParams,
+    event.target.textContent
+  );
+  console.log(newData);
+  resList.innerHTML = resultSearchMakrUp(newData);
+  placeholder.innerHTML = '';
+  placeholder.appendChild(resList);
+  pageConter(resList, newData, event.target.textContent);
+  console.log(event.target.textContent);
 }
