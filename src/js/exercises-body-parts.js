@@ -79,18 +79,13 @@ buttons.forEach(button => {
 
 if (activeButton) {
   activeButton.classList.add('active-category');
-
-  //data = await itemsList(activeButton.innerText, currentPage);
-  //getItems(data);
-  /**/
 } else {
   let activeCat = document.getElementById('muscles');
   activeCat.classList.add('active-category');
-
-  //data = await itemsList('Muscles', currentPage);
-  //getItems(data);
 }
 
+data = await itemsList(activeButton.innerText, currentPage);
+getItems(data);
 /*
 /
 /
