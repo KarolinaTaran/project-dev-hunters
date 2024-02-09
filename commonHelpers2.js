@@ -1,2 +1,73 @@
-import{a as d,i as y}from"./assets/vendor-8cce9181.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))r(s);new MutationObserver(s=>{for(const n of s)if(n.type==="childList")for(const c of n.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&r(c)}).observe(document,{childList:!0,subtree:!0});function t(s){const n={};return s.integrity&&(n.integrity=s.integrity),s.referrerPolicy&&(n.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?n.credentials="include":s.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function r(s){if(s.ep)return;s.ep=!0;const n=t(s);fetch(s.href,n)}})();(()=>{const e={openModalBtn:document.querySelectorAll("[data-modal-open]"),closeModalBtn:document.querySelector("[data-modal-close]"),modal:document.querySelector("[data-modal]")};e.openModalBtn.forEach(r=>{r.addEventListener("click",t)}),e.closeModalBtn.addEventListener("click",t),e.modal.addEventListener("click",o);function o(r){r.target===r.currentTarget&&e.modal.classList.add("is-hidden")}function t(){e.modal.classList.toggle("is-hidden"),document.body.classList.toggle("no-scroll")}})();const p=localStorage.getItem("active-category"),i=document.getElementById(p),g=document.querySelectorAll(".choose-category-button"),l=document.querySelector(".placeholder-container"),h="https://energyflow.b.goit.study/api/filters";let u=1;function f(e,o){return d.get(`${h}?filter=${e}&page=${o}&limit=12`).then(t=>t.data.results.length?t.data:(console.error("No results found for this filter."),null)).catch(t=>{console.error("Error fetching images:",t)})}function L({imgUrl:e,name:o,filter:t}){return`<li class="list-item"><img class="list-image" src="${e}" data-source="${e}" loading="lazy" alt="${o}"><div class='list-history'>${o}<span>${t}</span></div></li>`}function m(e){if(e){let o="";e.results.forEach(r=>{o+=L(r)});let t=document.createElement("ul");t.classList.add("search-list"),t.innerHTML=o,l.innerHTML="",l.appendChild(t)}else l.innerHTML="<p>Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</p>"}g.forEach(e=>{e.addEventListener("click",async()=>{g.forEach(t=>{t.classList.remove("active-category")}),e.classList.add("active-category"),localStorage.setItem("active-category",e.id);const o=e.innerText;f(o,u).then(t=>{m(t)})})});i?(i.classList.add("active-category"),f(i.innerHTML,u).then(e=>{m(e)})):(document.getElementById("muscles").classList.add("active-category"),f("Muscles",u).then(o=>{m(o)}));const v=document.querySelector("[data-modal-open]"),E=document.querySelector("[data-modal-close]"),a=document.querySelector("[data-modal]");let M="64f389465ae26083f39b17a2";v.addEventListener("click",()=>{a.classList.add("is-open"),S(),$()});async function B(){return d.defaults.baseURL="https://energyflow.b.goit.study",await d.get(`/api/exercises/${M}`)}async function S(){try{const e=await B();console.log(e.data);const o=e.data;createExersiceCard(o)}catch(e){w(e)}}function w(e){console.log(e);const o=e.name,t=e.message;y.error({position:"topRight",message:`${o}: ${t}.`})}function $(){document.addEventListener("keydown",t),E.addEventListener("click",e),a.addEventListener("click",o);function e(){a.classList.remove("is-open")}function o(r){r.target.hasAttribute("data-modal")&&e()}function t(r){r.code==="Escape"&&(a.classList.remove("is-open"),document.removeEventListener("keydown",t))}}
+import{a as d,i as E}from"./assets/vendor-8cce9181.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))o(a);new MutationObserver(a=>{for(const i of a)if(i.type==="childList")for(const r of i.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&o(r)}).observe(document,{childList:!0,subtree:!0});function s(a){const i={};return a.integrity&&(i.integrity=a.integrity),a.referrerPolicy&&(i.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?i.credentials="include":a.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function o(a){if(a.ep)return;a.ep=!0;const i=s(a);fetch(a.href,i)}})();(()=>{const e={openModalBtn:document.querySelectorAll("[data-modal-open]"),closeModalBtn:document.querySelector("[data-modal-close]"),modal:document.querySelector("[data-modal]")};e.openModalBtn.forEach(o=>{o.addEventListener("click",s)}),e.closeModalBtn.addEventListener("click",s),e.modal.addEventListener("click",t);function t(o){o.target===o.currentTarget&&e.modal.classList.add("is-hidden")}function s(){e.modal.classList.toggle("is-hidden"),document.body.classList.toggle("no-scroll")}})();const k=localStorage.getItem("active-category"),l=document.getElementById(k),p=document.querySelectorAll(".choose-category-button"),n=document.querySelector(".placeholder-container"),$="https://energyflow.b.goit.study/api/filters";let u=1;function m(e,t){return d.get(`${$}?filter=${e}&page=${t}&limit=12`).then(s=>s.data.results.length?s.data:(console.error("No results found for this filter."),null)).catch(s=>{console.error("Error fetching images:",s)})}function w({imgUrl:e,name:t,filter:s}){return`<li class="list-item"><img class="list-image" src="${e}" data-source="${e}" loading="lazy" alt="${t}"><div class='list-history'>${t}<span>${s}</span></div></li>`}function g(e){if(e){let t="";e.results.forEach(o=>{t+=w(o)});let s=document.createElement("ul");s.classList.add("search-list"),s.innerHTML=t,n.innerHTML="",n.appendChild(s)}else n.innerHTML="<p>Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</p>"}p.forEach(e=>{e.addEventListener("click",async()=>{p.forEach(s=>{s.classList.remove("active-category")}),e.classList.add("active-category"),localStorage.setItem("active-category",e.id);const t=e.innerText;m(t,u).then(s=>{g(s)})})});l?(l.classList.add("active-category"),m(l.innerHTML,u).then(e=>{g(e)})):(document.getElementById("muscles").classList.add("active-category"),m("Muscles",u).then(t=>{g(t)}));const M=document.querySelector("[data-modal-open]"),B=document.querySelector("[data-modal-close]"),c=document.querySelector("[data-modal]"),h=document.querySelector(".exercises-modal");let S="64f389465ae26083f39b17a2";M.addEventListener("click",()=>{c.classList.add("is-open"),O(),P()});async function q(){return d.defaults.baseURL="https://energyflow.b.goit.study",await d.get(`/api/exercises/${S}`)}async function O(){try{const e=await q();console.log(e.data);const t=e.data;T(t)}catch(e){A(e)}}function T(e){const{bodyPart:t,burnedCalories:s,description:o,equipmen:a,gifUrl:i,name:r,popularity:v,rating:y,target:x,time:b}=e;let f=y.toFixed(1);const L=`
+  <div class="exercises-modal-gif-container">
+    <img src="${i}" alt="${r}"/>
+  </div>
+  <div>
+      <h4 class="exercises-modal-title">${r}</h4>
+      <div class="exercises-modal-rating">
+          <p class="exercises-modal-rating-number">${f}</p>
+          <ul class="exercises-modal-stars-list">
+              <li class="exercises-modal-star-item">
+                  <svg class="exercises-modal-star-icon" width="18" height="18">
+                      <use href="./img/sprite.svg#icon-star"></use>
+                  </svg>
+              </li>
+              <li class="exercises-modal-star-item">
+                  <svg class="exercises-modal-star-icon" width="18" height="18">
+                      <use href="./img/sprite.svg#icon-star"></use>
+                  </svg>
+              </li>
+              <li class="exercises-modal-star-item">
+                  <svg class="exercises-modal-star-icon" width="18" height="18">
+                      <use href="./img/sprite.svg#icon-star"></use>
+                  </svg>
+              </li>
+              <li class="exercises-modal-star-item">
+                  <svg class="exercises-modal-star-icon" width="18" height="18">
+                      <use href="./img/sprite.svg#icon-star"></use>
+                  </svg>
+              </li>
+              <li class="exercises-modal-star-item">
+                  <svg class="exercises-modal-star-icon" width="18" height="18">
+                      <use href="./img/sprite.svg#icon-star"></use>
+                  </svg>
+              </li>
+          </ul>
+      </div>
+      <ul class="exercises-modal-block-list">
+          <li class="exercises-modal-block-item">
+              <h5 class="exercises-modal-block-title">Target</h5>
+              <p class="exercises-modal-block-paragraf">${x}</p>
+          </li>
+          <li class="exercises-modal-block-item">
+              <h5 class="exercises-modal-block-title">Body Part</h5>
+              <p class="exercises-modal-block-paragraf">${t}</p>
+          </li>
+          <li class="exercises-modal-block-item">
+              <h5 class="exercises-modal-block-title">Equipment</h5>
+              <p class="exercises-modal-block-paragraf">${a}</p>
+          </li>
+          <li class="exercises-modal-block-item">
+              <h5 class="exercises-modal-block-title">Popular</h5>
+              <p class="exercises-modal-block-paragraf">${v}</p>
+          </li>
+          <li class="exercises-modal-block-item">
+              <h5 class="exercises-modal-block-title">Burned Calories</h5>
+              <p class="exercises-modal-block-paragraf lowercase-text">${s}/${b} min</p>
+          </li>
+      </ul>
+      <div class="exercises-modal-container-text">
+      <p class="exercises-modal-text">${o}</p>
+      </div>
+      <div class="exercises-modal-buttons">
+          <button class="exercises-modal-button-favorites" type="button">
+              Add to favorites
+              <svg class="exercises-modal-button-icon">
+                  <use href="./img/sprite.svg#icon-heart"></use>
+              </svg>
+          </button>
+          <button class="exercises-modal-button-rating" type="button">Give a rating</button>
+      </div>
+  </div>
+  `;h.insertAdjacentHTML("beforeend",L),C(f)}function C(e){const s=[...h.querySelectorAll(".exercises-modal-star-icon")];console.log(s);for(let o=0;o<=e;o+=1)s[o].classList.add("selected-stars")}function A(e){console.log(e);const t=e.name,s=e.message;E.error({position:"topRight",message:`${t}: ${s}.`})}function P(){document.addEventListener("keydown",s),B.addEventListener("click",e),c.addEventListener("click",t);function e(){c.classList.remove("is-open")}function t(o){o.target.hasAttribute("data-modal")&&e()}function s(o){o.code==="Escape"&&(c.classList.remove("is-open"),document.removeEventListener("keydown",s))}}
 //# sourceMappingURL=commonHelpers2.js.map
