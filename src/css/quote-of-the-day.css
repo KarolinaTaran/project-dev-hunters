@@ -1,0 +1,198 @@
+.quote-section {
+    min-width: 375;
+    height: 584;
+}
+
+.btn {
+    fill: red;
+    background-color: blue;
+}
+
+.quote-block {
+    min-width: 335px;
+    height: 272px;
+}
+
+.quote-block-title {
+    background-color: rgb(126, 132, 127);
+    padding: 42px 20px 40px 20px;
+    border-radius: 10%;
+}
+.quote-main-line {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 15px;
+}
+
+.quote-icon-commas {
+    width: 28px;
+    height: 28px;
+}
+
+.icon-man-container {
+    width: 34px;
+    height: 32px;
+    background-color: rgba(246, 246, 246, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 7px;
+    
+}
+
+.quote-icon-man {
+    width: 18px;
+    height: 20px;
+}
+
+.quote-title {
+    height: 28px;
+    color: rgb(246, 246, 246);
+    font-family: 'DM Sans';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0px;
+    text-align: left;
+    margin-right: 55px;
+}
+
+.quote-text-container {
+    padding: 0 20px 20px 40px;
+}
+
+.quote-text {
+    color: rgba(246, 246, 246, 0.6);
+    font-family: 'DM Sans';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+.quote-author {
+    color: rgb(246, 246, 246);
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.quote-block-img {
+    background-image: url(../img/quots-section/quots-mobile.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (max-width: 767px),
+screen and (min-resolution: 192dpi) and (max-width: 767px),
+screen and (min-resolution: 2dppx) and (max-width: 767px) {
+    .quote-block-img {
+        background-image: url(../img/quots-section/quots-mobile@2x.png);
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width:1439.98px) {
+    
+    .quote-block-title {
+        border-radius: 50px;
+    }
+
+    .quote-block-img {
+        background-image: url(../img/quots-section/quots-tablet.png);
+        border-radius: 50px;
+    }
+
+    .icon-man-container {
+        margin-right: 16px;
+        margin-left: 50px;
+    }
+
+    .quote-icon-commas {
+        width: 48px;
+        height: 48px;
+    }
+
+    .quote-title {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 32px;
+        margin-right: 320px;
+    }
+    
+    .quote-text-container {
+        padding: 0 55px 20px 100px;
+    }
+    .quote-text {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
+screen and (min-resolution: 192dpi) and (min-width: 768px),
+screen and (min-resolution: 2dppx) and (min-width: 768px) {
+    .quote-block-img {
+        background-image: url(../img/quots-section/quots-tablet@2x.png);
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .quote-container {
+        width: 1408px;
+        height: 302px;
+        display: flex;
+    }
+
+    .quote-block {
+        width: 704px;
+        height: 302px;
+    }
+    .quote-block-title {
+        border-radius: 50px;
+    }
+    .icon-man-container {
+        margin-left: 50px;
+        margin-right: 15px;
+    }
+
+    .quote-title {
+        margin-right: 290px;
+        font-size: 24px;
+        line-height: 32px;
+    }
+    .quote-icon-commas {
+        width: 48px;
+        height: 48px;
+    }
+    .quote-text-container {
+        padding: 0 50px 20px 100px;
+    }
+    .quote-text {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 25px;
+    }
+
+    .quote-block-img {
+        background-image: url(../img/quots-section/quots-desktop.png);
+    }
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 1440px),
+screen and (min-resolution: 192dpi) and (min-width: 1440px),
+screen and (min-resolution: 2dppx) and (min-width: 1440px) {
+    .quote-block-img {
+        background-image: url(../img/quots-section/quots-desktop@2x.png);
+    }
+}
+
+
+
+
+
+

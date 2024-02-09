@@ -1,0 +1,44 @@
+
+@media screen and (min-width:768px) {
+    .backdrop-menu-modal {
+        display:none;
+    }
+}
+
+/* Modal Menu Header */
+
+.menu-modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-modal {
+    background-color: var(--dark-gray-color);
+    display: inline-flex;
+    flex-direction: column;
+    border-radius: 30px;
+    padding: 40px 20px;
+}
+.modal-menu-logo {
+    color: #fafafa;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+/* Modal Menu Socials */
+
+.modal-menu-socials-list{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.footer-socials-item {
+    width: 41px;
+    height: 41px;
+    border: 1px solid rgba(246, 246, 246, 0.2);
+    border-radius: 10px;
+}
