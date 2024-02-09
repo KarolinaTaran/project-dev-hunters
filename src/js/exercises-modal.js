@@ -1,22 +1,3 @@
-<<<<<<< Updated upstream
-const openModalBtn = document.querySelector('[data-modal-open]');
-const closeModalBtn = document.querySelector('[data-modal-close]');
-const modal = document.querySelector('[data-modal]');
-
-function modalOpenClose() {
-  openModalBtn.addEventListener('click', toggleModal);
-  closeModalBtn.addEventListener('click', toggleModal);
-
-  modal.addEventListener('click', event => {
-    if (!event.target.classList.contains('backdrop-exercises-modal')) {
-      return;
-    }
-    toggleModal();
-  });
-
-  document.addEventListener('keydown', closeByEsc);
-
-=======
 import axios from 'axios';
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
@@ -69,20 +50,10 @@ function modalClose() {
     }
     closeByBtn();
   }
->>>>>>> Stashed changes
   function closeByEsc(event) {
-    if (event.key === 'Escape') {
+    if (event.code === "Escape") {
       modal.classList.remove('is-open');
+      document.removeEventListener('keydown', closeByEsc);
     }
   }
-<<<<<<< Updated upstream
-
-  function toggleModal() {
-    modal.classList.toggle('is-open');
-  }
-}
-
-modalOpenClose();
-=======
-}
->>>>>>> Stashed changes
+} 
