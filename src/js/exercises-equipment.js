@@ -63,7 +63,7 @@ function resultSearchMakrUp({ results }) {
             </div>
         </div>
         <div class="start-button-container">
-            <button type="button" data-id=${_id}>Start
+            <button type="button" data-id=${_id} data-modal-open>Start
                 <svg class="start-svg" width="18" height="18">
                     <use href="./img/sprite.svg#icon-arrow-right"></use>
                 </svg>
