@@ -78,8 +78,10 @@ function resultSearchMakrUp({ results }) {
             <h2>${name[0].toUpperCase() + name.slice(1)}</h2>
         </div>
         <div class="additional-information">
-            <p class=>Burned calories: <span class="info-from-back">${burnedCalories}/${time} min</span></p>
-            <p class=>Body part: <span class="info-from-back">${bodyPart}</span></p>
+            <p class=>Burned calories: <span class="info-from-back">${burnedCalories} / ${time} min</span></p>
+            <p class=>Body part: <span class="info-from-back">${
+              bodyPart[0].toUpperCase() + bodyPart.slice(1)
+            }</span></p>
             <p class=>Target: <span class="info-from-back">${target}</span></p>
         </div>
      
