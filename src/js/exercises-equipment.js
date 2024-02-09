@@ -56,7 +56,7 @@ function resultSearchMakrUp({ results }) {
         <div class="rating">
             <p class="workout">Workout</p>
             <div class="rating-cont">
-                <p class="rating-num">${rating}</p>
+                <p class="rating-num">${rating.toFixed(1)}</p>
                 <svg class="rating-star-svg" width="16" height="16">
                     <use href="./img/sprite.svg#rating-star"></use>
                 </svg>
