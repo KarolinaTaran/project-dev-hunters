@@ -118,12 +118,15 @@ li {
 }
 
 .pagination-counter {
+    margin: 0 auto;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-
+    flex-wrap: wrap;
+    row-gap: 0px;
+    width: 200px;
 }
 
 .one-count {
@@ -140,10 +143,15 @@ li {
 }
 
 .active-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #1B1B1B;
     border: 1px solid #1B1B1B;
-    border-radius: 50%;
-    padding: 0 12px;
+    border-radius: 100%;
+    height: 32px;
+    width: 32px;
+    text-align: center;
 }
 
 @media screen and (min-width: 768px) {
