@@ -14,10 +14,14 @@
 
 .menu-modal {
     background-color: var(--dark-gray-color);
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     border-radius: 30px;
     padding: 40px 20px;
+    height: 100vh;
+    margin-top: auto;
+    margin-bottom: 30px;
+    justify-content: space-between;
 }
 .modal-menu-logo {
     color: #fafafa;
