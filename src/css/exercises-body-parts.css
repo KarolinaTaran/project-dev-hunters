@@ -259,4 +259,9 @@
     .list-item {
         width: calc((100% - 60px) / 4);
     }
+
+    .search-list {
+        row-gap: 40px;
+        column-gap: 20px;
+    }
 }
