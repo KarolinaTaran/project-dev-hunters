@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/project-dev-hunters/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Energy Flow</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
-    integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="114x114" href="/project-dev-hunters/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/project-dev-hunters/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/project-dev-hunters/favicon-16x16.png" />
+    <link rel="manifest" href="/project-dev-hunters/site.webmanifest" />
+    <link rel="mask-icon" href="/project-dev-hunters/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
 
-  
-  <script type="module" crossorigin src="/project-dev-hunters/commonHelpers2.js"></script>
-  <link rel="modulepreload" crossorigin href="/project-dev-hunters/assets/vendor-8cce9181.js">
-  <link rel="stylesheet" href="/project-dev-hunters/assets/vendor-e5212ee8.css">
-  <link rel="stylesheet" href="/project-dev-hunters/assets/index-0cc282b1.css">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Energy Flow</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+      integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-<body>
-  <!-- Kostyantyn Smirnov -->
-  <header class="header">
+    
+    <script type="module" crossorigin src="/project-dev-hunters/commonHelpers2.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-dev-hunters/assets/vendor-8cce9181.js">
+    <link rel="stylesheet" href="/project-dev-hunters/assets/vendor-e5212ee8.css">
+    <link rel="stylesheet" href="/project-dev-hunters/assets/index-c49b3db7.css">
+  </head>
+
+  <body>
+    <!-- Kostyantyn Smirnov -->
+    <header class="header">
   <nav class="nav">
     <ul class="nav-list">
       <li class="nav-item">
@@ -29,8 +41,8 @@
 
   </nav>
 </header>
-  <!-- Bohdan Zakharkevych -->
-  <section class="section">
+    <!-- Bohdan Zakharkevych -->
+    <section class="section">
   <div class="container quote-container">
     <div class="quote-block quote-block-title">
       <div class="quote-main-line">
@@ -58,10 +70,10 @@
   </div>
 </section>
 
-  <!-- Yuriy Dobryanskiy -->
-  
-  <!-- Maxim Zadvornyi -->
-  <section class="exercises">
+    <!-- Yuriy Dobryanskiy -->
+    
+    <!-- Maxim Zadvornyi -->
+    <section class="exercises">
   <div class="exercises-container">
     <h2 class="exercises-title">Exercises</h2>
     <div class="buttons-and-form-container">
@@ -89,10 +101,10 @@
     </div>
   </div>
 </section>
-  <!-- Yuriy Dobryanskiy -->
-  
-  <!--  -->
-  <div class="backdrop-exercises-modal" data-modal>
+    <!-- Yuriy Dobryanskiy -->
+    
+    <!--  -->
+    <div class="backdrop-exercises-modal" data-modal>
     <div class="exercises-modal">
         <button class="exercises-modal-close-button" type="button" data-modal-close>
             <svg class="exercises-modal-close-icon" width="24" height="24">
@@ -176,10 +188,86 @@
         </div>
     </div>
 </div>
-  <!-- Viktoriia Olekh -->
-  
-  <!-- Karolina Taran -->
-  <section class="section">
+    <!-- Viktoriia Olekh -->
+    <div class="backdrop-menu-modal container" data-modal>
+  <div class="menu-modal">
+    <!-- Modal Header -->
+    <div class="menu-modal-header">
+      <!-- LOGO -->
+      <a class="modal-menu-logo" href="./index.html">energy.flow</a>
+
+      <!-- Button CLOSE -->
+      <button class="menu-modal-close-button" type="button" data-modal-close>
+        <svg
+          class="exercises-modal-close-icon"
+          fill="#212121"
+          width="24"
+          height="24"
+        >
+          <use href="/project-dev-hunters/assets/sprite-b3afc523.svg#icon-x"></use>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Middle Button -->
+    <div>
+      <div class="exercises-modal-buttons">
+        <button class="exercises-modal-button-favorites" type="button">
+          Home
+          <svg class="exercises-modal-button-icon">
+            <use href="/project-dev-hunters/assets/sprite-b3afc523.svg#icon-heart"></use>
+          </svg>
+        </button>
+        <button class="exercises-modal-button-rating" type="button">
+          Favorites
+        </button>
+      </div>
+    </div>
+
+    <!-- Social Media Links -->
+
+    <div class="modal-menu-socials-wrap">
+      <ul class="modal-menu-socials-list">
+        <li class="footer-socials-item">
+          <a
+            class="footer-socials-linc"
+            href="https://www.facebook.com/goITclub"
+            target="_blank"
+          >
+            <svg class="footer-socials-svg" width="20" height="20">
+              <use href="/project-dev-hunters/assets/sprite-b3afc523.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="footer-socials-item">
+          <a
+            class="footer-socials-linc"
+            href="https://www.instagram.com/goitclub"
+            target="_blank"
+          >
+            <svg class="footer-socials-svg" width="20" height="20">
+              <use href="/project-dev-hunters/assets/sprite-b3afc523.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="footer-socials-item">
+          <a
+            class="footer-socials-linc"
+            href="https://www.youtube.com/c/GoIT"
+            target="_blank"
+          >
+            <svg class="footer-socials-svg" width="20" height="20">
+              <use href="/project-dev-hunters/assets/sprite-b3afc523.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <!-- Karolina Taran -->
+    <section class="section">
   <div class="container recom-section">
     <div class="recom-section-img">
       <picture class="recom-section-pic">
@@ -214,8 +302,8 @@
     </div>
   </div>
 </section>
-  <!-- Liudmyla Bykova -->
-  <footer class="footer-section">
+    <!-- Liudmyla Bykova -->
+    <footer class="footer-section">
     <div class="footer-container">
         <div class="footer-content-wrap">
             <div class="footer-socials-wrap">
@@ -268,8 +356,6 @@
     </div>
 </footer>
 
-
-  
-</body>
-
+    
+  </body>
 </html>
