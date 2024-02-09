@@ -116,8 +116,6 @@ function pageConter(resList, { totalPages }, activePage = 0) {
     oneCounter.textContent = i + 1;
     oneCounter.classList.add('one-count');
     counter.append(oneCounter);
-
-    console.log(i == activePage);
     if (i + 1 == activePage) {
       oneCounter.classList.add('active-count');
     }
