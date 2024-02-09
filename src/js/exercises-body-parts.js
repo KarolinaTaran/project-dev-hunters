@@ -14,18 +14,19 @@ let data = null;
 request
 /
 */
-async function itemsList(filter, page) {
-  try {
-    const requestUrl = `${BASE_URL}?filter=${filter}&page=${page}&limit=12`;
-    const response = await axios.get(requestUrl);
-    if (!response.data.results.length) {
-      console.error('No results found for this filter.');
-      return null;
-    }
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching images:', error);
-  }
+function itemsList(filter, page) {
+  return axios
+    .get(`${BASE_URL}?filter=${filter}&page=${page}&limit=12`)
+    .then(response => {
+      if (!response.data.results.length) {
+        console.error('No results found for this filter.');
+        return null;
+      }
+      return response.data;
+    })
+    .catch(error => {
+      console.error('Error fetching images:', error);
+    });
 }
 /*
 /
@@ -72,20 +73,25 @@ buttons.forEach(button => {
     localStorage.setItem('active-category', button.id);
 
     const filter = button.innerText;
-    data = await itemsList(filter, currentPage);
-    getItems(data);
+    itemsList(filter, currentPage).then(data => {
+      getItems(data);
+    });
   });
 });
 
 if (activeButton) {
   activeButton.classList.add('active-category');
+  itemsList(activeButton.innerHTML, currentPage).then(data => {
+    getItems(data);
+  });
 } else {
   let activeCat = document.getElementById('muscles');
   activeCat.classList.add('active-category');
+  itemsList('Muscles', currentPage).then(data => {
+    getItems(data);
+  });
 }
 
-// data = await itemsList(activeButton.innerText, currentPage);
-// getItems(data);
 /*
 /
 /
