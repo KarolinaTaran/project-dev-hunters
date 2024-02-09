@@ -56,4 +56,4 @@ function modalClose() {
       document.removeEventListener('keydown', closeByEsc);
     }
   }
-} 
+}
