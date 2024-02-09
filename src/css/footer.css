@@ -2,17 +2,17 @@
 
 .footer-section {
     width: 375px;
-    margin: 20px auto;
+    margin: 0 auto 20px;
     padding: 0 20px;
 }
 
 .footer-container {
-    margin: 20px auto;
-    width: 335px;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
     padding: 20px;
     border-radius: 30px;
     background-image: url(../img/footer/footer-mobile.png);
-    background-color: #E8E8E8;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -25,6 +25,13 @@
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.02em;
+    transition: transform 250ms ease-in-out;
+}
+
+.footer-logo:hover,
+.footer-logo:focus {
+    color: #7E847F;
+    transform: scale(1.03);
 }
 
 .footer-socials-list {
@@ -35,7 +42,7 @@
     margin-bottom: 40px;
 }
 
-.footer-socials-item {
+.footer-socials-link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,15 +52,16 @@
     border-radius: 10px;
 }
 
-.footer-socials-linc {
-    display: flex;
-    text-align: center;
+
+.footer-socials-svg {
+    fill: #f6f6f6;
 }
 
-/* Fill не працює */
-.footer-socials-svg {
-    fill: #fafafa;
+.footer-socials-svg:hover,
+.footer-socials-svg:focus {
+    fill: #7E847F;
 }
+
 
 .footer-title {
     color: #fafafa;
@@ -129,14 +137,14 @@
 
 @media screen and (min-width:768px) {
     .footer-section {
-        margin: 16px auto;
+        margin: 0 auto 16px;
         width: 768px;
     }
 
     .footer-container {
-        margin: 16px auto;
-        width: 736px;
-        height: 576px;
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
         padding: 66px 48px 32px 48px;
         border-radius: 50px;
         background-image: url(../img/footer/footer-tablet.png);
@@ -157,7 +165,7 @@
         margin-top: 30px;
     }
 
-    .footer-socials-item {
+    .footer-socials-link {
         width: 44px;
         height: 44px;
     }
@@ -218,14 +226,14 @@
 
 @media screen and (min-width:1440px) {
     .footer-section {
-        margin: 16px auto;
+        margin: 0 auto 16px;
         width: 1440px;
     }
 
     .footer-container {
-        margin: 16px auto;
-        width: 1408px;
-        height: 454px;
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
         padding: 66px 48px 26px 48px;
         border-radius: 50px;
         background-image: url(../img/footer/footer-desktop.png);
