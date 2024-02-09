@@ -26,7 +26,7 @@
     <script type="module" crossorigin src="/project-dev-hunters/commonHelpers2.js"></script>
     <link rel="modulepreload" crossorigin href="/project-dev-hunters/assets/vendor-8cce9181.js">
     <link rel="stylesheet" href="/project-dev-hunters/assets/vendor-e5212ee8.css">
-    <link rel="stylesheet" href="/project-dev-hunters/assets/index-2336da31.css">
+    <link rel="stylesheet" href="/project-dev-hunters/assets/index-d51a0268.css">
   </head>
 
   <body>
@@ -188,7 +188,7 @@
     </div>
 </div>
     <!-- Viktoriia Olekh -->
-    <div class="backdrop-menu-modal container" data-modal>
+    <div class="backdrop-menu-modal container is-hidden" data-modal>
   <div class="menu-modal">
     <!-- Modal Header -->
     <div class="menu-modal-header">
@@ -198,26 +198,34 @@
       <!-- Button CLOSE -->
       <button class="menu-modal-close-button" type="button" data-modal-close>
         <svg
-          class="exercises-modal-close-icon"
+          class="menu-modal-close-icon"
           fill="#212121"
-          width="24"
-          height="24"
+          width="20"
+          height="20"
         >
-          <use href="/project-dev-hunters/assets/sprite-b3afc523.svg#icon-x"></use>
+          <use href="/project-dev-hunters/assets/sprite-b3afc523.svg#icon-x-big-white"></use>
         </svg>
       </button>
     </div>
 
-    <!-- Middle Button -->
+    <!-- Middle Buttons -->
     <div>
       <div class="exercises-modal-buttons">
-        <button class="exercises-modal-button-favorites" type="button">
+        <button
+          class="exercises-modal-button-favorites"
+          type="button"
+          onclick="window.location.href = '/index.html'"
+        >
           Home
           <svg class="exercises-modal-button-icon">
             <use href="/project-dev-hunters/assets/sprite-b3afc523.svg#icon-heart"></use>
           </svg>
         </button>
-        <button class="exercises-modal-button-rating" type="button">
+        <button
+          class="exercises-modal-button-rating"
+          type="button"
+          onclick="window.location.href = '/favorites.html'"
+        >
           Favorites
         </button>
       </div>
@@ -227,35 +235,35 @@
 
     <div class="modal-menu-socials-wrap">
       <ul class="modal-menu-socials-list">
-        <li class="footer-socials-item">
+        <li class="modal-menu-socials-item">
           <a
-            class="footer-socials-linc"
+            class="modal-menu-socials-linc"
             href="https://www.facebook.com/goITclub"
             target="_blank"
           >
-            <svg class="footer-socials-svg" width="20" height="20">
+            <svg class="modal-menu-socials-svg" width="20" height="20">
               <use href="/project-dev-hunters/assets/sprite-b3afc523.svg#icon-facebook"></use>
             </svg>
           </a>
         </li>
-        <li class="footer-socials-item">
+        <li class="modal-menu-socials-item">
           <a
-            class="footer-socials-linc"
+            class="modal-menu-socials-linc"
             href="https://www.instagram.com/goitclub"
             target="_blank"
           >
-            <svg class="footer-socials-svg" width="20" height="20">
+            <svg class="modal-menu-socials-svg" width="20" height="20">
               <use href="/project-dev-hunters/assets/sprite-b3afc523.svg#icon-instagram"></use>
             </svg>
           </a>
         </li>
-        <li class="footer-socials-item">
+        <li class="modal-menu-socials-item">
           <a
-            class="footer-socials-linc"
+            class="modal-menu-socials-linc"
             href="https://www.youtube.com/c/GoIT"
             target="_blank"
           >
-            <svg class="footer-socials-svg" width="20" height="20">
+            <svg class="modal-menu-socials-svg" width="20" height="20">
               <use href="/project-dev-hunters/assets/sprite-b3afc523.svg#icon-youtube"></use>
             </svg>
           </a>
