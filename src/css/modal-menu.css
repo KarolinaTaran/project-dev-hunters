@@ -28,6 +28,11 @@
     letter-spacing: -0.02em;
 }
 
+.menu-modal-close-button {
+    background-color: var(--dark-gray-color);
+    border: none;
+}
+
 /* Modal Menu Socials */
 
 .modal-menu-socials-list{
@@ -36,9 +41,41 @@
     gap: 12px;
 }
 
-.footer-socials-item {
+.modal-menu-socials-item {
     width: 41px;
     height: 41px;
     border: 1px solid rgba(246, 246, 246, 0.2);
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
+
+.modal-menu-socials-linc {
+    display: flex;
+    text-align: center;
+}
+
+
+.modal-menu-socials-svg {
+    fill: rgba(246, 246, 246, 0.8);
+}
+
+.modal-menu-socials-svg:hover {
+    fill: #fafafa;
+}
+
+/* .is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .modal-open {
+    overflow: hidden;
+  }
+
+  .no-scroll {
+    overflow: hidden;
+  } */
