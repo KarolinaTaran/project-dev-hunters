@@ -84,8 +84,8 @@ if (activeButton) {
   activeCat.classList.add('active-category');
 }
 
-data = await itemsList(activeButton.innerText, currentPage);
-getItems(data);
+// data = await itemsList(activeButton.innerText, currentPage);
+// getItems(data);
 /*
 /
 /
