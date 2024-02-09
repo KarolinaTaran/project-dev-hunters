@@ -52,6 +52,24 @@
   font-weight: 400;
   font-style: normal;
 
+  --primary-white-color: #F6F6F6;
+  --primary-white-color-bg-icon: rgba(246, 246, 246, 0.1);
+  --primary-white-color-footer-stroke: rgba(246, 246, 246, 0.2);
+  --primary-white-color-footer-text: rgba(246, 246, 246, 0.3);
+  --primary-white-color-filter-text: rgba(246, 246, 246, 0.4);
+  --primary-white-color-secondary-text: rgba(246, 246, 246, 0.6);
+  --white-color: #fff;
+  --dark-gray-color: #7E847F;
+  --dark-gray-color-stroke: rgba(126, 132, 127, 0.2);
+  --light-gray-color: #E8E8E8;
+  --main-black-color: #1B1B1B;
+  --main-black-modal-elements: rgba(27, 27, 27, 0.2);
+  --main-black-color-disable: rgba(27, 27, 27, 0.4);
+  --main-black-gray-text: rgba(27, 27, 27, 0.5);
+  --main-black-modal: rgba(27, 27, 27, 0.6);
+  --yellow-star: #EEA10C;
+
+
   color: #242424;
   background-color: rgba(255, 255, 255, 0.87);
 
@@ -60,4 +78,38 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 20px 0;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767.98px) {
+  .container {
+    max-width: 375px;
+    padding: 0 20px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439.98px) {
+  .container {
+    max-width: 768px;
+    padding: 0 15px;
+  }
+
+  .section {
+    padding: 16px 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 16px;
+  }
 }
