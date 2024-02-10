@@ -18,30 +18,50 @@
 }
 
 .exercises-modal {
-    display: block;
     position: absolute;
     background-color: var(--primary-white-color);
     border-radius: 20px;
     padding: 40px 20px;
+    width: 335px;
+    min-height: 298px;
 }
 
 @media screen and (min-width:768px) and (max-width:1439px) {
     .exercises-modal {
-        display: flex;
-        justify-content: center;
-        gap: 24px;
+        width: 716px;
+        min-height: 470px;
         padding: 40px;
     }
 }
 
 @media screen and (min-width:1440px) {
     .exercises-modal {
-        display: flex;
-        justify-content: center;
-        gap: 40px;
+        width: 732px;
+        min-height: 433px;
         padding: 40px;
     }
 }
+
+.exercises-modal-content {
+    display: block;
+}
+
+@media screen and (min-width:768px) and (max-width:1439px) {
+    .exercises-modal-content {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .exercises-modal-content {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+    }
+}
+
 
 /* -------------------------  modal-gif  ------------------------- */
 
@@ -160,27 +180,37 @@
     font-weight: 500;
     line-height: 1.3;
     color: var(--main-black-color);
-    
+    text-transform: capitalize;
 }
+
+ .lowercase-text {
+    text-transform: lowercase;
+ }
 
 /* -------------------------  exercises-modal-text  ------------------------- */
 
-.exercises-modal-text {
+.exercises-modal-container-text {
     margin: 20px 0 40px;
+    overflow-y: auto;
+}
+
+.exercises-modal-text {
+    margin: 0;
     font-size: 14px;
     line-height: 1.3;
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
-    .exercises-modal-text {
+    .exercises-modal-container-text {
         width: 295px;
     }
 }
 
 @media screen and (min-width:768px) {
-    .exercises-modal-text {
+    .exercises-modal-container-text {
         margin: 16px 0 32px;
         width: 342px;
+        max-height: 80px;
     }
 }
 
@@ -212,7 +242,7 @@
 }
 
 .exercises-modal-close-icon {
-    stroke: var(--main-black-color);
+    fill: var(--main-black-color);
     width: 24px;
     width: 24px;
 }
@@ -226,7 +256,7 @@
 
 .exercises-modal-close-icon:hover,
 .exercises-modal-close-icon:focus {
-    stroke: var(--dark-gray-color);
+    fill: var(--dark-gray-color);
 }
 
 .exercises-modal-buttons {

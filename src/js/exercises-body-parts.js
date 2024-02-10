@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { formDisplayNone } from './exercises-equipment';
 
 const activeCategoryId = localStorage.getItem('active-category');
 const activeButton = document.getElementById(activeCategoryId);
@@ -70,6 +71,7 @@ function getItems(data) {
 
 buttons.forEach(button => {
   button.addEventListener('click', async () => {
+    formDisplayNone();
     buttons.forEach(button => {
       button.classList.remove('active-category');
     });
