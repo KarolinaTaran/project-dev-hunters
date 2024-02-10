@@ -1,10 +1,10 @@
-/*
+
 import axios from 'axios';
 
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-const openModalBtn = document.querySelector('[data-exercise-modal-open]');
+let openModalBtn;
 const closeModalBtn = document.querySelector('[data-exercise-modal-close]');
 const backdrop = document.querySelector('[data-exercise-modal]');
 const modal = document.querySelector('.exercises-modal');
@@ -12,14 +12,21 @@ const modalExerciseContent = document.querySelector('.exercises-modal-content');
 
 const key = "exerciseItems";
 
-const idExercisesModal = "64f389465ae26083f39b17a2";      // !!!взяти id з об'єкту відповіді запиту відповідної вправи в секції
+let idExercisesModal;
 
-openModalBtn.addEventListener('click', () => {
-  modalExerciseContent.innerHTML = '';
-  backdrop.classList.add('is-open');
-  createExersiceCard();
-  modalClose();
-});
+export function chooseButtonForModal() {
+  openModalBtn = document.querySelectorAll('[data-exercise-modal-open]');
+
+  openModalBtn.forEach(e => {
+    e.addEventListener('click', () => {
+      idExercisesModal = event.target.dataset.id;
+      modalExerciseContent.innerHTML = '';
+      backdrop.classList.add('is-open');
+      createExersiceCard();
+      modalClose();
+    });
+  });
+}
 
 // ---------------   functions of geting datas from server   ---------------
 
@@ -43,20 +50,9 @@ async function createExersiceCard() {
 
 // ---------------   functions for drawing modal content   ---------------
 
-function drawExercisesModal(obj) {
-  const {
-    bodyPart,
-    burnedCalories,
-    description,
-    equipmen,
-    gifUrl,
-    name,
-    popularity,
-    rating,
-    target,
-    time
-  } = obj;
-
+function drawExercisesModal({ bodyPart, burnedCalories, description,
+  equipmen, gifUrl, name, popularity, rating, target,time }) {
+  
   let ratingOfExercise = rating.toFixed(1);
 
   const modalContentHtml = `
@@ -138,13 +134,13 @@ function drawExercisesModal(obj) {
   </div>
   `
   modalExerciseContent.insertAdjacentHTML('beforeend', modalContentHtml);
-  drawStars(ratingOfExercise);
+  drawStars(Math.round(rating));
 }
 
 function drawStars(number) {
   const star = modal.querySelectorAll('.exercises-modal-star-icon');
   const arrOfStars = [...star];
-  for (let i = 0; i <= number; i += 1) {
+  for (let i = 0; i < number; i += 1) {
     arrOfStars[i].classList.add("selected-stars"); 
   }
 }
@@ -269,5 +265,3 @@ function modalClose() {
     }
   }
 }
-
-*/
