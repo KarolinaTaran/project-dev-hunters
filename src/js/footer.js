@@ -31,7 +31,7 @@ async function onSend(event) {
     );
   } catch (error) {
     if (error.response.status === 409) {
-      showMessage('Sorry! This email has been already declarated!');
+      showMessage('Sorry! This email has already been declarated!');
     }
   } finally {
     refs.form.reset();
@@ -49,7 +49,7 @@ async function sendEmail(email) {
 function isValidEmail(email) {
   let reg = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
   if (!email.match(reg)) {
-    showMessage('Please, enter the valid email!');
+    showMessage('Please, enter the correct email!');
     return false;
   }
   return true;

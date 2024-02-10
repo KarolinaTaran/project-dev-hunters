@@ -14,7 +14,6 @@
 }
 
 .exercises-title {
-    margin-bottom: 20px;
     color: #1B1B1B;
     font-family: "DM Sans";
     font-size: 32px;
@@ -57,11 +56,13 @@
 }
 
 .search-container {
+
     /* margin-bottom: 40px; */
 }
 
 .training-search-form {
     position: relative;
+    margin-top: 20px;
 }
 
 .training-search-form input {
@@ -84,12 +85,21 @@
     line-height: 1.28
 }
 
-.training-search-form button {
+.search-button-ex {
     padding: 6px;
     border: none;
     background-color: transparent;
     position: absolute;
     right: 8px;
+    top: 6px
+}
+
+.cansel-button-ex {
+    padding: 6px;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 28px;
     top: 6px
 }
 
@@ -222,7 +232,7 @@ tui button
 
     .exercises-title {
         font-size: 44px;
-        margin-bottom: 32px;
+        line-height: 1.08;
     }
 
     .buttons-and-form-container {
@@ -243,6 +253,10 @@ tui button
         padding: 10px 20px;
         font-size: 16px;
         line-height: 1.5;
+    }
+
+    .training-search-form {
+        margin-top: 0;
     }
 
     .training-search-form input,
