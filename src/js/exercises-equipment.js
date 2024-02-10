@@ -2,22 +2,33 @@
 
 import axios from 'axios';
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
+const KEY_FORM = 'formValusForSearch';
+const KEY_EXERCISES = 'fullHtnlOfEx';
+const sectionEx = document.querySelector('.exercises');
 const searchCategoryMZ = document.querySelector('.placeholder-container');
-searchCategoryMZ.addEventListener('click', showTrainingsMZ);
 const placeholder = document.querySelector('.placeholder-container');
 const searchForm = document.querySelector('.training-search-form');
-searchForm.addEventListener('submit', searchByKeyWord);
 const resList = document.createElement('ul');
 resList.classList.add('search-result-list');
+searchCategoryMZ.addEventListener('click', showTrainingsMZ);
+searchForm.addEventListener('submit', searchByKeyWord);
+searchForm.addEventListener('input', formValueState);
+searchForm.querySelector('[name="exercise-name"]').value =
+  sessionStorage.getItem(KEY_FORM) ?? '';
 const searchParams = {
   group: '',
   item: '',
   keyWord: '',
 };
-//
+
 //
 export function formDisplayNone() {
   searchForm.classList.add('display-none');
+}
+//
+//
+function formValueState(event) {
+  sessionStorage.setItem(KEY_FORM, event.target.value);
 }
 
 // Search by keyWord
@@ -25,8 +36,11 @@ async function searchByKeyWord(event) {
   event.preventDefault();
   searchParams.keyWord = searchForm
     .querySelector('[name="exercise-name"]')
-    .value.trim();
+    .value.trim()
+    .toLowerCase()
+    .replace(/\s/g, '');
   searchForm.querySelector('[name="exercise-name"]').value = '';
+  sessionStorage.removeItem(KEY_FORM);
   const { data: resultByKeyword } = await getExercisesMZ(searchParams, 1);
   if (resultByKeyword.results.length === 0) {
     placeholder.innerHTML =
@@ -43,6 +57,7 @@ async function searchByKeyWord(event) {
   } else {
     resList.classList.remove('additional-margin');
   }
+  console.log(sectionEx);
 }
 //
 // Search by group
@@ -100,7 +115,7 @@ async function getExercisesMZ({ group, item, keyWord }, page = 1) {
             `${BASE_URL}?${group.toLowerCase()}=${item.toLowerCase()}&page=${page}&limit=${limit}`
           )
         : await axios.get(
-            `${BASE_URL}?${group.toLowerCase()}=${item.toLowerCase()}&page=${page}&keyword=${keyWord}&limit=${limit}`
+            `${BASE_URL}?${group.toLowerCase()}=${item.toLowerCase()}&keyword=${keyWord}&page=${page}&limit=${limit}`
           );
 
     return exerciseSearchResult;
