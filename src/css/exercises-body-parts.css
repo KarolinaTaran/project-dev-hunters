@@ -85,12 +85,21 @@
     line-height: 1.28
 }
 
-.training-search-form button {
+.search-button-ex {
     padding: 6px;
     border: none;
     background-color: transparent;
     position: absolute;
     right: 8px;
+    top: 6px
+}
+
+.cansel-button-ex {
+    padding: 6px;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 28px;
     top: 6px
 }
 
