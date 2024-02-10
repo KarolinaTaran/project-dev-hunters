@@ -1,16 +1,53 @@
+// Modules and params
+
 import axios from 'axios';
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
 const searchCategoryMZ = document.querySelector('.placeholder-container');
-const placeholder = document.querySelector('.placeholder-container');
 searchCategoryMZ.addEventListener('click', showTrainingsMZ);
+const placeholder = document.querySelector('.placeholder-container');
+const searchForm = document.querySelector('.training-search-form');
+searchForm.addEventListener('submit', searchByKeyWord);
 const resList = document.createElement('ul');
 resList.classList.add('search-result-list');
 const searchParams = {
   group: '',
   item: '',
+  keyWord: '',
 };
+//
+//
+export function formDisplayNone() {
+  searchForm.classList.add('display-none');
+}
 
+// Search by keyWord
+async function searchByKeyWord(event) {
+  event.preventDefault();
+  searchParams.keyWord = searchForm
+    .querySelector('[name="exercise-name"]')
+    .value.trim();
+  searchForm.querySelector('[name="exercise-name"]').value = '';
+  const { data: resultByKeyword } = await getExercisesMZ(searchParams, 1);
+  if (resultByKeyword.results.length === 0) {
+    placeholder.innerHTML =
+      '<p>Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
+    return;
+  }
+  resList.innerHTML = resultSearchMakrUp(resultByKeyword);
+  placeholder.innerHTML = '';
+  placeholder.appendChild(resList);
+  searchForm.classList.remove('display-none');
+  pageConter(resList, resultByKeyword);
+  if (resultByKeyword.totalPages > 1) {
+    resList.classList.add('additional-margin');
+  } else {
+    resList.classList.remove('additional-margin');
+  }
+}
+//
+// Search by group
 async function showTrainingsMZ(event) {
+  searchParams.keyWord = '';
   if (event.target.nodeName === 'UL') return;
   let query;
   if (
@@ -29,17 +66,16 @@ async function showTrainingsMZ(event) {
 
   searchParams.group = query.lastElementChild.textContent;
   searchParams.item = query.firstChild.textContent;
-
   const { data: resultExercises } = await getExercisesMZ(searchParams);
   if (!resultExercises.results) {
     placeholder.innerHTML =
       '<p>Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
     return;
   }
-
   resList.innerHTML = resultSearchMakrUp(resultExercises);
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
+  searchForm.classList.remove('display-none');
   pageConter(resList, resultExercises);
   if (resultExercises.totalPages > 1) {
     resList.classList.add('additional-margin');
@@ -47,25 +83,35 @@ async function showTrainingsMZ(event) {
     resList.classList.remove('additional-margin');
   }
 }
+//
+//
+//GET to BACK
 
-async function getExercisesMZ({ group, item }, page = 1) {
+async function getExercisesMZ({ group, item, keyWord }, page = 1) {
   let limit = window.innerWidth <= 1439 ? 8 : 9;
   group = group.toLowerCase();
   if (group === 'body parts') {
     group = group.slice(0, group.length - 1).replace(/\s/g, '');
   }
-
   try {
-    const exerciseSearchResult = await axios.get(
-      `${BASE_URL}?${group.toLowerCase()}=${item.toLowerCase()}&page=${page}&limit=${limit}`
-    );
+    const exerciseSearchResult =
+      keyWord === ''
+        ? await axios.get(
+            `${BASE_URL}?${group.toLowerCase()}=${item.toLowerCase()}&page=${page}&limit=${limit}`
+          )
+        : await axios.get(
+            `${BASE_URL}?${group.toLowerCase()}=${item.toLowerCase()}&page=${page}&keyword=${keyWord}&limit=${limit}`
+          );
+
     return exerciseSearchResult;
   } catch (error) {
     window.alert('something goes wrong');
     console.log(error);
   }
 }
-
+//
+//MarkUp for results
+//
 function resultSearchMakrUp({ results }) {
   return results
     .map(({ bodyPart, rating, name, target, burnedCalories, time, _id }) => {
