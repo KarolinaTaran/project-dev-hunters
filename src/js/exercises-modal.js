@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 
 import iziToast from "izitoast";
@@ -9,8 +10,9 @@ const backdrop = document.querySelector('[data-exercise-modal]');
 const modal = document.querySelector('.exercises-modal');
 const modalExerciseContent = document.querySelector('.exercises-modal-content');
 
+const key = "exerciseItems";
 
-let idExercisesModal = "64f389465ae26083f39b17a2";      // !!!взяти id з об'єкту відповіді запиту відповідної вправи в секції
+const idExercisesModal = "64f389465ae26083f39b17a2";      // !!!взяти id з об'єкту відповіді запиту відповідної вправи в секції
 
 openModalBtn.addEventListener('click', () => {
   modalExerciseContent.innerHTML = '';
@@ -31,6 +33,7 @@ async function createExersiceCard() {
       const response = await getData();
       const objDataOfExercise = response.data;
       drawExercisesModal(objDataOfExercise);
+      addAndRemoveFavorites(objDataOfExercise);
   } catch(error) {
       catchError(error);
   // } finally {
@@ -118,13 +121,19 @@ function drawExercisesModal(obj) {
       <p class="exercises-modal-text">${description}</p>
       </div>
       <div class="exercises-modal-buttons">
-          <button class="exercises-modal-button-favorites" type="button">
-              Add to favorites
-              <svg class="exercises-modal-button-icon">
-                  <use href="./img/sprite.svg#icon-heart"></use>
-              </svg>
-          </button>
-          <button class="exercises-modal-button-rating" type="button">Give a rating</button>
+        <button class="exercises-modal-button-favorites " type="button">
+          Add to favorites
+          <svg class="exercises-modal-button-icon">
+            <use href="./img/sprite.svg#icon-heart"></use>
+          </svg>
+      </button>
+      <button class="exercises-modal-button-remove hidden-button" type="button">
+        Remove from
+        <svg class="exercises-modal-button-icon">
+          <use href="./img/sprite.svg#icon-heart"></use>
+        </svg>
+      </button>
+          <button class="exercises-modal-button-rating hidden-button" type="button">Give a rating</button>
       </div>
   </div>
   `
@@ -148,6 +157,91 @@ function catchError(error) {
     position: 'topRight',
     message: `${errName}: ${errText}.`
   });
+}
+
+// ---------------   functions of adding exercise to favorites   ---------------
+
+
+function addAndRemoveFavorites(obj) {
+  clickByAddFavourites(obj);
+  clickByRemoveFavourites();
+
+  // const btnsOfExerciseModal = document.querySelector('.exercises-modal-buttons');
+  // btnsOfExerciseModal.addEventListener('click', (event) => {
+  //   console.dir(event.target);
+  //   if (event.target.nodeName === "BUTTON" && event.target.classList.contains("exercises-modal-button-favorites")) {
+  //     clickByAddFavourites(obj);
+  //     changeBtnsAddRemove();
+  //   }
+  //   if (event.target.nodeName === "BUTTON" && event.target.classList.contains("exercises-modal-button-favorites")) {
+  //     clickByRemoveFavourites();
+  //     changeBtnsAddRemove();
+  //   }
+
+  // })
+}
+
+function clickByAddFavourites(obj) {
+  const addToFavoritesBtn = document.querySelector(".exercises-modal-button-favorites");
+  addToFavoritesBtn.addEventListener("click", () => {
+    if (localStorage.getItem(key)) {
+      const arrFavouritesToLS = JSON.parse(localStorage.getItem(key)).push(obj);
+      console.log(arrFavouritesToLS)
+      saveToStorage(arrFavouritesToLS);
+    }
+    if (!localStorage.getItem(key)){
+      const newArrToLS = [obj];
+      saveToStorage(newArrToLS);
+    }
+    changeBtnsAddRemove();
+  });
+}
+
+function clickByRemoveFavourites() {
+  const removeFromFavoritesBtn = document.querySelector(".exercises-modal-button-remove");
+  removeFromFavoritesBtn.addEventListener("click", () => {
+    if (localStorage.getItem(key) && JSON.parse(localStorage.getItem(key)).length !== 0) {
+      loadFromStorage();
+    }
+    changeBtnsAddRemove();
+    return
+  });
+}
+
+function saveToStorage(arr) {
+  console.log(arr)
+  try {
+    localStorage.setItem(key, JSON.stringify(arr));
+  } catch (error) {
+    console.log(error);
+    catchError(error);
+  }
+}
+
+function loadFromStorage() {
+  try {
+    let dataFromLS = localStorage.getItem(key);
+    const arrFromLS = JSON.parse(dataFromLS);
+    if(arrFromLS.length !== 0) {
+      const itemExerciceById = arrFromLS.find((item) =>{
+        return item._id === idExercisesModal;
+      })
+      arrFromLS.splice(arrFromLS.indexOf(itemExerciceById), 1);
+      saveToStorage(arrFromLS);
+    } else {
+      return;
+    }
+  } catch (error) {
+    console.log(error);
+    catchError(error);
+  }
+}
+
+function changeBtnsAddRemove() {
+  const addToFavoritesBtn = modal.querySelector('.exercises-modal-button-favorites');
+  const removeFromFavoritesBtn = modal.querySelector('.exercises-modal-button-remove');
+  addToFavoritesBtn.classList.toggle("hidden-button");
+  removeFromFavoritesBtn.classList.toggle("hidden-button");
 }
 
 // ---------------   functions of opening and closing of modal   ---------------
