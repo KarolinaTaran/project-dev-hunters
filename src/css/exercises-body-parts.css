@@ -14,7 +14,6 @@
 }
 
 .exercises-title {
-    margin-bottom: 20px;
     color: #1B1B1B;
     font-family: "DM Sans";
     font-size: 32px;
@@ -222,7 +221,7 @@ tui button
 
     .exercises-title {
         font-size: 44px;
-        margin-bottom: 32px;
+        line-height: 1.08;
     }
 
     .buttons-and-form-container {
