@@ -11,8 +11,11 @@
         integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-  <script type="module" crossorigin src="/project-dev-hunters/assets/modulepreload-polyfill-3cfb730f.js"></script>
-  <link rel="stylesheet" href="/project-dev-hunters/assets/favorites-2e4a7c4a.css">
+  <script type="module" crossorigin src="/project-dev-hunters/commonHelpers.js"></script>
+  <link rel="modulepreload" crossorigin href="/project-dev-hunters/assets/modulepreload-polyfill-3cfb730f.js">
+  <link rel="modulepreload" crossorigin href="/project-dev-hunters/assets/vendor-8cce9181.js">
+  <link rel="stylesheet" href="/project-dev-hunters/assets/vendor-e5212ee8.css">
+  <link rel="stylesheet" href="/project-dev-hunters/assets/favorites-81965c58.css">
 </head>
 
 <body>
@@ -58,9 +61,9 @@
             </ul>
 
             <!-- Button mobile-menu -->
-            <button class="mobile-menu-btn header-menu-toggle" data-modal-open>
+            <button class="mobile-menu-btn" data-modal-open>
                 <svg class="mobile-menu-icon" width="32" height="16">
-                    <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-burger-btn"></use>
+                    <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-burger"></use>
                 </svg>
             </button>
         </div>
@@ -68,18 +71,38 @@
     </header>
 
     <main>
-        <section class="quote">
-            <div class="container">
-                <div></div>
-                <div>
-                    <div></div>
-                    <div></div>
+        <section class="info">
+            <div class="info-container container">
+                <div class="info-quote">
+                    <h2 class="info-quote-title">Quote of the day</h2>
+                    <p class="js-info-quote info-quote-cont"></p>
+                    <p class="js-quote-author info-quote-author"></p>
+                    <div class="info-icon-wrap">
+                        <svg class="info-icon-item" width="18" height="20">
+                            <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-running-men"></use>
+                        </svg>
+                    </div>
+                    <div class="info-marks-wrap">
+                        <svg class="info-marks-item">
+                            <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-inverted-commas"></use>
+                        </svg>
+                    </div>
                 </div>
+                <div class="info-img"></div>
+                <div class="info-advice">
+                    <div class="info-advice-pict">
+                        <svg class="info-advice-icon">
+                            <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-dumbbell-black"></use>
+                        </svg>
+                    </div>
+                    <p class="info-advice-time">110 min</p>
+                    <p class="info-advice-text">Daily norm of sports</p>
+                </div>
+
             </div>
         </section>
 
         <section class="favorites">
-            <h2></h2>
 
         </section>
 
