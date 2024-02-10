@@ -1,3 +1,5 @@
+import './js/modal-menu';
+
 import axios from 'axios';
 
 // Elements ojects
