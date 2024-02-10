@@ -94,6 +94,9 @@
 
 .placeholder-container {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .placeholder-container p {
@@ -160,6 +163,48 @@
     line-height: 1.5;
 }
 
+/**
+tui button
+*/
+#pagination {
+    text-align: center;
+}
+
+.tui-pagination {
+    margin: 14px 0 0px !important;
+}
+
+.tui-page-btn {
+    border-radius: 50%;
+    color: rgba(27, 27, 27, 0.40) !important;
+    font-family: "DM Sans";
+    font-size: 24px !important;
+    padding: 0px !important;
+    width: 32px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+    border: none !important;
+    background: none !important;
+    display: inline-flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.tui-is-selected {
+    color: #1B1B1B !important;
+    border: 1px solid #1B1B1B !important;
+}
+
+.tui-next,
+.tui-last,
+.tui-first,
+.tui-prev {
+    visibility: hidden;
+}
+
+/**
+tui button
+*/
 
 @media screen and (min-width:768px) {
     .exercises {
@@ -245,7 +290,7 @@
     .exercises-container {
         border-radius: 50px;
         padding: 64px 48px;
-        min-height: 827px;
+        min-height: 1178px;
     }
 
     .search-container {
@@ -254,10 +299,15 @@
 
     .list-item {
         width: calc((100% - 60px) / 4);
+        height: 250px;
     }
 
     .search-list {
         row-gap: 40px;
         column-gap: 20px;
+    }
+
+    .tui-pagination {
+        margin-top: 32px !important;
     }
 }

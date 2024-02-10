@@ -9,7 +9,7 @@ const placeholder = document.querySelector('.placeholder-container');
 
 const BASE_URL = 'https://energyflow.b.goit.study/api/filters';
 let currentPage = 1;
-let data = null;
+// let data = null;
 /*
 /
 request
@@ -52,8 +52,12 @@ function getItems(data) {
     let ul = document.createElement('ul');
     ul.classList.add('search-list');
     ul.innerHTML = markup;
-    placeholder.innerHTML = '';
+    placeholder.innerHTML = ``;
     placeholder.appendChild(ul);
+    placeholder.insertAdjacentHTML(
+      'beforeend',
+      "<div id='pagination' class='tui-pagination'></div>"
+    );
   } else {
     placeholder.innerHTML =
       '<p>Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
@@ -77,27 +81,67 @@ buttons.forEach(button => {
     const filter = button.innerText;
     itemsList(filter, currentPage).then(data => {
       getItems(data);
+      paginationBlock(data);
     });
   });
 });
 
 if (activeButton) {
   activeButton.classList.add('active-category');
-  itemsList(activeButton.innerHTML, currentPage).then(data => {
+  itemsList(activeButton.innerText, currentPage).then(data => {
     getItems(data);
+    paginationBlock(data);
   });
 } else {
   let activeCat = document.getElementById('muscles');
   activeCat.classList.add('active-category');
   itemsList('Muscles', currentPage).then(data => {
     getItems(data);
+    paginationBlock(data);
   });
 }
 
 /*
 /
+pagination
 /
 */
+function paginationBlock({ page, results, totalPages }) {
+  const container = document.querySelector('#pagination');
+  for (let i = 1; i <= totalPages; i++) {
+    const pageLink = document.createElement('a');
+    pageLink.href = '#';
+    i == page
+      ? pageLink.classList.add('tui-page-btn', 'tui-is-selected')
+      : pageLink.classList.add('tui-page-btn');
+    pageLink.textContent = i;
 
-// const data = await musclesList('Muscles', currentPage);
-// console.dir(data);
+    pageLink.addEventListener('click', event => {
+      const pageNumber = event.target.textContent;
+
+      itemsList(results[0].filter, pageNumber).then(data => {
+        getItems(data);
+        paginationBlock(data);
+      });
+    });
+    container.appendChild(pageLink);
+  }
+
+  const categoryButtons = document.querySelectorAll('.tui-page-btn');
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
+
+      categoryButtons.forEach(button => {
+        button.classList.remove('tui-is-selected');
+      });
+      button.classList.add('tui-is-selected');
+    });
+  });
+}
+
+/*
+/
+pagination
+/
+*/

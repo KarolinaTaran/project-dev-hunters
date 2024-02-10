@@ -1,26 +1,43 @@
-(() => {
-    const refs = {
-      openModalBtn: document.querySelectorAll('[data-modal-open]'),
-      closeModalBtn: document.querySelector('[data-modal-close]'),
-      modal: document.querySelector('[data-modal]'),
-    };
+// (() => {
+//     const refs = {
+//       openModalMenuButton: document.querySelectorAll('.button-header'),
+//       closeModalMenuButton: document.querySelector('.menu-modal-close-button'),
+//       modalMenu: document.querySelector('.backdrop-menu-modal'),
+//     };
   
-    refs.openModalBtn.forEach(element => {
-      element.addEventListener('click', toggleModal);
-    });
-    refs.closeModalBtn.addEventListener('click', toggleModal);
+//     refs.openModalMenuButton.forEach(element => {
+//       element.addEventListener('click', toggleModal);
+//     });
+//     refs.closeModalMenuButton.addEventListener('click', toggleModalMenu);
   
-    //* Закривання по кліку на бекдроп
+//     //* Закривання по кліку на бекдроп
   
-    refs.modal.addEventListener('click', removeModal);
-    function removeModal(e) {
-      if (e.target === e.currentTarget) {
-        refs.modal.classList.add('is-hidden');
-      }
-    }
+//   refs.modalMenu.addEventListener('click', removeModalMenu);
   
-    function toggleModal() {
-      refs.modal.classList.toggle('is-hidden');
-      document.body.classList.toggle('no-scroll');
-    }
-  })();
+//     function removeModalMenu(event) {
+//       if (event.target === event.currentTarget) {
+//         refs.modalMenu.classList.add('is-hidden');
+//       }
+//     }
+  
+//     function toggleModalMenu() {
+//       refs.modal.classList.toggle('is-hidden');
+//       document.body.classList.toggle('no-scroll');
+//     }
+//   })();
+
+document.addEventListener('DOMContentLoaded', function() {
+  const headerMenuToggle = document.querySelector('.button-header');
+  const menuModal = document.querySelector('.backdrop-menu-modal');
+  const menuModalCloseButton = document.querySelector('.menu-modal-close-button');
+
+  // Відкриття модального вікна
+  headerMenuToggle.addEventListener('click', function() {
+    menuModal.classList.remove('is-hidden');
+  });
+
+  // Закриття модального вікна
+  menuModalCloseButton.addEventListener('click', function() {
+    menuModal.classList.add('is-hidden');
+  });
+});
