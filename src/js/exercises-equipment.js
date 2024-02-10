@@ -85,7 +85,7 @@ function resultSearchMakrUp({ results }) {
       <div class="info-about-exercise">
         <div class="exercise-name">
             <svg class="runnig-svg" width="24" height="24">
-                <use href="./img/sprite.svg#running-man"></use>
+                <use href="/project-dev-hunters/assets/sprite-f8222074.svg#running-man"></use>
             </svg>
             <h2>${name[0].toUpperCase() + name.slice(1)}</h2>
         </div>
@@ -116,8 +116,6 @@ function pageConter(resList, { totalPages }, activePage = 0) {
     oneCounter.textContent = i + 1;
     oneCounter.classList.add('one-count');
     counter.append(oneCounter);
-
-    console.log(i == activePage);
     if (i + 1 == activePage) {
       oneCounter.classList.add('active-count');
     }
