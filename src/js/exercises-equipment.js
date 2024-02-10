@@ -76,14 +76,14 @@ function resultSearchMakrUp({ results }) {
             <div class="rating-cont">
                 <p class="rating-num">${rating.toFixed(1)}</p>
                 <svg class="rating-star-svg" width="16" height="16">
-                    <use href="./img/sprite.svg#rating-star"></use>
+                    <use href="/project-dev-hunters/assets/sprite-f8222074.svg#rating-star"></use>
                 </svg>
             </div>
         </div>
         <div class="start-button-container">
             <button type="button" data-id=${_id} data-exercise-modal-open>Start
                 <svg class="start-svg" width="18" height="18">
-                    <use href="./img/sprite.svg#icon-arrow-right"></use>
+                    <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-arrow-right"></use>
                 </svg>
             </button>
         </div>
@@ -91,7 +91,7 @@ function resultSearchMakrUp({ results }) {
       <div class="info-about-exercise">
         <div class="exercise-name">
             <svg class="runnig-svg" width="24" height="24">
-                <use href="./img/sprite.svg#running-man"></use>
+                <use href="/project-dev-hunters/assets/sprite-f8222074.svg#running-man"></use>
             </svg>
             <h2>${name[0].toUpperCase() + name.slice(1)}</h2>
         </div>
