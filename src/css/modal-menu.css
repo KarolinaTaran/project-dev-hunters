@@ -1,4 +1,15 @@
 
+@media screen and (min-width: 320px) and (max-width: 767.98px) {
+    .backdrop-menu-modal {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      /* display: flex;
+      justify-content: center;
+      align-items: center; */
+    }}
+
 @media screen and (min-width:768px) {
     .backdrop-menu-modal {
         display:none;
