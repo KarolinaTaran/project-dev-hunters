@@ -70,11 +70,11 @@
     fill: #fafafa;
 }
 
-/* .is-hidden {
+ .is-hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-  }
+  } 
 
   .modal-open {
     overflow: hidden;
@@ -82,4 +82,4 @@
 
   .no-scroll {
     overflow: hidden;
-  } */
+  } 
