@@ -4,7 +4,7 @@ import axios from 'axios';
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
 const KEY_FORM = 'formValusForSearch';
 const KEY_EXERCISES = 'fullHtnlOfEx';
-const sectionEx = document.querySelector('.exercises');
+const exercisesTitle = document.querySelector('.title-container');
 const searchCategoryMZ = document.querySelector('.placeholder-container');
 const placeholder = document.querySelector('.placeholder-container');
 const searchForm = document.querySelector('.training-search-form');
@@ -20,12 +20,14 @@ const searchParams = {
   item: '',
   keyWord: '',
 };
-
+//
 //
 export function formDisplayNone() {
   searchForm.classList.add('display-none');
+  exercisesTitle.innerHTML = '<h2 class="exercises-title">Exercises</h2>';
 }
 //
+//Input
 //
 function formValueState(event) {
   sessionStorage.setItem(KEY_FORM, event.target.value);
@@ -51,13 +53,14 @@ async function searchByKeyWord(event) {
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
   searchForm.classList.remove('display-none');
+  exercisesTitle.innerHTML =
+    '<h2 class="exercises-title">Exercises /</h2><p>Waist</p>';
   pageConter(resList, resultByKeyword);
   if (resultByKeyword.totalPages > 1) {
     resList.classList.add('additional-margin');
   } else {
     resList.classList.remove('additional-margin');
   }
-  console.log(sectionEx);
 }
 //
 // Search by group
@@ -91,6 +94,8 @@ async function showTrainingsMZ(event) {
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
   searchForm.classList.remove('display-none');
+  exercisesTitle.innerHTML =
+    '<h2 class="exercises-title">Exercises /</h2><p>Waist</p>';
   pageConter(resList, resultExercises);
   if (resultExercises.totalPages > 1) {
     resList.classList.add('additional-margin');

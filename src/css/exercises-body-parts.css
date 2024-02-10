@@ -14,7 +14,6 @@
 }
 
 .exercises-title {
-    margin-bottom: 20px;
     color: #1B1B1B;
     font-family: "DM Sans";
     font-size: 32px;
@@ -178,7 +177,6 @@
     .exercises-title {
         font-size: 44px;
         line-height: 1.08;
-        margin-bottom: 32px;
     }
 
     .buttons-and-form-container {
