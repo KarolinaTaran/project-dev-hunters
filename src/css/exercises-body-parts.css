@@ -26,7 +26,7 @@
 .buttons-and-form-container {
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
+    row-gap: 0px;
 }
 
 .button-container {
@@ -117,7 +117,7 @@
 
 /*search-list*/
 .search-list {
-    padding-top: 32px;
+    padding-top: 40px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -179,7 +179,7 @@ tui button
     border-radius: 50%;
     color: rgba(27, 27, 27, 0.40) !important;
     font-family: "DM Sans";
-    font-size: 24px !important;
+    font-size: 20px !important;
     padding: 0px !important;
     width: 32px !important;
     height: 32px !important;
@@ -228,6 +228,7 @@ tui button
     .buttons-and-form-container {
         flex-direction: row;
         justify-content: space-between;
+        row-gap: 20px;
     }
 
     .button-container {
@@ -264,6 +265,7 @@ tui button
     }
 
     .search-list {
+        padding-top: 32px;
         gap: 14px;
     }
 
@@ -272,6 +274,9 @@ tui button
         height: 250px;
     }
 
+    .tui-page-btn {
+        font-size: 24px !important;
+    }
 
 
 }
