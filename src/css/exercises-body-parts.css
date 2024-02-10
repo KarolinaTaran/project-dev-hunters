@@ -8,7 +8,7 @@
     border-radius: 30px;
     background-color: #E8E8E8;
     padding: 40px 20px;
-    min-height: 760px;
+    min-height: 1778px;
     display: flex;
     flex-direction: column;
 }
@@ -26,7 +26,7 @@
 .buttons-and-form-container {
     display: flex;
     flex-direction: column;
-    row-gap: 0px;
+    row-gap: 20px;
 }
 
 .button-container {
@@ -117,7 +117,7 @@
 
 /*search-list*/
 .search-list {
-    padding-top: 40px;
+    padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -217,7 +217,7 @@ tui button
     .exercises-container {
         border-radius: 50px;
         padding: 64px 48px;
-        min-height: 1918px;
+        min-height: 1091px;
     }
 
     .exercises-title {
@@ -228,7 +228,6 @@ tui button
     .buttons-and-form-container {
         flex-direction: row;
         justify-content: space-between;
-        row-gap: 20px;
     }
 
     .button-container {
@@ -297,7 +296,7 @@ tui button
     .exercises-container {
         border-radius: 50px;
         padding: 64px 48px;
-        min-height: 1178px;
+        min-height: 827px;
     }
 
     .search-container {
