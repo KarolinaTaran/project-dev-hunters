@@ -4,20 +4,24 @@ import { formDisplayNone } from './exercises-equipment';
 const activeCategoryId = localStorage.getItem('active-category');
 const activeButton = document.getElementById(activeCategoryId);
 const buttons = document.querySelectorAll('.choose-category-button');
-
 const placeholder = document.querySelector('.placeholder-container');
-
 const BASE_URL = 'https://energyflow.b.goit.study/api/filters';
 let currentPage = 1;
 // let data = null;
+let exNumber = null;
+
 /*
-/
 request
-/
 */
 function itemsList(filter, page) {
+  function checkScreenSize() {
+    const screenWidth = window.innerWidth;
+    exNumber = screenWidth < 768 ? 8 : 12;
+  }
+  checkScreenSize();
+
   return axios
-    .get(`${BASE_URL}?filter=${filter}&page=${page}&limit=12`)
+    .get(`${BASE_URL}?filter=${filter}&page=${page}&limit=${exNumber}`)
     .then(response => {
       if (!response.data.results.length) {
         console.error('No results found for this filter.');
@@ -30,19 +34,14 @@ function itemsList(filter, page) {
     });
 }
 /*
-/
 markup
-/
 */
 function createMarkup({ imgUrl, name, filter }) {
   return `<li class="list-item"><img class="list-image" src="${imgUrl}" data-source="${imgUrl}" loading="lazy" alt="${name}"><div class='list-history'>${name}<span>${filter}</span></div></li>`;
 }
 /*
-/
 getItems
-/
 */
-
 function getItems(data) {
   if (data) {
     let markup = '';
@@ -63,12 +62,9 @@ function getItems(data) {
       '<p>Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
   }
 }
-
 /*
-/
-/
+category buttons
 */
-
 buttons.forEach(button => {
   button.addEventListener('click', async () => {
     formDisplayNone();
@@ -85,7 +81,6 @@ buttons.forEach(button => {
     });
   });
 });
-
 if (activeButton) {
   activeButton.classList.add('active-category');
   itemsList(activeButton.innerText, currentPage).then(data => {
@@ -100,11 +95,8 @@ if (activeButton) {
     paginationBlock(data);
   });
 }
-
 /*
-/
 pagination
-/
 */
 function paginationBlock({ page, results, totalPages }) {
   const container = document.querySelector('#pagination');
@@ -139,9 +131,3 @@ function paginationBlock({ page, results, totalPages }) {
     });
   });
 }
-
-/*
-/
-pagination
-/
-*/

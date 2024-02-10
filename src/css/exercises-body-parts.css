@@ -217,7 +217,7 @@ tui button
     .exercises-container {
         border-radius: 50px;
         padding: 64px 48px;
-        min-height: 1091px;
+        min-height: 1918px;
     }
 
     .exercises-title {
@@ -269,6 +269,7 @@ tui button
 
     .list-item {
         width: calc((100% - 14px) / 2);
+        height: 250px;
     }
 
 
@@ -300,7 +301,6 @@ tui button
 
     .list-item {
         width: calc((100% - 60px) / 4);
-        height: 250px;
     }
 
     .search-list {
