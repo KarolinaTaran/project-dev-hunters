@@ -3,12 +3,17 @@
 import axios from 'axios';
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
 const KEY_FORM = 'formValusForSearch';
-const KEY_EXERCISES = 'fullHtnlOfEx';
 const exercisesTitle = document.querySelector('.title-container');
 const searchCategoryMZ = document.querySelector('.placeholder-container');
 const placeholder = document.querySelector('.placeholder-container');
 const searchForm = document.querySelector('.training-search-form');
 const resList = document.createElement('ul');
+const canselSearch = document.querySelector('.cansel-button-ex');
+canselSearch.addEventListener('click', () => {
+  canselSearch.classList.add('display-none');
+  searchForm.firstElementChild.value = '';
+  sessionStorage.removeItem(KEY_FORM);
+});
 resList.classList.add('search-result-list');
 searchCategoryMZ.addEventListener('click', showTrainingsMZ);
 searchForm.addEventListener('submit', searchByKeyWord);
@@ -30,12 +35,14 @@ export function formDisplayNone() {
 //Input
 //
 function formValueState(event) {
+  canselSearch.classList.remove('display-none');
   sessionStorage.setItem(KEY_FORM, event.target.value);
 }
 
 // Search by keyWord
 async function searchByKeyWord(event) {
   event.preventDefault();
+  canselSearch.classList.add('display-none');
   searchParams.keyWord = searchForm
     .querySelector('[name="exercise-name"]')
     .value.trim()
