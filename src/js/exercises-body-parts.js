@@ -88,7 +88,7 @@ buttons.forEach(button => {
 
 if (activeButton) {
   activeButton.classList.add('active-category');
-  itemsList(activeButton.innerHTML, currentPage).then(data => {
+  itemsList(activeButton.innerText, currentPage).then(data => {
     getItems(data);
     paginationBlock(data);
   });
