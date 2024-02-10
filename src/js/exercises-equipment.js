@@ -41,9 +41,15 @@ async function showTrainingsMZ(event) {
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
   pageConter(resList, resultExercises);
+  if (resultExercises.totalPages > 1) {
+    resList.classList.add('additional-margin');
+  } else {
+    resList.classList.remove('additional-margin');
+  }
 }
 
 async function getExercisesMZ({ group, item }, page = 1) {
+  let limit = window.innerWidth <= 1439 ? 8 : 9;
   group = group.toLowerCase();
   if (group === 'body parts') {
     group = group.slice(0, group.length - 1).replace(/\s/g, '');
@@ -51,7 +57,7 @@ async function getExercisesMZ({ group, item }, page = 1) {
 
   try {
     const exerciseSearchResult = await axios.get(
-      `${BASE_URL}?${group.toLowerCase()}=${item.toLowerCase()}&page=${page}&limit=12`
+      `${BASE_URL}?${group.toLowerCase()}=${item.toLowerCase()}&page=${page}&limit=${limit}`
     );
     return exerciseSearchResult;
   } catch (error) {
@@ -70,14 +76,14 @@ function resultSearchMakrUp({ results }) {
             <div class="rating-cont">
                 <p class="rating-num">${rating.toFixed(1)}</p>
                 <svg class="rating-star-svg" width="16" height="16">
-                    <use href="/project-dev-hunters/assets/sprite-f8222074.svg#rating-star"></use>
+                    <use href="./img/sprite.svg#rating-star"></use>
                 </svg>
             </div>
         </div>
         <div class="start-button-container">
             <button type="button" data-id=${_id} data-exercise-modal-open>Start
                 <svg class="start-svg" width="18" height="18">
-                    <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-arrow-right"></use>
+                    <use href="./img/sprite.svg#icon-arrow-right"></use>
                 </svg>
             </button>
         </div>
@@ -85,7 +91,7 @@ function resultSearchMakrUp({ results }) {
       <div class="info-about-exercise">
         <div class="exercise-name">
             <svg class="runnig-svg" width="24" height="24">
-                <use href="/project-dev-hunters/assets/sprite-f8222074.svg#running-man"></use>
+                <use href="./img/sprite.svg#running-man"></use>
             </svg>
             <h2>${name[0].toUpperCase() + name.slice(1)}</h2>
         </div>
@@ -106,18 +112,44 @@ function resultSearchMakrUp({ results }) {
 
 // pagination
 
-function pageConter(resList, { totalPages }, activePage = 0) {
+function pageConter(
+  resList,
+  { totalPages },
+  activePage = 0,
+  maxQuerysOnPage = 7
+) {
   if (totalPages === 1) return;
   const counter = document.createElement('ul');
   counter.classList.add('pagination-counter');
   counter.addEventListener('click', changePage);
-  for (let i = 0; i < totalPages; i++) {
+  let costyl;
+  if (activePage == 1) {
+    costyl = Number(activePage) - 1;
+  } else if (activePage == 2) {
+    costyl = Number(activePage) - 2;
+  } else if (Number(activePage) === 3) {
+    costyl = Number(activePage) - 3;
+  } else if (Number(activePage) > 3) {
+    costyl = Number(activePage) - 4;
+  } else {
+    costyl = Number(activePage);
+  }
+  let costylYounger = 0;
+  for (let i = costyl; i < maxQuerysOnPage + Number(activePage); i++) {
+    costylYounger += 1;
     const oneCounter = document.createElement('li');
     oneCounter.textContent = i + 1;
     oneCounter.classList.add('one-count');
     counter.append(oneCounter);
     if (i + 1 == activePage) {
       oneCounter.classList.add('active-count');
+    } else if (activePage === 0 && i === 0) {
+      oneCounter.classList.add('active-count');
+    }
+    if (i + 1 === totalPages) {
+      break;
+    } else if (costylYounger === 7) {
+      break;
     }
   }
   resList.after(counter);
@@ -131,10 +163,8 @@ async function changePage(event) {
     searchParams,
     event.target.textContent
   );
-  console.log(newData);
   resList.innerHTML = resultSearchMakrUp(newData);
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
   pageConter(resList, newData, event.target.textContent);
-  console.log(event.target.textContent);
 }
