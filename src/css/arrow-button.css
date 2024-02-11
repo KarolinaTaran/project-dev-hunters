@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .up-btn {
     display: flex;
     align-items: center;
@@ -7,15 +11,21 @@
     right: 30px;
     width: 40px;
     height: 40px;
-    background-color: #5F6560;
+    background-color: var(--dark-gray-color);
     border-radius: 50%;
     cursor: pointer;
     border: none;
 }
 
+.up-btn:hover,
+.up-btn:focus {
+    background-color: #5F6560;
+}
+
 .up-button-icon {
     fill: var(--primary-white-color);
 }
+
 
 .up-btn.is-hidden {
     display: none;
