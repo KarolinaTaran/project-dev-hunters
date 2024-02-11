@@ -58,6 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
   headerMenuToggle.addEventListener('click', function() {
     menuModal.classList.remove('is-hidden');
 
+    // document.body.classList.toggle('no-scroll');
+    // document.body.classList.add('position: fixed');
+    document.body.style.position = "fixed";
+
     // Зміна стилів кнопок на рожевий background в залежності від сторінки
     if (currentPage === '/index.html') {
       homeButton.style.backgroundColor = 'pink';
