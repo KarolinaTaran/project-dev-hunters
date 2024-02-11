@@ -9,6 +9,7 @@ const closeModalBtn = document.querySelector('[data-exercise-modal-close]');
 const backdrop = document.querySelector('[data-exercise-modal]');
 const modal = document.querySelector('.exercises-modal');
 const modalExerciseContent = document.querySelector('.exercises-modal-content');
+const loader = document.querySelector('.span-exercises-modal-loader');
 
 const key = "exerciseItems";
 
@@ -16,9 +17,10 @@ let idExercisesModal;
 
 export function chooseButtonForModal() {
   openModalBtn = document.querySelectorAll('[data-exercise-modal-open]');
-
+  
   openModalBtn.forEach(e => {
-    e.addEventListener('click', () => {
+    e.addEventListener('click', (event) => {
+      loader.classList.add("exercises-modal-loader");
       idExercisesModal = event.target.dataset.id;
       modalExerciseContent.innerHTML = '';
       backdrop.classList.add('is-open');
@@ -43,8 +45,8 @@ async function createExersiceCard() {
       addAndRemoveFavorites(objDataOfExercise);
   } catch(error) {
       catchError(error);
-  // } finally {
-  //     loader.classList.remove("loader");
+  } finally {
+    loader.classList.remove("exercises-modal-loader");
   }
 };
 
@@ -190,11 +192,10 @@ function addAndRemoveFavorites(obj) {
     const arrFavouritesLS = JSON.parse(localStorage.getItem(key));
     const itemExerciceById = arrFavouritesLS.find((item) => {
         return item._id === obj._id;
-      });
-      console.log(itemExerciceById)
-      arrFavouritesLS.splice(arrFavouritesLS.indexOf(itemExerciceById), 1);
-      localStorage.setItem(key, JSON.stringify(arrFavouritesLS));
-      changeBtnsAddRemove();
+    });
+    arrFavouritesLS.splice(arrFavouritesLS.indexOf(itemExerciceById), 1);
+    localStorage.setItem(key, JSON.stringify(arrFavouritesLS));
+    changeBtnsAddRemove();
   }  
 }
 
