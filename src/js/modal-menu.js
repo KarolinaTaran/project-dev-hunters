@@ -4,6 +4,9 @@
 //       closeModalMenuButton: document.querySelector('.menu-modal-close-button'),
 //       modalMenu: document.querySelector('.backdrop-menu-modal'),
 //     };
+
+// const { document } = require("postcss");
+
   
 //     refs.openModalMenuButton.forEach(element => {
 //       element.addEventListener('click', toggleModal);
@@ -50,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuModalCloseButton = document.querySelector('.menu-modal-close-button');
   const homeButton = document.querySelector('.modal-menu-button-home');
   const favoritesButton = document.querySelector('.modal-menu-button-favorites');
+  const headerLogo = document.querySelector('.header-logo');
 
   // Визначення поточної сторінки
   const currentPage = window.location.pathname;
@@ -61,6 +65,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // document.body.classList.toggle('no-scroll');
     // document.body.classList.add('position: fixed');
     document.body.style.position = "fixed";
+
+   
+    headerLogo.style.display = 'none';
 
     // Зміна стилів кнопок на рожевий background в залежності від сторінки
     if (currentPage === '/index.html') {
@@ -75,5 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Закриття модального вікна
   menuModalCloseButton.addEventListener('click', function() {
     menuModal.classList.add('is-hidden');
+    headerLogo.style.display = '';
   });
 });
