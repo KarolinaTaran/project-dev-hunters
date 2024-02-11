@@ -183,6 +183,8 @@ li {
     display: none;
 }
 
+.styles-for-ex-search-results {}
+
 @media screen and (min-width: 768px) {
     .title-container {
         margin-bottom: 32px;
@@ -224,6 +226,10 @@ li {
         line-height: 1.33;
 
     }
+
+    .styles-for-ex-search-results {
+        min-height: 736px;
+    }
 }
 
 @media screen and (min-width: 1440px) {
@@ -240,6 +246,10 @@ li {
 
     .additional-margin {
         margin-bottom: 64px;
+    }
+
+    .styles-for-ex-search-results {
+        min-height: 827px;
     }
 }
 
