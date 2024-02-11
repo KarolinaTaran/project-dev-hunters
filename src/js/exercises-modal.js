@@ -1,8 +1,7 @@
-
 import axios from 'axios';
 
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 let openModalBtn;
 const closeModalBtn = document.querySelector('[data-exercise-modal-close]');
@@ -11,20 +10,17 @@ const modal = document.querySelector('.exercises-modal');
 const modalExerciseContent = document.querySelector('.exercises-modal-content');
 const loader = document.querySelector('.span-exercises-modal-loader');
 
-const key = "exerciseItems";
+const key = 'exerciseItems';
 
 let idExercisesModal;
 
 export function chooseButtonForModal() {
   openModalBtn = document.querySelectorAll('[data-exercise-modal-open]');
-  
+
   openModalBtn.forEach(e => {
-    e.addEventListener('click', (event) => {
-      loader.classList.add("exercises-modal-loader");
-      if (event.target.nodeName !== "BUTTON") {
-        return;
-      }
-      idExercisesModal = event.target.dataset.id;
+    e.addEventListener('click', event => {
+      loader.classList.add('exercises-modal-loader');
+      idExercisesModal = event.currentTarget.dataset.id;
       modalExerciseContent.innerHTML = '';
       backdrop.classList.add('is-open');
       createExersiceCard();
@@ -36,28 +32,37 @@ export function chooseButtonForModal() {
 // ---------------   functions of geting datas from server   ---------------
 
 async function getData() {
-  axios.defaults.baseURL = "https://energyflow.b.goit.study";
+  axios.defaults.baseURL = 'https://energyflow.b.goit.study';
   return await axios.get(`/api/exercises/${idExercisesModal}`);
 }
 
 async function createExersiceCard() {
   try {
-      const response = await getData();
-      const objDataOfExercise = response.data;
-      drawExercisesModal(objDataOfExercise);
-      addAndRemoveFavorites(objDataOfExercise);
-  } catch(error) {
-      catchError(error);
+    const response = await getData();
+    const objDataOfExercise = response.data;
+    drawExercisesModal(objDataOfExercise);
+    addAndRemoveFavorites(objDataOfExercise);
+  } catch (error) {
+    catchError(error);
   } finally {
-    loader.classList.remove("exercises-modal-loader");
+    loader.classList.remove('exercises-modal-loader');
   }
-};
+}
 
 // ---------------   functions for drawing modal content   ---------------
 
-function drawExercisesModal({ bodyPart, burnedCalories, description,
-  equipmen, gifUrl, name, popularity, rating, target,time }) {
-  
+function drawExercisesModal({
+  bodyPart,
+  burnedCalories,
+  description,
+  equipmen,
+  gifUrl,
+  name,
+  popularity,
+  rating,
+  target,
+  time,
+}) {
   let ratingOfExercise = rating.toFixed(1);
 
   const modalContentHtml = `
@@ -137,7 +142,7 @@ function drawExercisesModal({ bodyPart, burnedCalories, description,
           <button class="exercises-modal-button-rating hidden-button" type="button">Give a rating</button>
       </div>
   </div>
-  `
+  `;
   modalExerciseContent.insertAdjacentHTML('beforeend', modalContentHtml);
   drawStars(Math.round(rating));
 }
@@ -146,7 +151,7 @@ function drawStars(number) {
   const star = modal.querySelectorAll('.exercises-modal-star-icon');
   const arrOfStars = [...star];
   for (let i = 0; i < number; i += 1) {
-    arrOfStars[i].classList.add("selected-stars"); 
+    arrOfStars[i].classList.add('selected-stars');
   }
 }
 
@@ -156,24 +161,32 @@ function catchError(error) {
   const errText = error.message;
   iziToast.error({
     position: 'topRight',
-    message: `${errName}: ${errText}.`
+    message: `${errName}: ${errText}.`,
   });
 }
 
 // ---------------   functions of adding exercise to favorites   ---------------
 
-
 function addAndRemoveFavorites(obj) {
-  const addToFavoritesBtn = document.querySelector('.exercises-modal-button-favorites');
-  const removeFromFavoritesBtn = document.querySelector('.exercises-modal-button-remove');
+  const addToFavoritesBtn = document.querySelector(
+    '.exercises-modal-button-favorites'
+  );
+  const removeFromFavoritesBtn = document.querySelector(
+    '.exercises-modal-button-remove'
+  );
 
-  if(localStorage.getItem(key) !== null) {
-    const itemExerciceById = JSON.parse(localStorage.getItem(key)).find((item) => {
-      return item._id === obj._id;
-    })
-    if(itemExerciceById) {
+  if (localStorage.getItem(key) !== null) {
+    const itemExerciceById = JSON.parse(localStorage.getItem(key)).find(
+      item => {
+        return item._id === obj._id;
+      }
+    );
+    if (itemExerciceById) {
       changeBtnsAddRemove();
-      removeFromFavoritesBtn.addEventListener('click', removeExerciseFromFavoLS);
+      removeFromFavoritesBtn.addEventListener(
+        'click',
+        removeExerciseFromFavoLS
+      );
     } else {
       addToFavoritesBtn.addEventListener('click', addExerciseToFavoLS);
     }
@@ -193,20 +206,24 @@ function addAndRemoveFavorites(obj) {
 
   function removeExerciseFromFavoLS() {
     const arrFavouritesLS = JSON.parse(localStorage.getItem(key));
-    const itemExerciceById = arrFavouritesLS.find((item) => {
-        return item._id === obj._id;
+    const itemExerciceById = arrFavouritesLS.find(item => {
+      return item._id === obj._id;
     });
     arrFavouritesLS.splice(arrFavouritesLS.indexOf(itemExerciceById), 1);
     localStorage.setItem(key, JSON.stringify(arrFavouritesLS));
     changeBtnsAddRemove();
-  }  
+  }
 }
 
 function changeBtnsAddRemove() {
-  const addToFavoritesBtn = modal.querySelector('.exercises-modal-button-favorites');
-  const removeFromFavoritesBtn = modal.querySelector('.exercises-modal-button-remove');
-  addToFavoritesBtn.classList.toggle("hidden-button");
-  removeFromFavoritesBtn.classList.toggle("hidden-button");
+  const addToFavoritesBtn = modal.querySelector(
+    '.exercises-modal-button-favorites'
+  );
+  const removeFromFavoritesBtn = modal.querySelector(
+    '.exercises-modal-button-remove'
+  );
+  addToFavoritesBtn.classList.toggle('hidden-button');
+  removeFromFavoritesBtn.classList.toggle('hidden-button');
 }
 
 // ---------------   functions of opening and closing of modal   ---------------
@@ -226,9 +243,9 @@ function modalClose() {
     }
     closeByBtn();
   }
-  
+
   function closeByEsc(event) {
-    if (event.code === "Escape") {
+    if (event.code === 'Escape') {
       backdrop.classList.remove('is-open');
       document.removeEventListener('keydown', closeByEsc);
     }
