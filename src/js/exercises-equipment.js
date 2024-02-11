@@ -15,6 +15,12 @@ const canselSearch = document.querySelector('.cansel-button-ex');
 const exMainContainer = document.querySelector('.exercises-container');
 export const RESULTS_OF_SEARCH = 'sessionResultOfSearch';
 const PAST_SEARCH_PARAMS = 'pastSearchParams';
+let activePage = Number(sessionStorage.getItem('activeSearchPage')) ?? 0;
+let searchParams = {
+  group: '',
+  item: '',
+  keyWord: '',
+};
 // listeners
 canselSearch.addEventListener('click', () => {
   canselSearch.classList.add('display-none');
@@ -27,16 +33,12 @@ searchForm.addEventListener('submit', searchByKeyWord);
 searchForm.addEventListener('input', formValueState);
 searchForm.querySelector('[name="exercise-name"]').value =
   sessionStorage.getItem(KEY_FORM) ?? '';
-const searchParams = {
-  group: '',
-  item: '',
-  keyWord: '',
-};
 
 // Temporary results clear
 export function sessionResultOfSearchClear() {
   sessionStorage.removeItem(RESULTS_OF_SEARCH);
   sessionStorage.removeItem(PAST_SEARCH_PARAMS);
+  sessionStorage.removeItem('activeSearchPage');
 }
 //
 //ADD/REMOVE HEIGHT
@@ -211,7 +213,7 @@ function pageConter(
     costyl = Number(activePage) - 1;
   } else if (activePage == 2) {
     costyl = Number(activePage) - 2;
-  } else if (Number(activePage) === 3) {
+  } else if (Number(activePage) == 3) {
     costyl = Number(activePage) - 3;
   } else if (Number(activePage) > 3) {
     costyl = Number(activePage) - 4;
@@ -235,6 +237,7 @@ function pageConter(
     } else if (costylYounger === 7) {
       break;
     }
+    sessionStorage.setItem('activeSearchPage', activePage);
   }
   // end of costyli staff pt.2 will be continued...
   resList.after(counter);
@@ -245,7 +248,11 @@ function pageConter(
 
 async function changePage(event) {
   if (event.target.nodeName === 'UL') return;
-
+  if (searchParams.group === '') {
+    searchParams = {
+      ...JSON.parse(sessionStorage.getItem(PAST_SEARCH_PARAMS)),
+    };
+  }
   const { data: newData } = await getExercisesMZ(
     searchParams,
     event.target.textContent
@@ -264,7 +271,11 @@ function nextPageOfSearch(newData, event) {
 }
 
 // refactor
-function groupSearchResultProcessing(resultExercises, searchParams) {
+function groupSearchResultProcessing(
+  resultExercises,
+  searchParams,
+  activePage
+) {
   resList.innerHTML = resultSearchMakrUp(resultExercises);
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
@@ -273,7 +284,7 @@ function groupSearchResultProcessing(resultExercises, searchParams) {
     searchParams.item[0].toUpperCase() +
     searchParams.item.slice(1, searchParams.item.length)
   }</p>`;
-  pageConter(resList, resultExercises);
+  pageConter(resList, resultExercises, activePage);
   if (resultExercises.totalPages > 1) {
     resList.classList.add('additional-margin');
   } else {
@@ -284,15 +295,12 @@ function groupSearchResultProcessing(resultExercises, searchParams) {
 }
 
 // onLoad return results
-window.addEventListener('load', returnSearcState);
 
-function returnSearcState() {
+export function returnSearcState() {
   const searchState = JSON.parse(sessionStorage.getItem(RESULTS_OF_SEARCH));
+  if (searchState === null) return;
   const pastSearchParams = JSON.parse(
     sessionStorage.getItem(PAST_SEARCH_PARAMS)
   );
-  if (searchState === null) return;
-  groupSearchResultProcessing(searchState, pastSearchParams);
-  sessionStorage.removeItem(RESULTS_OF_SEARCH);
-  sessionStorage.removeItem(PAST_SEARCH_PARAMS);
+  groupSearchResultProcessing(searchState, pastSearchParams, activePage);
 }

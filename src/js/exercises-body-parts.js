@@ -1,7 +1,9 @@
 import axios from 'axios';
 import {
+  RESULTS_OF_SEARCH,
   formDisplayNone,
   removeHeightForSearch,
+  returnSearcState,
   sessionResultOfSearchClear,
 } from './exercises-equipment';
 
@@ -95,7 +97,7 @@ buttons.forEach(button => {
     })();
   });
 });
-if (activeButton) {
+if (activeButton && sessionStorage.getItem(RESULTS_OF_SEARCH) === null) {
   activeButton.classList.add('active-category');
   // itemsList(activeButton.innerText, currentPage).then(data => {
   //   getItems(data);
@@ -108,6 +110,9 @@ if (activeButton) {
       paginationBlock(data);
     }
   })();
+} else if (sessionStorage.getItem(RESULTS_OF_SEARCH) !== null) {
+  activeButton.classList.add('active-category');
+  returnSearcState();
 } else {
   let activeCat = document.getElementById('muscles');
   activeCat.classList.add('active-category');
