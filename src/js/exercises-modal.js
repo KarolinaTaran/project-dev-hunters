@@ -117,7 +117,7 @@ function drawExercisesModal({ bodyPart, burnedCalories, description,
       <p class="exercises-modal-text">${description}</p>
       </div>
       <div class="exercises-modal-buttons">
-        <button class="exercises-modal-button-favorites " type="button">
+        <button class="exercises-modal-button-favorites" type="button">
           Add to favorites
           <svg class="exercises-modal-button-icon">
             <use href="./img/sprite.svg#icon-heart"></use>
@@ -159,78 +159,43 @@ function catchError(error) {
 
 
 function addAndRemoveFavorites(obj) {
-  clickByAddFavourites(obj);
-  clickByRemoveFavourites();
+  const addToFavoritesBtn = document.querySelector('.exercises-modal-button-favorites');
+  const removeFromFavoritesBtn = document.querySelector('.exercises-modal-button-remove');
 
-  // const btnsOfExerciseModal = document.querySelector('.exercises-modal-buttons');
-  // btnsOfExerciseModal.addEventListener('click', (event) => {
-  //   console.dir(event.target);
-  //   if (event.target.nodeName === "BUTTON" && event.target.classList.contains("exercises-modal-button-favorites")) {
-  //     clickByAddFavourites(obj);
-  //     changeBtnsAddRemove();
-  //   }
-  //   if (event.target.nodeName === "BUTTON" && event.target.classList.contains("exercises-modal-button-favorites")) {
-  //     clickByRemoveFavourites();
-  //     changeBtnsAddRemove();
-  //   }
-
-  // })
-}
-
-function clickByAddFavourites(obj) {
-  const addToFavoritesBtn = document.querySelector(".exercises-modal-button-favorites");
-  addToFavoritesBtn.addEventListener("click", () => {
-    if (localStorage.getItem(key)) {
-      const arrFavouritesToLS = JSON.parse(localStorage.getItem(key)).push(obj);
-      console.log(arrFavouritesToLS)
-      saveToStorage(arrFavouritesToLS);
-    }
-    if (!localStorage.getItem(key)){
-      const newArrToLS = [obj];
-      saveToStorage(newArrToLS);
-    }
-    changeBtnsAddRemove();
-  });
-}
-
-function clickByRemoveFavourites() {
-  const removeFromFavoritesBtn = document.querySelector(".exercises-modal-button-remove");
-  removeFromFavoritesBtn.addEventListener("click", () => {
-    if (localStorage.getItem(key) && JSON.parse(localStorage.getItem(key)).length !== 0) {
-      loadFromStorage();
-    }
-    changeBtnsAddRemove();
-    return
-  });
-}
-
-function saveToStorage(arr) {
-  console.log(arr)
-  try {
-    localStorage.setItem(key, JSON.stringify(arr));
-  } catch (error) {
-    console.log(error);
-    catchError(error);
-  }
-}
-
-function loadFromStorage() {
-  try {
-    let dataFromLS = localStorage.getItem(key);
-    const arrFromLS = JSON.parse(dataFromLS);
-    if(arrFromLS.length !== 0) {
-      const itemExerciceById = arrFromLS.find((item) =>{
-        return item._id === idExercisesModal;
-      })
-      arrFromLS.splice(arrFromLS.indexOf(itemExerciceById), 1);
-      saveToStorage(arrFromLS);
+  if(localStorage.getItem(key) !== null) {
+    const itemExerciceById = JSON.parse(localStorage.getItem(key)).find((item) => {
+      return item._id === obj._id;
+    })
+    if(itemExerciceById) {
+      changeBtnsAddRemove();
+      removeFromFavoritesBtn.addEventListener('click', removeExerciseFromFavoLS);
     } else {
-      return;
+      addToFavoritesBtn.addEventListener('click', addExerciseToFavoLS);
     }
-  } catch (error) {
-    console.log(error);
-    catchError(error);
+  } else {
+    addToFavoritesBtn.addEventListener('click', addExerciseToFavoLS);
   }
+
+  addToFavoritesBtn.addEventListener('click', addExerciseToFavoLS);
+  removeFromFavoritesBtn.addEventListener('click', removeExerciseFromFavoLS);
+
+  function addExerciseToFavoLS() {
+    const arrFavouritesLS = JSON.parse(localStorage.getItem(key)) || [];
+    arrFavouritesLS.push(obj);
+    localStorage.setItem(key, JSON.stringify(arrFavouritesLS));
+    changeBtnsAddRemove();
+  }
+
+  function removeExerciseFromFavoLS() {
+    const arrFavouritesLS = JSON.parse(localStorage.getItem(key));
+    const itemExerciceById = arrFavouritesLS.find((item) => {
+        return item._id === obj._id;
+      });
+      console.log(itemExerciceById)
+      arrFavouritesLS.splice(arrFavouritesLS.indexOf(itemExerciceById), 1);
+      localStorage.setItem(key, JSON.stringify(arrFavouritesLS));
+      changeBtnsAddRemove();
+  }  
 }
 
 function changeBtnsAddRemove() {
