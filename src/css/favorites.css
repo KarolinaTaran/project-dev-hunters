@@ -300,6 +300,10 @@ body {
 
 /* ----------------INFO--------------- */
 
+.info {
+  padding-bottom: 20px;
+}
+
 @media screen and (min-width: 768px) {
   .info-container {
     display: flex;
@@ -449,7 +453,6 @@ body {
 /* -------------info-advice------------- */
 
 .info-advice {
-  width: 335px;
   height: 272px;
   padding: 96px 101px;
   border-radius: 30px;
@@ -551,4 +554,128 @@ body {
     top: 32px;
     right: 64px;
   }
+}
+
+/* --------------FAVORITES------------ */
+
+/* favor-no */
+
+.favor-no {
+  background-color: #e8e8e8;
+  border-radius: 30px;
+  height: 450px;
+
+  padding: 40px 44px 128px 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .favor-no {
+    width: 736px;
+    height: 928px;
+
+    padding: 64px 91px 437px 48px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .favor-no {
+    width: 1408px;
+    height: 667px;
+
+    padding: 64px 427px 258px 48px;
+  }
+}
+
+.favor-no-title {
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+
+  margin-bottom: 80px;
+}
+
+@media screen and (min-width: 768px) {
+  .favor-no-title {
+    font-size: 44px;
+    line-height: 1.09;
+
+    margin-bottom: 209px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .favor-no-title {
+    margin-bottom: 146px;
+  }
+}
+
+.favor-icon-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85px;
+  height: 52px;
+
+  padding-left: 24px;
+  margin: 0 auto;
+  margin-bottom: 28px;
+}
+
+@media screen and (min-width: 768px) {
+  .favor-icon-wrap {
+    width: 554px;
+    height: 71px;
+
+    padding-left: 43px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .favor-icon-item {
+    width: 115px;
+    height: 71px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .favor-icon-wrap {
+    width: 554px;
+    padding-left: 379px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .favor-icon-item {
+    width: 115px;
+    height: 71px;
+  }
+}
+
+.favor-no-text {
+  font-size: 14px;
+  line-height: 1.29;
+  text-align: center;
+
+  padding-left: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .favor-no-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.33;
+    padding-left: 43px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .favor-no-text {
+    padding-left: 379px;
+  }
+}
+
+/* favor-yes */
+
+.favor-yes {
+  display: none;
 }
