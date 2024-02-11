@@ -5,31 +5,34 @@ import axios from "axios";
 
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 
-async function fetchQuotes() {
-  return await axios
-    .get("quote")
-    .then(({ data }) => data)
-    .then(res => {
-      const time = {};
-      time.data = new Date
-      //localStorage.setItem("time", JSON.stringify(time.getDay()));
-      localStorage.setItem("data", JSON.stringify( res + time.data));
-      quoteText.textContent = res.quote;
-      quoteAuthor.textContent = res.author;
-    })
+
+
+const timeNow = new Date;
+if (localStorage.key !== 'info') {
+  fetchQuotes('quote');
+} else if (TimeInStorage !== timeNow) {
+  localStorage.removeItem('info');
+  fetchQuotes('quote');
+} else if (TimeInStorage === timeNow) {
+  const getInfoLL = JSON.parse(localStorage.getItem('info'));
+  //const TimeInStorage = getInfoLL.date;
+  const quoteInStorage = getInfoLL.quote;
+  const authorInStorage = getInfoLL.author;
+  quoteText.textContent = quoteInStorage;
+  quoteAuthor.textContent = authorInStorage;
+ } else {};
+
+async function fetchQuotes(endPoint) {
+  const obj = {};
+  obj.date = new Date();
+  const resp = await axios.get(`${endPoint}`);
+  const { data: { quote, author }, } = resp;
+  obj.author = author
+  obj.quote = quote
+  localStorage.setItem('info', JSON.stringify(obj));
+  const getInfo = JSON.parse(localStorage.getItem('info'));
+  quoteText.textContent = getInfo.quote;
+  quoteAuthor.textContent = getInfo.author;
 }
-const getSecond = localStorage.getItem("data")
-const getsParse = JSON.parse(getSecond);
-console.log(getsParse);
 
-  const getTime = localStorage.getItem("data");
-  const nowTime = new Date;
- 
-  if (getTime !== nowTime) {
-    localStorage.removeItem("data")
-    fetchQuotes()
-  } else {
 
-  }
-
-fetchQuotes().then();
