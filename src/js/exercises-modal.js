@@ -68,27 +68,27 @@ function drawExercisesModal({ bodyPart, burnedCalories, description,
           <ul class="exercises-modal-stars-list">
               <li class="exercises-modal-star-item">
                   <svg class="exercises-modal-star-icon" width="18" height="18">
-                      <use href="./img/sprite.svg#icon-star"></use>
+                      <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-star"></use>
                   </svg>
               </li>
               <li class="exercises-modal-star-item">
                   <svg class="exercises-modal-star-icon" width="18" height="18">
-                      <use href="./img/sprite.svg#icon-star"></use>
+                      <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-star"></use>
                   </svg>
               </li>
               <li class="exercises-modal-star-item">
                   <svg class="exercises-modal-star-icon" width="18" height="18">
-                      <use href="./img/sprite.svg#icon-star"></use>
+                      <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-star"></use>
                   </svg>
               </li>
               <li class="exercises-modal-star-item">
                   <svg class="exercises-modal-star-icon" width="18" height="18">
-                      <use href="./img/sprite.svg#icon-star"></use>
+                      <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-star"></use>
                   </svg>
               </li>
               <li class="exercises-modal-star-item">
                   <svg class="exercises-modal-star-icon" width="18" height="18">
-                      <use href="./img/sprite.svg#icon-star"></use>
+                      <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-star"></use>
                   </svg>
               </li>
           </ul>
@@ -122,13 +122,13 @@ function drawExercisesModal({ bodyPart, burnedCalories, description,
         <button class="exercises-modal-button-favorites" type="button">
           Add to favorites
           <svg class="exercises-modal-button-icon">
-            <use href="./img/sprite.svg#icon-heart"></use>
+            <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-heart"></use>
           </svg>
       </button>
       <button class="exercises-modal-button-remove hidden-button" type="button">
         Remove from
         <svg class="exercises-modal-button-icon">
-          <use href="./img/sprite.svg#icon-heart"></use>
+          <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-heart"></use>
         </svg>
       </button>
           <button class="exercises-modal-button-rating hidden-button" type="button">Give a rating</button>
