@@ -13,25 +13,27 @@ let exNumber = null;
 /*
 request
 */
-function itemsList(filter, page) {
+async function itemsList(filter, page) {
   function checkScreenSize() {
     const screenWidth = window.innerWidth;
-    exNumber = screenWidth < 768 ? 8 : 12;
+    return screenWidth < 768 ? 8 : 12;
   }
-  checkScreenSize();
 
-  return axios
-    .get(`${BASE_URL}?filter=${filter}&page=${page}&limit=${exNumber}`)
-    .then(response => {
-      if (!response.data.results.length) {
-        console.error('No results found for this filter.');
-        return null;
-      }
-      return response.data;
-    })
-    .catch(error => {
-      console.error('Error fetching images:', error);
-    });
+  try {
+    const exNumber = checkScreenSize();
+    const response = await axios.get(
+      `${BASE_URL}?filter=${filter}&page=${page}&limit=${exNumber}`
+    );
+
+    if (!response.data.results.length) {
+      console.error('No results found for this filter.');
+      return null;
+    }
+
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching images:', error);
+  }
 }
 /*
 markup
@@ -75,25 +77,46 @@ buttons.forEach(button => {
     localStorage.setItem('active-category', button.id);
 
     const filter = button.innerText;
-    itemsList(filter, currentPage).then(data => {
-      getItems(data);
-      paginationBlock(data);
-    });
+    // itemsList(filter, currentPage).then(data => {
+    //   getItems(data);
+    //   paginationBlock(data);
+    // });
+    (async () => {
+      const data = await itemsList(filter, currentPage);
+      if (data) {
+        getItems(data);
+        paginationBlock(data);
+      }
+    })();
   });
 });
 if (activeButton) {
   activeButton.classList.add('active-category');
-  itemsList(activeButton.innerText, currentPage).then(data => {
-    getItems(data);
-    paginationBlock(data);
-  });
+  // itemsList(activeButton.innerText, currentPage).then(data => {
+  //   getItems(data);
+  //   paginationBlock(data);
+  // });
+  (async () => {
+    const data = await itemsList(activeButton.innerText, currentPage);
+    if (data) {
+      getItems(data);
+      paginationBlock(data);
+    }
+  })();
 } else {
   let activeCat = document.getElementById('muscles');
   activeCat.classList.add('active-category');
-  itemsList('Muscles', currentPage).then(data => {
-    getItems(data);
-    paginationBlock(data);
-  });
+  // itemsList('Muscles', currentPage).then(data => {
+  //   getItems(data);
+  //   paginationBlock(data);
+  // });
+  (async () => {
+    const data = await itemsList('Muscles', currentPage);
+    if (data) {
+      getItems(data);
+      paginationBlock(data);
+    }
+  })();
 }
 /*
 pagination
