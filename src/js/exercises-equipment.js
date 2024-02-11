@@ -10,6 +10,7 @@ const placeholder = document.querySelector('.placeholder-container');
 const searchForm = document.querySelector('.training-search-form');
 const resList = document.createElement('ul');
 const canselSearch = document.querySelector('.cansel-button-ex');
+const exMainContainer = document.querySelector('.exercises-container');
 canselSearch.addEventListener('click', () => {
   canselSearch.classList.add('display-none');
   searchForm.firstElementChild.value = '';
@@ -27,6 +28,15 @@ const searchParams = {
   keyWord: '',
 };
 //
+//ADD/REMOVE HEIGHT
+//
+function addHeightForSearch() {
+  exMainContainer.classList.add('styles-for-ex-search-results');
+}
+//
+export function removeHeightForSearch() {
+  exMainContainer.classList.remove('styles-for-ex-search-results');
+}
 //
 export function formDisplayNone() {
   searchForm.classList.add('display-none');
@@ -61,8 +71,10 @@ async function searchByKeyWord(event) {
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
   searchForm.classList.remove('display-none');
-  exercisesTitle.innerHTML =
-    '<h2 class="exercises-title">Exercises /</h2><p>Waist</p>';
+  exercisesTitle.innerHTML = `<h2 class="exercises-title">Exercises /</h2><p>${
+    searchParams.item[0].toUpperCase() +
+    searchParams.item.slice(1, searchParams.item.length)
+  }</p>`;
   pageConter(resList, resultByKeyword);
   if (resultByKeyword.totalPages > 1) {
     resList.classList.add('additional-margin');
@@ -70,6 +82,7 @@ async function searchByKeyWord(event) {
     resList.classList.remove('additional-margin');
   }
   chooseButtonForModal();
+  addHeightForSearch();
 }
 //
 // Search by group
@@ -103,14 +116,17 @@ async function showTrainingsMZ(event) {
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
   searchForm.classList.remove('display-none');
-  exercisesTitle.innerHTML =
-    '<h2 class="exercises-title">Exercises /</h2><p>Waist</p>';
+  exercisesTitle.innerHTML = `<h2 class="exercises-title">Exercises /</h2><p>${
+    searchParams.item[0].toUpperCase() +
+    searchParams.item.slice(1, searchParams.item.length)
+  }</p>`;
   pageConter(resList, resultExercises);
   if (resultExercises.totalPages > 1) {
     resList.classList.add('additional-margin');
   } else {
     resList.classList.remove('additional-margin');
   }
+  addHeightForSearch();
   chooseButtonForModal();
 }
 //
@@ -243,5 +259,6 @@ async function changePage(event) {
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
   pageConter(resList, newData, event.target.textContent);
+  addHeightForSearch();
   chooseButtonForModal();
 }
