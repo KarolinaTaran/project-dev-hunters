@@ -1,6 +1,7 @@
 // Modules and params
 
 import axios from 'axios';
+import { chooseButtonForModal } from './exercises-modal';
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
 const KEY_FORM = 'formValusForSearch';
 const exercisesTitle = document.querySelector('.title-container');
@@ -68,6 +69,7 @@ async function searchByKeyWord(event) {
   } else {
     resList.classList.remove('additional-margin');
   }
+  chooseButtonForModal();
 }
 //
 // Search by group
@@ -109,6 +111,7 @@ async function showTrainingsMZ(event) {
   } else {
     resList.classList.remove('additional-margin');
   }
+  chooseButtonForModal();
 }
 //
 //
@@ -240,4 +243,5 @@ async function changePage(event) {
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
   pageConter(resList, newData, event.target.textContent);
+  chooseButtonForModal();
 }
