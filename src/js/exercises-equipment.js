@@ -286,14 +286,12 @@ function groupSearchResultProcessing(resultExercises, searchParams) {
 // onLoad return results
 window.addEventListener('load', returnSearcState);
 
-export function returnSearcState() {
+function returnSearcState() {
   const searchState = JSON.parse(sessionStorage.getItem(RESULTS_OF_SEARCH));
   const pastSearchParams = JSON.parse(
     sessionStorage.getItem(PAST_SEARCH_PARAMS)
   );
   if (searchState === null) return;
-  console.log(searchState);
-  console.log(pastSearchParams);
   groupSearchResultProcessing(searchState, pastSearchParams);
   sessionStorage.removeItem(RESULTS_OF_SEARCH);
   sessionStorage.removeItem(PAST_SEARCH_PARAMS);
