@@ -21,6 +21,9 @@ export function chooseButtonForModal() {
   openModalBtn.forEach(e => {
     e.addEventListener('click', (event) => {
       loader.classList.add("exercises-modal-loader");
+      if (event.target.nodeName !== "BUTTON") {
+        return;
+      }
       idExercisesModal = event.target.dataset.id;
       modalExerciseContent.innerHTML = '';
       backdrop.classList.add('is-open');
