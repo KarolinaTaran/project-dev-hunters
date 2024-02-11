@@ -134,10 +134,17 @@ function paginationBlock({ page, results, totalPages }) {
     pageLink.addEventListener('click', event => {
       const pageNumber = event.target.textContent;
 
-      itemsList(results[0].filter, pageNumber).then(data => {
-        getItems(data);
-        paginationBlock(data);
-      });
+      // itemsList(results[0].filter, pageNumber).then(data => {
+      //   getItems(data);
+      //   paginationBlock(data);
+      // });
+      (async () => {
+        const data = await itemsList(results[0].filter, pageNumber);
+        if (data) {
+          getItems(data);
+          paginationBlock(data);
+        }
+      })();
     });
     container.appendChild(pageLink);
   }
