@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { formDisplayNone, removeHeightForSearch } from './exercises-equipment';
+import {
+  formDisplayNone,
+  removeHeightForSearch,
+  sessionResultOfSearchClear,
+} from './exercises-equipment';
 
 const activeCategoryId = localStorage.getItem('active-category');
 const activeButton = document.getElementById(activeCategoryId);
@@ -71,6 +75,7 @@ buttons.forEach(button => {
   button.addEventListener('click', async () => {
     formDisplayNone();
     removeHeightForSearch();
+    sessionResultOfSearchClear();
     buttons.forEach(button => {
       button.classList.remove('active-category');
     });
