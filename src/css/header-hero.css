@@ -1,6 +1,4 @@
 .header {
-  padding-top: 29px;
-  padding-bottom: 27px;
 }
 .section {
 }
@@ -14,7 +12,9 @@
   align-items: center;
   padding-left: 40px;
   padding-right: 40px;
-
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
   position: absolute;
   z-index: 2;
   width: 100%;
@@ -22,7 +22,7 @@
 
 .mobile-menu-btn {
   padding: 0;
-  margin-left: auto;
+  margin-left: 170px;
   min-height: 40px;
   min-width: 40px;
   display: flex;
@@ -66,9 +66,10 @@
 }
 @media (max-width: 768px) {
   .photo-hero {
-    min-height: 365px;
+    margin-bottom: 30px;
+    min-height: 387px;
     min-width: 335px;
-    margin: 0 20px;
+    /* margin: 0 20px; */
     padding-left: 10px;
     height: 100%;
     display: flex;
@@ -83,12 +84,12 @@
         rgba(213, 197, 197, 0.1),
         rgba(227, 212, 212, 0.1)
       ),
-      url('../img/hero/hero-mobile-webp.webp');
+      url(/img/hero/hero-mobile-webp.webp);
   }
 }
 
 @media only screen and (min-resolution: 192dpi) {
-  ..photo-hero {
+  .photo-hero {
     background-image: linear-gradient(
         rgba(213, 197, 197, 0.1),
         rgba(227, 212, 212, 0.1)
@@ -120,7 +121,7 @@
 .list-style-type {
   display: flex;
   flex-wrap: wrap;
-
+  padding-bottom: 20px;
   gap: 4px;
   padding: 0;
   margin: 0;
@@ -130,7 +131,7 @@
 .link-style {
   flex: 0 0 calc(50% - 20px);
   padding: 4px 10px;
-  border: 1px solid rgb(246, 246, 246);
+  border: 1px solid rgba(246, 246, 246, 0.3);
   border-radius: 30px;
   color: rgb(246, 246, 246);
   font-family: DM Sans;
@@ -139,6 +140,7 @@
   line-height: 14px;
   letter-spacing: 0px;
   text-align: left;
+  box-sizing: border-box;
 }
 .text-container {
   /* border: 2px solid #f7f1f1; */
@@ -197,8 +199,8 @@
   }
 
   .header {
-    padding-top: 48px;
-    padding-bottom: 80px;
+    /* padding-top: 48px;
+    padding-bottom: 80px; */
   }
 
   .header-container {
@@ -378,6 +380,19 @@
     }
   }
 
+  .header-container {
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+  }
+
   .text-container {
     display: flex;
     flex-direction: column;
@@ -473,6 +488,11 @@
     }
   }
 
+  .header-container {
+    padding-left: 64px;
+    padding-right: 80px;
+  }
+
   hero-title {
     font-family: 'DM Sans';
     text-align: left;
@@ -496,7 +516,10 @@
 
     letter-spacing: 1px;
   }
-
+  .header-social-list {
+    margin-left: auto;
+    margin-right: 100px;
+  }
   .text-hero {
     height: 100%;
     width: 50%;
@@ -534,7 +557,7 @@
   .header-nav {
     display: flex;
     align-items: center;
-    width: 57%;
+    width: 54%;
     justify-content: space-between;
   }
 }
