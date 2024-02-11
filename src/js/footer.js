@@ -58,7 +58,7 @@ function isValidEmail(email) {
 function showMessage(message) {
   iziToast.show({
     message: message,
-    backgroundColor: 'rgba(246, 246, 246, 0.8)',
+    backgroundColor: 'rgba(246, 246, 246, 0.9)',
     messageColor: 'black',
     maxWidth: 300,
     position: 'bottomRight',
