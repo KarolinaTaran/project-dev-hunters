@@ -15,7 +15,7 @@
   <link rel="modulepreload" crossorigin href="/project-dev-hunters/assets/modulepreload-polyfill-3cfb730f.js">
   <link rel="modulepreload" crossorigin href="/project-dev-hunters/assets/vendor-8cce9181.js">
   <link rel="stylesheet" href="/project-dev-hunters/assets/vendor-e5212ee8.css">
-  <link rel="stylesheet" href="/project-dev-hunters/assets/favorites-81965c58.css">
+  <link rel="stylesheet" href="/project-dev-hunters/assets/favorites-625f6f28.css">
 </head>
 
 <body>
@@ -61,7 +61,7 @@
             </ul>
 
             <!-- Button mobile-menu -->
-            <button class="mobile-menu-btn" data-modal-open>
+            <button class="mobile-menu-btn button-header" type="button">
                 <svg class="mobile-menu-icon" width="32" height="16">
                     <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-burger"></use>
                 </svg>
@@ -115,6 +115,89 @@
 
 
     </section>
+
+    <div class="backdrop-menu-modal container is-hidden">
+  <div class="menu-modal">
+    <!-- Modal Header -->
+    <div class="menu-modal-header">
+      <!-- LOGO -->
+      <a class="modal-menu-logo" href="./index.html">energy.flow</a>
+
+      <!-- Button CLOSE -->
+      <button class="menu-modal-close-button" type="button">
+        <svg
+          class="menu-modal-close-icon"
+          fill="#212121"
+          width="20"
+          height="20"
+        >
+          <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-x-big-white"></use>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Middle Buttons -->
+    <div>
+      <div class="modal-menu-buttons">
+        <button
+          class="modal-menu-button-home"
+          type="button"
+          onclick="window.location.href = './index.html'"
+        >
+          Home
+        </button>
+        <button
+          class="modal-menu-button-favorites"
+          type="button"
+          onclick="window.location.href = './favorites.html'"
+        >
+          Favorites
+        </button>
+      </div>
+    </div>
+
+    <!-- Social Media Links -->
+
+    <div class="modal-menu-socials-wrap">
+      <ul class="modal-menu-socials-list">
+        <li class="modal-menu-socials-item">
+          <a
+            class="modal-menu-socials-linc"
+            href="https://www.facebook.com/goITclub"
+            target="_blank"
+          >
+            <svg class="modal-menu-socials-svg" width="20" height="20">
+              <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="modal-menu-socials-item">
+          <a
+            class="modal-menu-socials-linc"
+            href="https://www.instagram.com/goitclub"
+            target="_blank"
+          >
+            <svg class="modal-menu-socials-svg" width="20" height="20">
+              <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="modal-menu-socials-item">
+          <a
+            class="modal-menu-socials-linc"
+            href="https://www.youtube.com/c/GoIT"
+            target="_blank"
+          >
+            <svg class="modal-menu-socials-svg" width="20" height="20">
+              <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 
     
 
