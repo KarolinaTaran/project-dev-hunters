@@ -88,6 +88,8 @@ buttons.forEach(button => {
     //   getItems(data);
     //   paginationBlock(data);
     // });
+    placeholder.innerHTML =
+      '<p><span class="exercises-modal-loader"></span></p>';
     (async () => {
       const data = await itemsList(filter, currentPage);
       if (data) {
@@ -103,6 +105,7 @@ if (activeButton && sessionStorage.getItem(RESULTS_OF_SEARCH) === null) {
   //   getItems(data);
   //   paginationBlock(data);
   // });
+  placeholder.innerHTML = '<p><span class="exercises-modal-loader"></span></p>';
   (async () => {
     const data = await itemsList(activeButton.innerText, currentPage);
     if (data) {
@@ -120,6 +123,7 @@ if (activeButton && sessionStorage.getItem(RESULTS_OF_SEARCH) === null) {
   //   getItems(data);
   //   paginationBlock(data);
   // });
+  placeholder.innerHTML = '<p><span class="exercises-modal-loader"></span></p>';
   (async () => {
     const data = await itemsList('Muscles', currentPage);
     if (data) {
@@ -148,6 +152,8 @@ function paginationBlock({ page, results, totalPages }) {
       //   getItems(data);
       //   paginationBlock(data);
       // });
+      placeholder.innerHTML =
+        '<p><span class="exercises-modal-loader"></span></p>';
       (async () => {
         const data = await itemsList(results[0].filter, pageNumber);
         if (data) {

@@ -74,8 +74,8 @@ async function searchByKeyWord(event) {
     .toLowerCase()
     .replace(/\s/g, '');
   searchForm.querySelector('[name="exercise-name"]').value = '';
-
   sessionStorage.removeItem(KEY_FORM);
+  placeholder.innerHTML = '<p><span class="exercises-modal-loader"></span></p>';
 
   const { data: resultByKeyword } = await getExercisesMZ(searchParams, 1);
 
@@ -111,6 +111,7 @@ async function showTrainingsMZ(event) {
   // end of costyli
   searchParams.group = query.lastElementChild.textContent;
   searchParams.item = query.firstChild.textContent;
+  placeholder.innerHTML = '<p><span class="exercises-modal-loader"></span></p>';
   const { data: resultExercises } = await getExercisesMZ(searchParams);
   if (!resultExercises.results) {
     placeholder.innerHTML =
@@ -253,6 +254,7 @@ async function changePage(event) {
       ...JSON.parse(sessionStorage.getItem(PAST_SEARCH_PARAMS)),
     };
   }
+  placeholder.innerHTML = '<p><span class="exercises-modal-loader"></span></p>';
   const { data: newData } = await getExercisesMZ(
     searchParams,
     event.target.textContent
