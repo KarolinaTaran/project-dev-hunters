@@ -28,11 +28,11 @@
   /* padding-right: 40px; */
   margin-left: 20px;
   margin-right: 20px;
-  /* margin-top: 30px; */
+  margin-top: 30px;
   /* position: absolute; */
   z-index: 2;
-  /* width: 330px; */
-  /* width: 100%; */
+  /* width: 283px; */
+  width: 100%;
 }
 
 .mobile-menu-btn {
@@ -130,7 +130,7 @@
   width: 141px;
   /* height: 48px; */
   margin-bottom: 40px;
-  margin-left: 25px;
+  margin-left: 15px;
 }
 
 .list-style-type {
@@ -185,11 +185,11 @@
 }
 
 .hero-text {
-  padding-left: 32px;
-  font-size: 18px;
+  /* padding-left: 32px; */
+  font-size: 14px;
   font-weight: 400;
-  width: 396px;
-  line-height: 24px;
+  width: 295px;
+  line-height: 18px;
 }
 
 @media screen and (max-width: 768px) {
