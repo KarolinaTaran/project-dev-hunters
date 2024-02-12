@@ -237,7 +237,6 @@ function modalClose() {
   function closeByBtn() {
     backdrop.classList.remove('is-open');
     scrollController.enabledScroll();
-    // let scrollYX = window.scrollY + 'px';
   }
 
   function closeByBackdrop(event) {
@@ -251,6 +250,7 @@ function modalClose() {
     if (event.code === 'Escape') {
       backdrop.classList.remove('is-open');
       document.removeEventListener('keydown', closeByEsc);
+      scrollController.enabledScroll();
     }
   }
 }
