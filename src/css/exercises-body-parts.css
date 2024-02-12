@@ -210,6 +210,15 @@
     visibility: hidden;
 }
 
+.exercises-container>.placeholder-container {
+    justify-content: center;
+}
+
+.exercises-container>.placeholder-container p {
+    justify-content: center;
+    padding-top: 0;
+}
+
 /**
 tui button
 */
