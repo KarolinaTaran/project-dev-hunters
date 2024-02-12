@@ -2,56 +2,57 @@ import './js/modal-menu';
 import './js/arrow-button';
 
 import axios from 'axios';
-
-// Elements ojects
-const elements = {
-  quoteСont: document.querySelector('.js-info-quote'),
-  quoteAuthor: document.querySelector('.js-quote-author'),
-};
-const { quoteСont, quoteAuthor } = elements;
-
-const objQote = {};
-const savedQoteDate = {};
-objQote.date = new Date();
-
 // axios.defaults.baseURL;
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
 
-// request function
-async function requestQuote(endPoint) {
-  // request
-  const response = await axios.get(`${endPoint}`);
-  console.log(response);
-  const {
-    data: { author, quote },
-  } = response;
+// ---------ELEMENTS OBJECT---------
+const elements = {
+  quoteText: document.querySelector('.js-quote-text'),
+  quoteAuthor: document.querySelector('.js-quote-author'),
+};
+const { quoteText, quoteAuthor } = elements;
 
-  // Write the response to the object
-  objQote.author = author;
-  objQote.quote = quote;
-  console.log(objQote);
+// ---------SECTION QUOTE---------
 
-  // Record in LS
-  localStorage.setItem('qouteData1', JSON.stringify(objQote));
-  // Reading from LS
-  const savedQoteDate = JSON.parse(localStorage.getItem('qouteData1'));
-  console.log(savedQoteDate);
+// Get date from LS
+const QUOTE_LS_KEY = 'info';
+const qoteLS = JSON.parse(localStorage.getItem(QUOTE_LS_KEY));
 
-  // Record in the markup
-  quoteСont.textContent = savedQoteDate.quote;
-  quoteAuthor.textContent = savedQoteDate.author;
+const currentDate = new Date().getDate();
+
+// Checking the data in LS for null, comparing Dates
+if (qoteLS === null) {
+  requestQuote('quote');
+} else if (currentDate !== qoteLS.date) {
+  requestQuote('quote');
+} else {
+  quoteText.textContent = qoteLS.quote;
+  quoteAuthor.textContent = qoteLS.author;
 }
 
-requestQuote('quote');
+// Request function for Qote
+async function requestQuote(endPoint) {
+  try {
+    // request
+    const response = await axios.get(`${endPoint}`);
+    const {
+      data: { author, quote },
+    } = response;
 
-// Record with LS in markup
-try {
-  quoteСont.textContent = savedQoteDate.quote;
-  quoteAuthor.textContent = savedQoteDate.author;
-} catch (err) {
-  console.log(err);
-} finally {
-  quoteСont.textContent =
-    'Strength does not come from winning. Your struggles develop your strengths.';
-  quoteAuthor.textContent = 'Arnold Schwarzenegger';
+    //   Write the response to the object
+    const objQote = {
+      author: author,
+      quote: quote,
+      date: currentDate,
+    };
+
+    // Record in LS from API
+    localStorage.setItem(QUOTE_LS_KEY, JSON.stringify(objQote));
+
+    // Record in the markup
+    quoteText.textContent = objQote.quote;
+    quoteAuthor.textContent = objQote.author;
+  } catch (error) {
+    console.log(error.message);
+  }
 }
