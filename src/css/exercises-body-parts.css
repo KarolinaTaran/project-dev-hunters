@@ -291,7 +291,7 @@ tui button
     }
 
     .exercises-container>.placeholder-container p {
-        padding-top: 830px;
+        /*padding-top: 830px;*/
     }
 
 }
@@ -327,6 +327,6 @@ tui button
     }
 
     .exercises-container>.placeholder-container p {
-        padding-top: 460px;
+        /*padding-top: 460px;*/
     }
 }
