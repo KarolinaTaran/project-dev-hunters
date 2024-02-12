@@ -11,7 +11,8 @@ const elements = {
   quoteAuthor: document.querySelector('.js-quote-author'),
 };
 const { quoteText, quoteAuthor } = elements;
-
+const resultList = document.createElement('ul');
+resultList.classList.add('search-result-list');
 // ---------SECTION QUOTE---------
 
 // Get date from LS
@@ -69,27 +70,96 @@ const favorExercLS = JSON.parse(localStorage.getItem(FAVORITES_LS_KEY));
 const markupPlug =
   '<div class="favor-plug-wrap"><div class="favor-icon-wrap"><img class="favor-icon-item" src="./img/dumbbell/dumbbell-desktop.png" alt=""></div><div class="favor-text">It appears that you haven&#8216t added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future</div></div>';
 
+function createMarkupNonFavExers() {
+  favorContent.innerHTML = markupPlug;
+}
 // Шаблон разметка для карточек с упраженениями
-const markupCard =
-  '<ul><li>FAVORITE EXERCISES</li><li>FAVORITE EXERCISES</li><li>FAVORITE EXERCISES</li><li>FAVORITE EXERCISES</li><li>FAVORITE EXERCISES</li> </ul>';
-
 // Прверкa на null (если нет данных в LS с таким ключом) и на длину массива
 if (favorExercLS === null) {
   createMarkupNonFavExers();
-} else if ((favorExercLS.length = 0)) {
+} else if (favorExercLS !== null && favorExercLS.length === 0) {
   createMarkupNonFavExers();
-} else {
-  createMarkupFavExers(favorExercLS);
+} else if (favorExercLS.length > 0) {
+  createMakrUpForFavorite(favorExercLS);
+  addListenersForButtons();
 }
 
+// custom way "/project-dev-hunters/assets/sprite-f8222074.svg#rating-star"
 // Функция для разметки из массива объектов упражнений
-function createMarkupFavExers(arr) {
-  favorContent.innerHTML = markupCard;
+function createMakrUpForFavorite(arr) {
+  resultList.innerHTML = arr
+    .map(({ bodyPart, name, target, burnedCalories, time, _id }) => {
+      return `<li class=exercises-serch-result>
+      <div class="rating-start-container">
+        <div class="rating">
+            <p class="workout">Workout</p>
+            <div class="rating-cont">
+              <button type="button" data-id=${_id} data-delete-from-favorites>
+                <svg class="icon-trash-svg" width="16" height="16">
+                    <use href="./img/sprite.svg#icon-trash"></use>
+                </svg>
+              </button>
+            </div>
+        </div>
+        <div class="start-button-container">
+            <button type="button" data-id=${_id} data-exercise-modal-open>Start
+                <svg class="start-svg" width="18" height="18">
+                    <use href="./img/sprite.svg#icon-arrow-right"></use>
+                </svg>
+            </button>
+        </div>
+      </div>
+      <div class="info-about-exercise">
+        <div class="exercise-name">
+            <svg class="runnig-svg" width="24" height="24">
+                <use href="./img/sprite.svg#running-man"></use>
+            </svg>
+            <h2>${name[0].toUpperCase() + name.slice(1)}</h2>
+        </div>
+        <div class="additional-information">
+            <p class=>Burned calories: <span class="info-from-back">${burnedCalories} / ${time} min</span></p>
+            <p class=>Body part: <span class="info-from-back">${
+              bodyPart[0].toUpperCase() + bodyPart.slice(1)
+            }</span></p>
+            <p class=>Target: <span class="info-from-back">${
+              target[0].toUpperCase() + target.slice(1)
+            }</span></p>
+        </div>
+     
+          </li>`;
+    })
+    .join('');
+  favorContent.innerHTML = '';
+  favorContent.prepend(resultList);
 }
 
+//LISTENERS FOR BUTTONS
+
+function addListenersForButtons() {
+  const deleteButtons = document.querySelectorAll(
+    '[data-delete-from-favorites]'
+  );
+  deleteButtons.forEach(button => {
+    button.addEventListener('click', removeItemForFavorites);
+  });
+}
 // Функция для разметки, если нет упраженений, выводит сообщение
-function createMarkupNonFavExers() {
-  favorContent.innerHTML = markupPlug;
+// remove item from favorites
+
+function removeItemForFavorites(event) {
+  const tagretId = event.currentTarget.dataset.id;
+  const currentFavor = JSON.parse(
+    localStorage.getItem(FAVORITES_LS_KEY)
+  ).filter(({ _id: id }) => {
+    if (id !== tagretId) return true;
+  });
+  localStorage.setItem(FAVORITES_LS_KEY, JSON.stringify(currentFavor));
+  if (currentFavor.length === 0) {
+    createMarkupNonFavExers();
+    return;
+  }
+  createMakrUpForFavorite(currentFavor);
+  addListenersForButtons();
 }
 
 // Объект с информацией по упражнению
