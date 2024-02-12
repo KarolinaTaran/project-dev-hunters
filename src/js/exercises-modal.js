@@ -17,13 +17,13 @@ let idExercisesModal;
 
 export function chooseButtonForModal() {
   openModalBtn = document.querySelectorAll('[data-exercise-modal-open]');
-
   openModalBtn.forEach(e => {
     e.addEventListener('click', event => {
-      body.style.position = "fixed";
+      scrollController.disabledScroll();
       loader.classList.add('exercises-modal-loader');
       idExercisesModal = event.currentTarget.dataset.id;
       modalExerciseContent.innerHTML = '';
+
       backdrop.classList.add('is-open');
       createExersiceCard();
       modalClose();
@@ -141,8 +141,6 @@ function drawExercisesModal({ bodyPart, burnedCalories, description, equipmen,
 
   const text = document.querySelector('.exercises-modal-text');
   const textContainer = document.querySelector('.exercises-modal-container-text');
-  console.log(textContainer.clientHeight)
-  console.log(text.clientHeight)
   if (text.clientHeight > textContainer.clientHeight) {
     textContainer.classList.add("exercises-modal-text-scroll");
   }
@@ -238,7 +236,8 @@ function modalClose() {
   
   function closeByBtn() {
     backdrop.classList.remove('is-open');
-    body.style.position = "static";
+    scrollController.enabledScroll();
+    // let scrollYX = window.scrollY + 'px';
   }
 
   function closeByBackdrop(event) {
@@ -252,7 +251,33 @@ function modalClose() {
     if (event.code === 'Escape') {
       backdrop.classList.remove('is-open');
       document.removeEventListener('keydown', closeByEsc);
-      body.style.position = "static";
     }
   }
 }
+
+// ---------------   functions of fixing body   ---------------
+
+const scrollController = {
+  scrollPosition: 0,
+
+  disabledScroll() {
+    scrollController.scrollPosition = window.scrollY;
+    document.body.style.cssText = `
+      owerflow: hidden;
+      position: fixed;
+      top: -${scrollController.scrollPosition}px;
+      width: 100%;
+      height: 100%;
+  
+    `
+    document.documentElement.style.scrollBehavior = 'unset';
+  },
+  
+  enabledScroll() {
+    document.body.style.cssText = ``;
+    window.scroll({top: scrollController.scrollPosition});
+    document.documentElement.style.scrollBehavior = '';
+  }
+}
+
+
