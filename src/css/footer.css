@@ -31,8 +31,6 @@
 
 .footer-logo:hover,
 .footer-logo:focus {
-    /* color: var(--primary-white-color-footer-stroke); */
-    /* color: var(--dark-gray-color); */
     transform: scale(1.1);
 }
 
@@ -190,7 +188,7 @@
     .footer-form-wrap {
         width: 352px;
         margin-left: auto;
-        margin-bottom: 90px;
+        margin-bottom: 120px;
     }
 
     .footer-form-input {
