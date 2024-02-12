@@ -53,9 +53,18 @@ async function createExersiceCard() {
 
 // ---------------   functions for drawing modal content   ---------------
 
-function drawExercisesModal({ bodyPart, burnedCalories, description, equipmen,
-  gifUrl, name, popularity, rating, target, time }) {
-
+function drawExercisesModal({
+  bodyPart,
+  burnedCalories,
+  description,
+  equipmen,
+  gifUrl,
+  name,
+  popularity,
+  rating,
+  target,
+  time,
+}) {
   let ratingOfExercise = rating.toFixed(1);
 
   const modalContentHtml = `
@@ -140,9 +149,11 @@ function drawExercisesModal({ bodyPart, burnedCalories, description, equipmen,
   drawStars(Math.round(rating));
 
   const text = document.querySelector('.exercises-modal-text');
-  const textContainer = document.querySelector('.exercises-modal-container-text');
+  const textContainer = document.querySelector(
+    '.exercises-modal-container-text'
+  );
   if (text.clientHeight > textContainer.clientHeight) {
-    textContainer.classList.add("exercises-modal-text-scroll");
+    textContainer.classList.add('exercises-modal-text-scroll');
   }
 }
 
@@ -233,7 +244,7 @@ function modalClose() {
   document.addEventListener('keydown', closeByEsc);
   closeModalBtn.addEventListener('click', closeByBtn);
   backdrop.addEventListener('click', closeByBackdrop);
-  
+
   function closeByBtn() {
     backdrop.classList.remove('is-open');
     scrollController.enabledScroll();
@@ -269,15 +280,13 @@ const scrollController = {
       width: 100%;
       height: 100%;
   
-    `
+    `;
     document.documentElement.style.scrollBehavior = 'unset';
   },
-  
+
   enabledScroll() {
     document.body.style.cssText = ``;
-    window.scroll({top: scrollController.scrollPosition});
+    window.scroll({ top: scrollController.scrollPosition });
     document.documentElement.style.scrollBehavior = '';
-  }
-}
-
-
+  },
+};
