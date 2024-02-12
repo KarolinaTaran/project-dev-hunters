@@ -1,4 +1,5 @@
 import './js/modal-menu';
+import './js/arrow-button';
 
 import axios from 'axios';
 

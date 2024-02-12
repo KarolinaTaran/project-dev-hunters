@@ -6,6 +6,7 @@
 */
 @import url('./reset.css');
 @import url('./modal-menu.css');
+@import url('./arrow-button.css');
 
 /* ------------FONTS------------ */
 
@@ -203,20 +204,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 8px 16px;
+    padding: 8px 28px 8px 12px;
     border-radius: 30px;
     background-color: #7e847f;
   }
 }
 
 .header-nav-item {
-  padding: 6px 17px;
+  padding: 6px 16px;
   border-radius: 30px;
   color: #f6f6f6;
   background-color: transparent;
 }
 
 .header-nav-item.active {
+  padding: 6px 14px;
   color: #1b1b1b;
   background-color: #fff;
 }
