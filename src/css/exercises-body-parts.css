@@ -290,8 +290,8 @@ tui button
         font-size: 24px !important;
     }
 
-    .exercises-container>.placeholder-container p {
-        /*padding-top: 830px;*/
+    .exercises-container>.placeholder-container>p {
+        padding-top: 830px;
     }
 
 }
@@ -326,7 +326,7 @@ tui button
         margin-top: 32px !important;
     }
 
-    .exercises-container>.placeholder-container p {
-        /*padding-top: 460px;*/
+    .exercises-container>.placeholder-container>p {
+        padding-top: 460px;
     }
 }
