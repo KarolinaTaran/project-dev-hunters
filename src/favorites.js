@@ -1,7 +1,9 @@
 import './js/modal-menu';
 import './js/arrow-button';
+import './js/exercises-modal';
 
 import axios from 'axios';
+import { chooseButtonForModal } from './js/exercises-modal';
 // axios.defaults.baseURL;
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
 
@@ -13,6 +15,7 @@ const elements = {
 const { quoteText, quoteAuthor } = elements;
 const resultList = document.createElement('ul');
 resultList.classList.add('search-result-list');
+resultList.id = 'scrollTry';
 // ---------SECTION QUOTE---------
 
 // Get date from LS
@@ -82,6 +85,8 @@ if (favorExercLS === null) {
 } else if (favorExercLS.length > 0) {
   createMakrUpForFavorite(favorExercLS);
   addListenersForButtons();
+  chooseButtonForModal();
+  addRemoveScroll();
 }
 
 // custom way "/project-dev-hunters/assets/sprite-f8222074.svg#rating-star"
@@ -160,6 +165,40 @@ function removeItemForFavorites(event) {
   }
   createMakrUpForFavorite(currentFavor);
   addListenersForButtons();
+  chooseButtonForModal();
+  addRemoveScroll();
+}
+//
+//SCROLL FUNCTION
+//
+function addRemoveScroll() {
+  if (
+    window.innerWidth >= 768 &&
+    window.innerWidth < 1440 &&
+    resultList.children.length > 8
+  ) {
+    classAddScroll();
+  } else if (window.innerWidth >= 1440 && resultList.children.length > 9) {
+    classAddScroll();
+  } else {
+    classRemoveScroll();
+  }
+}
+
+function classAddScroll() {
+  resultList.classList.add('scroll-on');
+  resultList.classList.add('padding-for-scroll-list');
+  document
+    .querySelector('.favor-wrapper')
+    .classList.add('padding-for-scroll-container');
+}
+
+function classRemoveScroll() {
+  resultList.classList.remove('scroll-on');
+  resultList.classList.remove('padding-for-scroll-list');
+  document
+    .querySelector('.favor-wrapper')
+    .classList.remove('padding-for-scroll-container');
 }
 
 // Объект с информацией по упражнению
