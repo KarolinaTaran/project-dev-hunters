@@ -26,7 +26,7 @@
   <link rel="modulepreload" crossorigin href="/project-dev-hunters/assets/arrow-button-39fffa09.js">
   <link rel="modulepreload" crossorigin href="/project-dev-hunters/assets/vendor-8cce9181.js">
   <link rel="stylesheet" href="/project-dev-hunters/assets/vendor-e5212ee8.css">
-  <link rel="stylesheet" href="/project-dev-hunters/assets/favorites-df577278.css">
+  <link rel="stylesheet" href="/project-dev-hunters/assets/favorites-7c794def.css">
 </head>
 
 <body>
@@ -82,6 +82,9 @@
     </header>
 
     <main>
+
+        <!-- SECTION INFO -->
+
         <section class="info">
             <div class="info-container container">
                 <div class="info-quote">
@@ -113,26 +116,35 @@
             </div>
         </section>
 
+        <!-- SECTION FAVORITES -->
+
         <section class="favor">
             <div class="container favor-container">
-                <div class="favor-no">
-                    <h2 class="favor-no-title">Favorites</h2>
-                    <div class="favor-icon-wrap">
-                        <img class="favor-icon-item" src="data:image/png;base64,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" alt="">
+                <div class="favor-wrapper">
+                    <h2 class="favor-title">Favorites</h2>
+                    <div class="js-favor-content favor-content">
+                        <div class="favor-plug-wrap">
+                            <div class="favor-icon-wrap">
+                                <img class="favor-icon-item" src="/project-dev-hunters/assets/dumbbell-desktop-dca4f14b.png" alt="">
+                            </div>
+                            <div class="favor-text">
+                                It appears that you haven't added any exercises to your favorites yet. To get started,
+                                you can
+                                add
+                                exercises that you like to your favorites for easier access in the future.
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="favor-no-text">
-                        It appears that you haven't added any exercises to your favorites yet. To get started, you can
-                        add
-                        exercises that you like to your favorites for easier access in the future.
-                    </div>
+
+
                 </div>
-                <div class="favor-yes">
-                    <h2 class="favor-yes-title">Favorites</h2>
-                    <ul class="js-favor-list-favor-yes-list"></ul>
-                </div>
+
             </div>
 
         </section>
+
+
     </main>
 
     <!-- Viktoriia Olekh -->
