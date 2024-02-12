@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { formDisplayNone, removeHeightForSearch } from './exercises-equipment';
+import {
+  RESULTS_OF_SEARCH,
+  formDisplayNone,
+  removeHeightForSearch,
+  returnSearcState,
+  sessionResultOfSearchClear,
+} from './exercises-equipment';
 
 const activeCategoryId = localStorage.getItem('active-category');
 const activeButton = document.getElementById(activeCategoryId);
@@ -71,6 +77,7 @@ buttons.forEach(button => {
   button.addEventListener('click', async () => {
     formDisplayNone();
     removeHeightForSearch();
+    sessionResultOfSearchClear();
     buttons.forEach(button => {
       button.classList.remove('active-category');
     });
@@ -81,6 +88,8 @@ buttons.forEach(button => {
     //   getItems(data);
     //   paginationBlock(data);
     // });
+    placeholder.innerHTML =
+      '<p><span class="exercises-modal-loader"></span></p>';
     (async () => {
       const data = await itemsList(filter, currentPage);
       if (data) {
@@ -90,12 +99,13 @@ buttons.forEach(button => {
     })();
   });
 });
-if (activeButton) {
+if (activeButton && sessionStorage.getItem(RESULTS_OF_SEARCH) === null) {
   activeButton.classList.add('active-category');
   // itemsList(activeButton.innerText, currentPage).then(data => {
   //   getItems(data);
   //   paginationBlock(data);
   // });
+  placeholder.innerHTML = '<p><span class="exercises-modal-loader"></span></p>';
   (async () => {
     const data = await itemsList(activeButton.innerText, currentPage);
     if (data) {
@@ -103,6 +113,9 @@ if (activeButton) {
       paginationBlock(data);
     }
   })();
+} else if (sessionStorage.getItem(RESULTS_OF_SEARCH) !== null) {
+  activeButton.classList.add('active-category');
+  returnSearcState();
 } else {
   let activeCat = document.getElementById('muscles');
   activeCat.classList.add('active-category');
@@ -110,6 +123,7 @@ if (activeButton) {
   //   getItems(data);
   //   paginationBlock(data);
   // });
+  placeholder.innerHTML = '<p><span class="exercises-modal-loader"></span></p>';
   (async () => {
     const data = await itemsList('Muscles', currentPage);
     if (data) {
@@ -138,6 +152,8 @@ function paginationBlock({ page, results, totalPages }) {
       //   getItems(data);
       //   paginationBlock(data);
       // });
+      placeholder.innerHTML =
+        '<p><span class="exercises-modal-loader"></span></p>';
       (async () => {
         const data = await itemsList(results[0].filter, pageNumber);
         if (data) {

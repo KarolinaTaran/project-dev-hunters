@@ -2,6 +2,8 @@
 
 import axios from 'axios';
 import { chooseButtonForModal } from './exercises-modal';
+
+// params
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
 const KEY_FORM = 'formValusForSearch';
 const exercisesTitle = document.querySelector('.title-container');
@@ -11,6 +13,15 @@ const searchForm = document.querySelector('.training-search-form');
 const resList = document.createElement('ul');
 const canselSearch = document.querySelector('.cansel-button-ex');
 const exMainContainer = document.querySelector('.exercises-container');
+export const RESULTS_OF_SEARCH = 'sessionResultOfSearch';
+const PAST_SEARCH_PARAMS = 'pastSearchParams';
+let activePage = Number(sessionStorage.getItem('activeSearchPage')) ?? 0;
+let searchParams = {
+  group: '',
+  item: '',
+  keyWord: '',
+};
+// listeners
 canselSearch.addEventListener('click', () => {
   canselSearch.classList.add('display-none');
   searchForm.firstElementChild.value = '';
@@ -22,11 +33,13 @@ searchForm.addEventListener('submit', searchByKeyWord);
 searchForm.addEventListener('input', formValueState);
 searchForm.querySelector('[name="exercise-name"]').value =
   sessionStorage.getItem(KEY_FORM) ?? '';
-const searchParams = {
-  group: '',
-  item: '',
-  keyWord: '',
-};
+
+// Temporary results clear
+export function sessionResultOfSearchClear() {
+  sessionStorage.removeItem(RESULTS_OF_SEARCH);
+  sessionStorage.removeItem(PAST_SEARCH_PARAMS);
+  sessionStorage.removeItem('activeSearchPage');
+}
 //
 //ADD/REMOVE HEIGHT
 //
@@ -38,6 +51,7 @@ export function removeHeightForSearch() {
   exMainContainer.classList.remove('styles-for-ex-search-results');
 }
 //
+// Form display
 export function formDisplayNone() {
   searchForm.classList.add('display-none');
   exercisesTitle.innerHTML = '<h2 class="exercises-title">Exercises</h2>';
@@ -61,33 +75,24 @@ async function searchByKeyWord(event) {
     .replace(/\s/g, '');
   searchForm.querySelector('[name="exercise-name"]').value = '';
   sessionStorage.removeItem(KEY_FORM);
+  placeholder.innerHTML = '<p><span class="exercises-modal-loader"></span></p>';
+
   const { data: resultByKeyword } = await getExercisesMZ(searchParams, 1);
+
   if (resultByKeyword.results.length === 0) {
     placeholder.innerHTML =
       '<p>Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
     return;
   }
-  resList.innerHTML = resultSearchMakrUp(resultByKeyword);
-  placeholder.innerHTML = '';
-  placeholder.appendChild(resList);
-  searchForm.classList.remove('display-none');
-  exercisesTitle.innerHTML = `<h2 class="exercises-title">Exercises /</h2><p>${
-    searchParams.item[0].toUpperCase() +
-    searchParams.item.slice(1, searchParams.item.length)
-  }</p>`;
-  pageConter(resList, resultByKeyword);
-  if (resultByKeyword.totalPages > 1) {
-    resList.classList.add('additional-margin');
-  } else {
-    resList.classList.remove('additional-margin');
-  }
-  chooseButtonForModal();
-  addHeightForSearch();
+  sessionStorage.setItem(RESULTS_OF_SEARCH, JSON.stringify(resultByKeyword));
+  sessionStorage.setItem(PAST_SEARCH_PARAMS, JSON.stringify(searchParams));
+  groupSearchResultProcessing(resultByKeyword, searchParams);
 }
 //
 // Search by group
 async function showTrainingsMZ(event) {
   searchParams.keyWord = '';
+  // costyli staff
   if (event.target.nodeName === 'UL') return;
   let query;
   if (
@@ -103,35 +108,24 @@ async function showTrainingsMZ(event) {
   )
     query = event.target.parentNode;
   if (!query) return;
-
+  // end of costyli
   searchParams.group = query.lastElementChild.textContent;
   searchParams.item = query.firstChild.textContent;
+  placeholder.innerHTML = '<p><span class="exercises-modal-loader"></span></p>';
   const { data: resultExercises } = await getExercisesMZ(searchParams);
   if (!resultExercises.results) {
     placeholder.innerHTML =
       '<p>Unfortunately, <span>no results</span> were found. You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</p>';
     return;
   }
-  resList.innerHTML = resultSearchMakrUp(resultExercises);
-  placeholder.innerHTML = '';
-  placeholder.appendChild(resList);
-  searchForm.classList.remove('display-none');
-  exercisesTitle.innerHTML = `<h2 class="exercises-title">Exercises /</h2><p>${
-    searchParams.item[0].toUpperCase() +
-    searchParams.item.slice(1, searchParams.item.length)
-  }</p>`;
-  pageConter(resList, resultExercises);
-  if (resultExercises.totalPages > 1) {
-    resList.classList.add('additional-margin');
-  } else {
-    resList.classList.remove('additional-margin');
-  }
-  addHeightForSearch();
-  chooseButtonForModal();
+  sessionStorage.setItem(RESULTS_OF_SEARCH, JSON.stringify(resultExercises));
+  sessionStorage.setItem(PAST_SEARCH_PARAMS, JSON.stringify(searchParams));
+  groupSearchResultProcessing(resultExercises, searchParams);
 }
 //
 //
-//GET to BACK
+
+//GET to BACK for all CASES
 
 async function getExercisesMZ({ group, item, keyWord }, page = 1) {
   let limit = window.innerWidth <= 1439 ? 8 : 9;
@@ -214,12 +208,13 @@ function pageConter(
   const counter = document.createElement('ul');
   counter.classList.add('pagination-counter');
   counter.addEventListener('click', changePage);
+  // constyli staff pt.2
   let costyl;
   if (activePage == 1) {
     costyl = Number(activePage) - 1;
   } else if (activePage == 2) {
     costyl = Number(activePage) - 2;
-  } else if (Number(activePage) === 3) {
+  } else if (Number(activePage) == 3) {
     costyl = Number(activePage) - 3;
   } else if (Number(activePage) > 3) {
     costyl = Number(activePage) - 4;
@@ -243,22 +238,71 @@ function pageConter(
     } else if (costylYounger === 7) {
       break;
     }
+    sessionStorage.setItem('activeSearchPage', activePage);
   }
+  // end of costyli staff pt.2 will be continued...
   resList.after(counter);
   resList.classList.add('exercises-margin-for-pagin');
 }
 
+// Change page (using costyli staff pt.2)
+
 async function changePage(event) {
   if (event.target.nodeName === 'UL') return;
-
+  if (searchParams.group === '') {
+    searchParams = {
+      ...JSON.parse(sessionStorage.getItem(PAST_SEARCH_PARAMS)),
+    };
+  }
+  placeholder.innerHTML = '<p><span class="exercises-modal-loader"></span></p>';
   const { data: newData } = await getExercisesMZ(
     searchParams,
     event.target.textContent
   );
+  nextPageOfSearch(newData, event);
+}
+// refactor
+
+function nextPageOfSearch(newData, event) {
   resList.innerHTML = resultSearchMakrUp(newData);
   placeholder.innerHTML = '';
   placeholder.appendChild(resList);
   pageConter(resList, newData, event.target.textContent);
   addHeightForSearch();
   chooseButtonForModal();
+}
+
+// refactor
+function groupSearchResultProcessing(
+  resultExercises,
+  searchParams,
+  activePage
+) {
+  resList.innerHTML = resultSearchMakrUp(resultExercises);
+  placeholder.innerHTML = '';
+  placeholder.appendChild(resList);
+  searchForm.classList.remove('display-none');
+  exercisesTitle.innerHTML = `<h2 class="exercises-title">Exercises /</h2><p>${
+    searchParams.item[0].toUpperCase() +
+    searchParams.item.slice(1, searchParams.item.length)
+  }</p>`;
+  pageConter(resList, resultExercises, activePage);
+  if (resultExercises.totalPages > 1) {
+    resList.classList.add('additional-margin');
+  } else {
+    resList.classList.remove('additional-margin');
+  }
+  addHeightForSearch();
+  chooseButtonForModal();
+}
+
+// onLoad return results
+
+export function returnSearcState() {
+  const searchState = JSON.parse(sessionStorage.getItem(RESULTS_OF_SEARCH));
+  if (searchState === null) return;
+  const pastSearchParams = JSON.parse(
+    sessionStorage.getItem(PAST_SEARCH_PARAMS)
+  );
+  groupSearchResultProcessing(searchState, pastSearchParams, activePage);
 }
