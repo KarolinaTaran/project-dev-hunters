@@ -1,5 +1,5 @@
 .exercises {
-    margin: 20px auto;
+    margin: 0px auto;
     width: 375px;
     padding: 0 20px;
 }
@@ -219,8 +219,8 @@ tui button
 
 @media screen and (min-width:768px) {
     .exercises {
-        margin: 16px auto;
         max-width: 768px;
+        margin: 0px auto;
         width: 100%;
     }
 
@@ -294,15 +294,9 @@ tui button
 
 }
 
-/* STYLES FOR JS .button-active {
-    background-color: #7E847F;
-    color: #F6F6F6;
-    padding: 0 16px;
-} */
-
 @media screen and (min-width:1440px) {
     .exercises {
-        margin: 16px auto;
+        margin: 0px auto;
         max-width: 1440px;
         width: 100%;
     }
