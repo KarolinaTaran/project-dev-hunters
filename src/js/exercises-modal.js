@@ -9,6 +9,7 @@ const backdrop = document.querySelector('[data-exercise-modal]');
 const modal = document.querySelector('.exercises-modal');
 const modalExerciseContent = document.querySelector('.exercises-modal-content');
 const loader = document.querySelector('.span-exercises-modal-loader');
+const body = document.querySelector('body');
 
 const key = 'exerciseItems';
 
@@ -19,6 +20,7 @@ export function chooseButtonForModal() {
 
   openModalBtn.forEach(e => {
     e.addEventListener('click', event => {
+      body.style.position = "fixed";
       loader.classList.add('exercises-modal-loader');
       idExercisesModal = event.currentTarget.dataset.id;
       modalExerciseContent.innerHTML = '';
@@ -51,18 +53,9 @@ async function createExersiceCard() {
 
 // ---------------   functions for drawing modal content   ---------------
 
-function drawExercisesModal({
-  bodyPart,
-  burnedCalories,
-  description,
-  equipmen,
-  gifUrl,
-  name,
-  popularity,
-  rating,
-  target,
-  time,
-}) {
+function drawExercisesModal({ bodyPart, burnedCalories, description, equipmen,
+  gifUrl, name, popularity, rating, target, time }) {
+
   let ratingOfExercise = rating.toFixed(1);
 
   const modalContentHtml = `
@@ -145,6 +138,14 @@ function drawExercisesModal({
   `;
   modalExerciseContent.insertAdjacentHTML('beforeend', modalContentHtml);
   drawStars(Math.round(rating));
+
+  const text = document.querySelector('.exercises-modal-text');
+  const textContainer = document.querySelector('.exercises-modal-container-text');
+  console.log(textContainer.clientHeight)
+  console.log(text.clientHeight)
+  if (text.clientHeight > textContainer.clientHeight) {
+    textContainer.classList.add("exercises-modal-text-scroll");
+  }
 }
 
 function drawStars(number) {
@@ -154,6 +155,8 @@ function drawStars(number) {
     arrOfStars[i].classList.add('selected-stars');
   }
 }
+
+// ---------------   functions of errors   ---------------
 
 function catchError(error) {
   console.log(error);
@@ -232,9 +235,10 @@ function modalClose() {
   document.addEventListener('keydown', closeByEsc);
   closeModalBtn.addEventListener('click', closeByBtn);
   backdrop.addEventListener('click', closeByBackdrop);
-
+  
   function closeByBtn() {
     backdrop.classList.remove('is-open');
+    body.style.position = "static";
   }
 
   function closeByBackdrop(event) {
@@ -248,6 +252,7 @@ function modalClose() {
     if (event.code === 'Escape') {
       backdrop.classList.remove('is-open');
       document.removeEventListener('keydown', closeByEsc);
+      body.style.position = "static";
     }
   }
 }
