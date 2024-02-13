@@ -22,14 +22,14 @@
   
   <script type="module" crossorigin src="/project-dev-hunters/commonHelpers2.js"></script>
   <link rel="modulepreload" crossorigin href="/project-dev-hunters/assets/vendor-8cce9181.js">
-  <link rel="modulepreload" crossorigin href="/project-dev-hunters/assets/exercises-modal-adbd807a.js">
+  <link rel="modulepreload" crossorigin href="/project-dev-hunters/assets/exercises-modal-ac6fa363.js">
   <link rel="stylesheet" href="/project-dev-hunters/assets/vendor-e5212ee8.css">
-  <link rel="stylesheet" href="/project-dev-hunters/assets/index-f50e17ae.css">
+  <link rel="stylesheet" href="/project-dev-hunters/assets/index-324e05ea.css">
 </head>
 
 <body>
   <!-- Kostyantyn Smirnov -->
-  <section section class="section">
+  <section class="section">
   <header class="header container">
     <div class="header-container">
       <nav class="header-nav">
@@ -364,19 +364,75 @@
 
   <!-- Olga Molchanova -->
   <div class="backdrop-exercises-modal" data-exercise-modal>
-    <div class="exercises-modal">
-        <button class="exercises-modal-close-button" type="button" data-exercise-modal-close>
-            <svg class="exercises-modal-close-icon" width="24" height="24">
-                <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-x"></use>
-            </svg>
-        </button>
-        <span class="span-exercises-modal-loader"></span>
-        <div class="exercises-modal-content">
-
+  <div class="exercises-modal">
+    <button
+      class="exercises-modal-close-button"
+      type="button"
+      data-exercise-modal-close
+    >
+      <svg class="exercises-modal-close-icon" width="24" height="24">
+        <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-x"></use>
+      </svg>
+    </button>
+    <span class="span-exercises-modal-loader"></span>
+    <div class="exercises-modal-content"></div>
+  </div>
+  <div class="rating-form-container display-none-style">
+    <button type="button" class="close-form-button">
+      <svg class="close-form-svg" width="24" height="24">
+        <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-x"></use>
+      </svg>
+    </button>
+    <form class="rating-form">
+      <p class="rating-text">Rating</p>
+      <div class="radio-buttons">
+        <div class="stars-form-container">
+          <svg class="star-form-svg" width="24" height="24">
+            <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-star"></use>
+          </svg>
+          <svg class="star-form-svg" width="24" height="24">
+            <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-star"></use>
+          </svg>
+          <svg class="star-form-svg" width="24" height="24">
+            <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-star"></use>
+          </svg>
+          <svg class="star-form-svg" width="24" height="24">
+            <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-star"></use>
+          </svg>
+          <svg class="star-form-svg" width="24" height="24">
+            <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-star"></use>
+          </svg>
         </div>
-        
-    </div>
+        <fieldset>
+          <p class="user-rating">0.0</p>
+          <div class="radios">
+            <input type="radio" name="rating" data-rate="1" required />
+            <input type="radio" name="rating" data-rate="2" required />
+            <input type="radio" name="rating" data-rate="3" required />
+            <input type="radio" name="rating" data-rate="4" required />
+            <input type="radio" name="rating" data-rate="5" required />
+          </div>
+        </fieldset>
+      </div>
+      <input
+        class="rate-form-input"
+        type="email"
+        name="email"
+        placeholder="Email"
+        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+        required
+      />
+      <textarea
+        class="rate-form-textarea"
+        name="comment"
+        placeholder="Your comment"
+        required
+      ></textarea>
+      <button type="submit" class="rate-submit-button">Send</button>
+    </form>
+  </div>
 </div>
+
   <!-- Liudmyla Bykova -->
   <button class="up-btn is-hidden" type="button">
     <svg class="up-button-icon" width="13" height="13">
