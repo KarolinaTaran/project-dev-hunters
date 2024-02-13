@@ -2,7 +2,8 @@
 
 import axios from 'axios';
 import { chooseButtonForModal } from './exercises-modal';
-
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 // params
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
 const KEY_FORM = 'formValusForSearch';
@@ -145,7 +146,10 @@ async function getExercisesMZ({ group, item, keyWord }, page = 1) {
 
     return exerciseSearchResult;
   } catch (error) {
-    window.alert('something goes wrong');
+    iziToast.error({
+      position: 'topRight',
+      message: `Something went wrong. Our top bodybuilder scientists are already working on it.`,
+    });
     console.log(error);
   }
 }

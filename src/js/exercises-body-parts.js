@@ -89,7 +89,7 @@ buttons.forEach(button => {
     //   paginationBlock(data);
     // });
     placeholder.innerHTML =
-      '<p><span class="exercises-modal-loader"></span></p>';
+      '<p class="loader"><span class="exercises-modal-loader"></span></p>';
     (async () => {
       const data = await itemsList(filter, currentPage);
       if (data) {

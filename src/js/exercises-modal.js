@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import { chooseModalCloseButton } from './modal-rating';
 
 let openModalBtn;
 const closeModalBtn = document.querySelector('[data-exercise-modal-close]');
@@ -13,7 +14,7 @@ const body = document.querySelector('body');
 
 const key = 'exerciseItems';
 
-let idExercisesModal;
+export let idExercisesModal;
 
 export function chooseButtonForModal() {
   openModalBtn = document.querySelectorAll('[data-exercise-modal-open]');
@@ -141,7 +142,7 @@ function drawExercisesModal({
           <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-heart"></use>
         </svg>
       </button>
-          <button class="exercises-modal-button-rating hidden-button" type="button">Give a rating</button>
+          <button class="exercises-modal-button-rating" type="button">Give a rating</button>
       </div>
   </div>
   `;
@@ -155,6 +156,7 @@ function drawExercisesModal({
   if (text.clientHeight > textContainer.clientHeight) {
     textContainer.classList.add('exercises-modal-text-scroll');
   }
+  chooseModalCloseButton();
 }
 
 function drawStars(number) {
