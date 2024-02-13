@@ -96,19 +96,19 @@
 }
 
 .link-style:first-child {
-  max-width: 86px;
+  max-width: 61px;
 }
 
 .link-style:nth-child(2) {
-  max-width: 102px;
+  max-width: 72px;
 }
 
 .link-style:nth-child(3) {
-  max-width: 108px;
+  max-width: 77px;
 }
 
 .link-style:nth-child(4) {
-  max-width: 76px;
+  max-width: 53px;
 }
 
 /* КОНТЕЙНЕР З ТЕКСТОМ*************************************************/
@@ -327,6 +327,22 @@ screen and (min-resolution: 2dppx) and (max-width: 767px) {
   .social-icon:hover,
   .social-icon:focus {
     fill: #5F6560
+  }
+
+  .link-style:first-child {
+    max-width: 86px;
+  }
+
+  .link-style:nth-child(2) {
+    max-width: 102px;
+  }
+
+  .link-style:nth-child(3) {
+    max-width: 108px;
+  }
+
+  .link-style:nth-child(4) {
+    max-width: 76px;
   }
 }
 
