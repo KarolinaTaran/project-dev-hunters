@@ -348,7 +348,7 @@ screen and (min-resolution: 2dppx) and (max-width: 767px) {
     font-size: 120px;
     font-weight: 400;
     line-height: 115px;
-    letter-spacing: -2%;
+    letter-spacing: -0.02em;
     text-align: left;
     width: 680px;
     margin-bottom: 25px;
