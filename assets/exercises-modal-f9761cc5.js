@@ -56,7 +56,7 @@ import{a as g,i as u}from"./vendor-8cce9181.js";(function(){const t=document.cre
               <p class="exercises-modal-block-paragraf lowercase-text">${t}/${F} min</p>
           </li>
       </ul>
-      <div class="exercises-modal-container-text">
+      <div class="exercises-modal-container-text" id="scrollTry">
       <p class="exercises-modal-text">${c}</p>
       </div>
       <div class="exercises-modal-buttons">
@@ -75,7 +75,7 @@ import{a as g,i as u}from"./vendor-8cce9181.js";(function(){const t=document.cre
           <button class="exercises-modal-button-rating" type="button">Give a rating</button>
       </div>
   </div>
-  `;q.insertAdjacentHTML("beforeend",M),K(Math.round(d));const R=document.querySelector(".exercises-modal-text"),b=document.querySelector(".exercises-modal-container-text");R.clientHeight>b.clientHeight&&b.classList.add("exercises-modal-text-scroll"),U()}function K(e){const c=[...p.querySelectorAll(".exercises-modal-star-icon")];for(let s=0;s<e;s+=1)c[s].classList.add("selected-stars")}function Q(e){console.log(e);const t=e.name,c=e.message;u.error({position:"topRight",message:`${t}: ${c}.`})}function V(e){const t=document.querySelector(".exercises-modal-button-favorites"),c=document.querySelector(".exercises-modal-button-remove");localStorage.getItem(l)!==null&&JSON.parse(localStorage.getItem(l)).find(n=>n._id===e._id)?(f(),c.addEventListener("click",r)):t.addEventListener("click",s),t.addEventListener("click",s),c.addEventListener("click",r);function s(){const o=JSON.parse(localStorage.getItem(l))||[];o.push(e),localStorage.setItem(l,JSON.stringify(o)),f()}function r(){const o=JSON.parse(localStorage.getItem(l)),n=o.find(d=>d._id===e._id);o.splice(o.indexOf(n),1),localStorage.setItem(l,JSON.stringify(o)),f()}}function f(){const e=p.querySelector(".exercises-modal-button-favorites"),t=p.querySelector(".exercises-modal-button-remove");e.classList.toggle("hidden-button"),t.classList.toggle("hidden-button")}function W(){document.addEventListener("keydown",c),D.addEventListener("click",e),m.addEventListener("click",t);function e(){m.classList.remove("is-open"),a.enabledScroll()}function t(s){s.target.hasAttribute("data-exercise-modal")&&e()}function c(s){s.code==="Escape"&&(m.classList.remove("is-open"),document.removeEventListener("keydown",c),a.enabledScroll())}}const a={scrollPosition:0,disabledScroll(){a.scrollPosition=window.scrollY,document.body.style.cssText=`
+  `;q.insertAdjacentHTML("beforeend",M),K(Math.round(d));const R=document.querySelector(".exercises-modal-text"),b=document.querySelector(".exercises-modal-container-text");R.clientHeight>b.clientHeight&&b.classList.add("scroll-on"),U()}function K(e){const c=[...p.querySelectorAll(".exercises-modal-star-icon")];for(let s=0;s<e;s+=1)c[s].classList.add("selected-stars")}function Q(e){console.log(e);const t=e.name,c=e.message;u.error({position:"topRight",message:`${t}: ${c}.`})}function V(e){const t=document.querySelector(".exercises-modal-button-favorites"),c=document.querySelector(".exercises-modal-button-remove");localStorage.getItem(l)!==null&&JSON.parse(localStorage.getItem(l)).find(n=>n._id===e._id)?(f(),c.addEventListener("click",r)):t.addEventListener("click",s),t.addEventListener("click",s),c.addEventListener("click",r);function s(){const o=JSON.parse(localStorage.getItem(l))||[];o.push(e),localStorage.setItem(l,JSON.stringify(o)),f()}function r(){const o=JSON.parse(localStorage.getItem(l)),n=o.find(d=>d._id===e._id);o.splice(o.indexOf(n),1),localStorage.setItem(l,JSON.stringify(o)),f()}}function f(){const e=p.querySelector(".exercises-modal-button-favorites"),t=p.querySelector(".exercises-modal-button-remove");e.classList.toggle("hidden-button"),t.classList.toggle("hidden-button")}function W(){document.addEventListener("keydown",c),D.addEventListener("click",e),m.addEventListener("click",t);function e(){m.classList.remove("is-open"),a.enabledScroll()}function t(s){s.target.hasAttribute("data-exercise-modal")&&e()}function c(s){s.code==="Escape"&&(m.classList.remove("is-open"),document.removeEventListener("keydown",c),a.enabledScroll())}}const a={scrollPosition:0,disabledScroll(){a.scrollPosition=window.scrollY,document.body.style.cssText=`
       owerflow: hidden;
       position: fixed;
       top: -${a.scrollPosition}px;
@@ -83,4 +83,4 @@ import{a as g,i as u}from"./vendor-8cce9181.js";(function(){const t=document.cre
       height: 100%;
   
     `,document.documentElement.style.scrollBehavior="unset"},enabledScroll(){document.body.style.cssText="",window.scroll({top:a.scrollPosition}),document.documentElement.style.scrollBehavior=""}};export{Z as c};
-//# sourceMappingURL=exercises-modal-4c71980a.js.map
+//# sourceMappingURL=exercises-modal-f9761cc5.js.map
