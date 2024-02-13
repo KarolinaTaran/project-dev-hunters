@@ -58,7 +58,7 @@ function drawExercisesModal({
   bodyPart,
   burnedCalories,
   description,
-  equipmen,
+  equipment,
   gifUrl,
   name,
   popularity,
@@ -115,7 +115,7 @@ function drawExercisesModal({
           </li>
           <li class="exercises-modal-block-item">
               <h5 class="exercises-modal-block-title">Equipment</h5>
-              <p class="exercises-modal-block-paragraf">${equipmen}</p>
+              <p class="exercises-modal-block-paragraf">${equipment}</p>
           </li>
           <li class="exercises-modal-block-item">
               <h5 class="exercises-modal-block-title">Popular</h5>
