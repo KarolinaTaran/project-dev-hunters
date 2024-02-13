@@ -6,7 +6,7 @@ window.onscroll = function () {
 };
 
 function scrollFunction() {
-  if (window.scrollY > 1) {
+  if (window.scrollY > 200) {
     showUpBtn();
   } else {
     hideUpBtn();
