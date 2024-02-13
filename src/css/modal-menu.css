@@ -73,8 +73,8 @@
     align-items: center;
     justify-content: center;
 }
-.modal-menu-button-home:active,
-.modal-menu-button-home:focus {
+
+.modal-menu-button-home:active {
     color: var( --main-black-color);
     background-color: var(--primary-white-color);
 }
@@ -89,7 +89,7 @@
     border-radius: 30px;
     padding: 12px 0;
 }
-.modal-menu-button-favorites:hover,
+
 .modal-menu-button-favorites:active {
     color: var( --main-black-color);
     background-color: var(--primary-white-color);
