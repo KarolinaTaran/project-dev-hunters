@@ -213,6 +213,14 @@ backdrop.addEventListener('mouseout', () => {
   addListenersForButtons();
   chooseButtonForModal();
   addRemoveScroll();
+  if (JSON.parse(localStorage.getItem(FAVORITES_LS_KEY)) === null) {
+    createMarkupNonFavExers();
+  } else if (
+    JSON.parse(localStorage.getItem(FAVORITES_LS_KEY)) !== null &&
+    JSON.parse(localStorage.getItem(FAVORITES_LS_KEY)).length === 0
+  ) {
+    createMarkupNonFavExers();
+  }
 });
 // Объект с информацией по упражнению
 // {
