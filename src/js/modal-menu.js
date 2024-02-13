@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Визначення поточної сторінки
   const currentPage = window.location.pathname;
+  console.log(currentPage);
 
   // Відкриття модального вікна
   headerMenuToggle.addEventListener('click', function() {
@@ -22,13 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
     headerLogo.style.display = 'none';
 
     // Зміна стилів кнопок на рожевий background в залежності від сторінки
-    if (currentPage === './index.html') {
+    if (currentPage === '/src/index.html') {
       homeButton.style.backgroundColor = 'pink';
       favoritesButton.style.backgroundColor = '';
-    } else if (currentPage === './favorites.html') {
+    } else if (currentPage === '/src/favorites.html') {
       favoritesButton.style.backgroundColor = 'pink';
       homeButton.style.backgroundColor = '';
     }
+  
   });
 
   // Закриття модального вікна
