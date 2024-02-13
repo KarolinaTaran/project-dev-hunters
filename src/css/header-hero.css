@@ -80,6 +80,7 @@
   padding: 0;
   margin: 0;
   color: #fff;
+  width: 196px;
 }
 
 .link-style {
@@ -92,6 +93,22 @@
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0px;
+}
+
+.link-style:first-child {
+  max-width: 86px;
+}
+
+.link-style:nth-child(2) {
+  max-width: 102px;
+}
+
+.link-style:nth-child(3) {
+  max-width: 108px;
+}
+
+.link-style:nth-child(4) {
+  max-width: 76px;
 }
 
 /* КОНТЕЙНЕР З ТЕКСТОМ*************************************************/
