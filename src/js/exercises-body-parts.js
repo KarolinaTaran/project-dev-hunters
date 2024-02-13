@@ -84,10 +84,6 @@ buttons.forEach(button => {
     button.classList.add('active-category');
     localStorage.setItem('active-category', button.id);
     const filter = button.innerText;
-    // itemsList(filter, currentPage).then(data => {
-    //   getItems(data);
-    //   paginationBlock(data);
-    // });
     placeholder.innerHTML =
       '<p class="loader"><span class="exercises-modal-loader"></span></p>';
     (async () => {
@@ -101,10 +97,6 @@ buttons.forEach(button => {
 });
 if (activeButton && sessionStorage.getItem(RESULTS_OF_SEARCH) === null) {
   activeButton.classList.add('active-category');
-  // itemsList(activeButton.innerText, currentPage).then(data => {
-  //   getItems(data);
-  //   paginationBlock(data);
-  // });
   placeholder.innerHTML = '<p><span class="exercises-modal-loader"></span></p>';
   (async () => {
     const data = await itemsList(activeButton.innerText, currentPage);
@@ -119,10 +111,6 @@ if (activeButton && sessionStorage.getItem(RESULTS_OF_SEARCH) === null) {
 } else {
   let activeCat = document.getElementById('muscles');
   activeCat.classList.add('active-category');
-  // itemsList('Muscles', currentPage).then(data => {
-  //   getItems(data);
-  //   paginationBlock(data);
-  // });
   placeholder.innerHTML = '<p><span class="exercises-modal-loader"></span></p>';
   (async () => {
     const data = await itemsList('Muscles', currentPage);
@@ -136,44 +124,41 @@ if (activeButton && sessionStorage.getItem(RESULTS_OF_SEARCH) === null) {
 pagination
 */
 function paginationBlock({ page, results, totalPages }) {
-  const container = document.querySelector('#pagination');
-  for (let i = 1; i <= totalPages; i++) {
-    const pageLink = document.createElement('a');
-    pageLink.href = '#';
-    i == page
-      ? pageLink.classList.add('tui-page-btn', 'tui-is-selected')
-      : pageLink.classList.add('tui-page-btn');
-    pageLink.textContent = i;
+  if (totalPages !== 1) {
+    const container = document.querySelector('#pagination');
+    for (let i = 1; i <= totalPages; i++) {
+      const pageLink = document.createElement('a');
+      pageLink.href = '#';
+      i == page
+        ? pageLink.classList.add('tui-page-btn', 'tui-is-selected')
+        : pageLink.classList.add('tui-page-btn');
+      pageLink.textContent = i;
 
-    pageLink.addEventListener('click', event => {
-      const pageNumber = event.target.textContent;
-
-      // itemsList(results[0].filter, pageNumber).then(data => {
-      //   getItems(data);
-      //   paginationBlock(data);
-      // });
-      placeholder.innerHTML =
-        '<p><span class="exercises-modal-loader"></span></p>';
-      (async () => {
-        const data = await itemsList(results[0].filter, pageNumber);
-        if (data) {
-          getItems(data);
-          paginationBlock(data);
-        }
-      })();
-    });
-    container.appendChild(pageLink);
-  }
-
-  const categoryButtons = document.querySelectorAll('.tui-page-btn');
-  categoryButtons.forEach(button => {
-    button.addEventListener('click', event => {
-      event.preventDefault();
-
-      categoryButtons.forEach(button => {
-        button.classList.remove('tui-is-selected');
+      pageLink.addEventListener('click', event => {
+        const pageNumber = event.target.textContent;
+        placeholder.innerHTML =
+          '<p><span class="exercises-modal-loader"></span></p>';
+        (async () => {
+          const data = await itemsList(results[0].filter, pageNumber);
+          if (data) {
+            getItems(data);
+            paginationBlock(data);
+          }
+        })();
       });
-      button.classList.add('tui-is-selected');
+      container.appendChild(pageLink);
+    }
+
+    const categoryButtons = document.querySelectorAll('.tui-page-btn');
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', event => {
+        event.preventDefault();
+
+        categoryButtons.forEach(button => {
+          button.classList.remove('tui-is-selected');
+        });
+        button.classList.add('tui-is-selected');
+      });
     });
-  });
+  }
 }
