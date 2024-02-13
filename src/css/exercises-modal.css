@@ -219,7 +219,6 @@
 .exercises-modal-text-scroll {
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-gutter: stable;
     scrollbar-color: var(--dark-gray-color);
 }
 
@@ -395,7 +394,7 @@
 .exercises-modal-button-rating:hover,
 .exercises-modal-button-rating:focus {
     border: 1px solid var(--dark-gray-color);
-    color: var( --dark-gray-color);
+    color: var(--dark-gray-color);
 }
 
 .hidden-button {
@@ -414,10 +413,10 @@
     border-right: 4px solid transparent;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-  }
-  
-  .exercises-modal-loader::after {
-    content: '';  
+}
+
+.exercises-modal-loader::after {
+    content: '';
     box-sizing: border-box;
     position: absolute;
     left: 0;
@@ -427,13 +426,14 @@
     border-radius: 50%;
     border-bottom: 4px solid var(--dark-gray-color);
     border-left: 4px solid transparent;
-  }
+}
 
-  @keyframes rotation {
+@keyframes rotation {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }

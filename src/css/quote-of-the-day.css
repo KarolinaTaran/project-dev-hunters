@@ -1,6 +1,6 @@
 .quote-section {
-    min-width: 375;
-    height: 584;
+    min-width: 375px;
+    height: 584px;
 }
 
 .btn {
@@ -18,6 +18,7 @@
     padding: 42px 20px 40px 20px;
     border-radius: 10%;
 }
+
 .quote-main-line {
     display: flex;
     align-items: baseline;
@@ -38,7 +39,7 @@
     align-items: center;
     justify-content: center;
     margin-right: 7px;
-    
+
 }
 
 .quote-icon-man {
@@ -72,6 +73,7 @@
     text-align: left;
     margin-bottom: 15px;
 }
+
 .quote-author {
     color: rgb(246, 246, 246);
     font-family: 'DM Sans';
@@ -97,7 +99,7 @@ screen and (min-resolution: 2dppx) and (max-width: 767px) {
 }
 
 @media screen and (min-width: 768px) and (max-width:1439.98px) {
-    
+
     .quote-block-title {
         border-radius: 50px;
     }
@@ -123,10 +125,11 @@ screen and (min-resolution: 2dppx) and (max-width: 767px) {
         line-height: 32px;
         margin-right: 320px;
     }
-    
+
     .quote-text-container {
         padding: 0 55px 20px 100px;
     }
+
     .quote-text {
         font-size: 16px;
         line-height: 24px;
@@ -152,9 +155,11 @@ screen and (min-resolution: 2dppx) and (min-width: 768px) {
         width: 704px;
         height: 302px;
     }
+
     .quote-block-title {
         border-radius: 50px;
     }
+
     .icon-man-container {
         margin-left: 50px;
         margin-right: 15px;
@@ -165,13 +170,16 @@ screen and (min-resolution: 2dppx) and (min-width: 768px) {
         font-size: 24px;
         line-height: 32px;
     }
+
     .quote-icon-commas {
         width: 48px;
         height: 48px;
     }
+
     .quote-text-container {
         padding: 0 50px 20px 100px;
     }
+
     .quote-text {
         font-size: 16px;
         line-height: 24px;
@@ -190,9 +198,3 @@ screen and (min-resolution: 2dppx) and (min-width: 1440px) {
         background-image: url(../img/quots-section/quots-desktop@2x.png);
     }
 }
-
-
-
-
-
-

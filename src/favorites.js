@@ -1,7 +1,7 @@
 import './js/modal-menu';
 import './js/arrow-button';
 import './js/exercises-modal';
-
+import './js/modal-rating';
 import axios from 'axios';
 import { chooseButtonForModal } from './js/exercises-modal';
 // axios.defaults.baseURL;
@@ -14,6 +14,7 @@ const elements = {
 };
 const { quoteText, quoteAuthor } = elements;
 const resultList = document.createElement('ul');
+const backdrop = document.querySelector('[data-exercise-modal]');
 resultList.classList.add('search-result-list');
 resultList.id = 'scrollTry';
 // ---------SECTION QUOTE---------
@@ -78,6 +79,7 @@ function createMarkupNonFavExers() {
 }
 // Шаблон разметка для карточек с упраженениями
 // Прверкa на null (если нет данных в LS с таким ключом) и на длину массива
+
 if (favorExercLS === null) {
   createMarkupNonFavExers();
 } else if (favorExercLS !== null && favorExercLS.length === 0) {
@@ -91,7 +93,7 @@ if (favorExercLS === null) {
 
 // custom way "/project-dev-hunters/assets/sprite-f8222074.svg#rating-star"
 // Функция для разметки из массива объектов упражнений
-function createMakrUpForFavorite(arr) {
+export function createMakrUpForFavorite(arr) {
   resultList.innerHTML = arr
     .map(({ bodyPart, name, target, burnedCalories, time, _id }) => {
       return `<li class=exercises-serch-result>
@@ -101,7 +103,7 @@ function createMakrUpForFavorite(arr) {
             <div class="rating-cont">
               <button type="button" data-id=${_id} data-delete-from-favorites>
                 <svg class="icon-trash-svg" width="16" height="16">
-                    <use href="./img/sprite.svg#icon-trash"></use>
+                    <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-trash"></use>
                 </svg>
               </button>
             </div>
@@ -109,7 +111,7 @@ function createMakrUpForFavorite(arr) {
         <div class="start-button-container">
             <button type="button" data-id=${_id} data-exercise-modal-open>Start
                 <svg class="start-svg" width="18" height="18">
-                    <use href="./img/sprite.svg#icon-arrow-right"></use>
+                    <use href="/project-dev-hunters/assets/sprite-f8222074.svg#icon-arrow-right"></use>
                 </svg>
             </button>
         </div>
@@ -117,7 +119,7 @@ function createMakrUpForFavorite(arr) {
       <div class="info-about-exercise">
         <div class="exercise-name">
             <svg class="runnig-svg" width="24" height="24">
-                <use href="./img/sprite.svg#running-man"></use>
+                <use href="/project-dev-hunters/assets/sprite-f8222074.svg#running-man"></use>
             </svg>
             <h2>${name[0].toUpperCase() + name.slice(1)}</h2>
         </div>
@@ -140,7 +142,7 @@ function createMakrUpForFavorite(arr) {
 
 //LISTENERS FOR BUTTONS
 
-function addListenersForButtons() {
+export function addListenersForButtons() {
   const deleteButtons = document.querySelectorAll(
     '[data-delete-from-favorites]'
   );
@@ -171,7 +173,7 @@ function removeItemForFavorites(event) {
 //
 //SCROLL FUNCTION
 //
-function addRemoveScroll() {
+export function addRemoveScroll() {
   if (
     window.innerWidth >= 768 &&
     window.innerWidth < 1440 &&
@@ -201,6 +203,13 @@ function classRemoveScroll() {
     .classList.remove('padding-for-scroll-container');
 }
 
+// COSTYL v3
+backdrop.addEventListener('mouseout', () => {
+  createMakrUpForFavorite(JSON.parse(localStorage.getItem(FAVORITES_LS_KEY)));
+  addListenersForButtons();
+  chooseButtonForModal();
+  addRemoveScroll();
+});
 // Объект с информацией по упражнению
 // {
 //   "_id": "64f389465ae26083f39b17a2",
