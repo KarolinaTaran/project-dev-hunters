@@ -24,11 +24,14 @@ const QUOTE_LS_KEY = 'info';
 const qoteLS = JSON.parse(localStorage.getItem(QUOTE_LS_KEY));
 
 const currentDate = new Date().getDate();
+const currentMonth = new Date().getMonth();
 
 // Checking the data in LS for null, comparing Dates
 if (qoteLS === null) {
   requestQuote('quote');
 } else if (currentDate !== qoteLS.date) {
+  requestQuote('quote');
+} else if (currentMonth !== qoteLS.month) {
   requestQuote('quote');
 } else {
   quoteText.textContent = qoteLS.quote;
@@ -49,6 +52,7 @@ async function requestQuote(endPoint) {
       author: author,
       quote: quote,
       date: currentDate,
+      month: currentMonth,
     };
 
     // Record in LS from API
