@@ -75,8 +75,11 @@ async function ratingFormProcessing(event) {
   } = objOfFlag;
   const userEmail = ratingForm.elements.email.value;
   const userComment = ratingForm.elements.comment.value;
-  console.log('before try');
   try {
+    if (!isValidEmail(userEmail)) {
+      throw new Error(`Please, enter the correct email!`);
+    }
+
     const respOnRate = await axios.patch(
       `${BASE_URL}/${idExercisesModal}/rating`,
       {
@@ -92,10 +95,15 @@ async function ratingFormProcessing(event) {
     });
     closeRatingOpenModal();
     formReset();
-    console.log('in try');
   } catch (error) {
     console.dir(error);
-    console.log('in catch');
+    if (error.message === 'Please, enter the correct email!') {
+      iziToast.error({
+        position: 'topRight',
+        message: `${error}`,
+      });
+      return;
+    }
     if (error.response.status === 409) {
       iziToast.info({
         position: 'topRight',
@@ -109,6 +117,15 @@ async function ratingFormProcessing(event) {
       position: 'topRight',
       message: `${error.name}: ${error.message}.`,
     });
+    return;
   }
-  console.log('after');
+}
+
+function isValidEmail(email) {
+  let userEmail = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+
+  if (email.match(userEmail) === null) {
+    return false;
+  }
+  return true;
 }
