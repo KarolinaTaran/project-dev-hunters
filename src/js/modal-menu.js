@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
     headerLogo.style.display = 'none';
 
     // Зміна стилів кнопок на рожевий background в залежності від сторінки
-    if (currentPage === '/index.html') {
+    if (currentPage === './index.html') {
       homeButton.style.backgroundColor = 'pink';
       favoritesButton.style.backgroundColor = '';
-    } else if (currentPage === '/favorites.html') {
+    } else if (currentPage === './favorites.html') {
       favoritesButton.style.backgroundColor = 'pink';
       homeButton.style.backgroundColor = '';
     }
