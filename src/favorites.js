@@ -76,7 +76,7 @@ const favorExercLS = JSON.parse(localStorage.getItem(FAVORITES_LS_KEY));
 
 // Разметка для заглушки
 const markupPlug =
-  '<div class="favor-plug-wrap"><div class="favor-icon-wrap"><img class="favor-icon-item" src="./img/dumbbell/dumbbell-desktop.png" alt=""></div><div class="favor-text">It appears that you haven&#8216t added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future</div></div>';
+  '<div class="favor-plug-wrap"><div class="favor-icon-wrap"><img class="favor-icon-item" src="/project-dev-hunters/assets/dumbbell-desktop-dca4f14b.png" alt=""></div><div class="favor-text">It appears that you haven&#8216t added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future</div></div>';
 
 function createMarkupNonFavExers() {
   favorContent.innerHTML = markupPlug;
