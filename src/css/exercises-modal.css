@@ -437,3 +437,28 @@
         transform: rotate(360deg);
     }
 }
+
+/* -------------------------  scroll  ------------------------- */
+
+.scroll-on {
+    overflow-y: scroll
+  }
+
+  #scrollTry::-webkit-scrollbar-track {
+
+    -webkit-box-shadow: inset 0 0 6px trasparent;
+    border-radius: 12px;
+    background-color: #E8E8E8;
+  }
+
+  #scrollTry::-webkit-scrollbar {
+    width: 6px;
+    background-color: #E8E8E8;
+  }
+
+  #scrollTry::-webkit-scrollbar-thumb {
+
+    border-radius: 12px;
+    -webkit-box-shadow: inset 0 0 6px var(--dark-gray-color);
+    background: var(--primary-white-color-bg-icon);
+  }

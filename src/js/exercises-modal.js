@@ -126,7 +126,7 @@ function drawExercisesModal({
               <p class="exercises-modal-block-paragraf lowercase-text">${burnedCalories}/${time} min</p>
           </li>
       </ul>
-      <div class="exercises-modal-container-text">
+      <div class="exercises-modal-container-text" id="scrollTry">
       <p class="exercises-modal-text">${description}</p>
       </div>
       <div class="exercises-modal-buttons">
@@ -153,9 +153,11 @@ function drawExercisesModal({
   const textContainer = document.querySelector(
     '.exercises-modal-container-text'
   );
+
   if (text.clientHeight > textContainer.clientHeight) {
-    textContainer.classList.add('exercises-modal-text-scroll');
+    textContainer.classList.add('scroll-on');
   }
+
   chooseModalCloseButton();
 }
 
