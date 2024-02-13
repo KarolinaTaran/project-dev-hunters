@@ -231,11 +231,13 @@ screen and (min-resolution: 2dppx) and (max-width: 767px) {
     border: 1px solid rgba(126, 132, 127, 0.2);
     border-radius: 10px;
     padding: 3px;
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .social-icon {
-    fill: currentColor;
+    fill: #7E847F;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   }
 
   .mobile-menu-btn {
@@ -319,12 +321,12 @@ screen and (min-resolution: 2dppx) and (max-width: 767px) {
   /* ХОВЕР ///////////////// ФОКУС */
   .header-social-link:hover,
   .header-social-link:focus {
-    border-color: #7e847f;
+    transform: scale(1.05);
   }
 
   .social-icon:hover,
   .social-icon:focus {
-    border-color: var(--primary-white-color);
+    fill: #5F6560
   }
 }
 
