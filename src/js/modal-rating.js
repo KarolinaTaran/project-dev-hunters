@@ -5,15 +5,17 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
 const modalRatingMenu = document.querySelector('.rating-form-container');
+const modalRatingBackdrop = document.querySelector('.rating-form-backdrop');
 const closeButtonRating = modalRatingMenu.firstElementChild;
-const modal = document.querySelector('.exercises-modal');
+//const modal = document.querySelector('.exercises-modal');
+const modalExercisesBackdrop = document.querySelector('.backdrop-exercises-modal');
 const ratingForm = document.querySelector('.rating-form');
 const radioButtonsContainer = document.querySelector('.radios');
 const starsContainer = document.querySelector('.stars-form-container');
 let openModalButton;
 
 radioButtonsContainer.addEventListener('click', fillStars);
-closeButtonRating.addEventListener('click', closeRatingOpenModal);
+//closeButtonRating.addEventListener('click', closeRatingOpenModal);
 ratingForm.addEventListener('submit', ratingFormProcessing);
 
 export function chooseModalCloseButton() {
@@ -21,15 +23,54 @@ export function chooseModalCloseButton() {
   openModalButton.addEventListener('click', closeModalOpenRating);
 }
 
-function closeRatingOpenModal() {
-  modal.classList.remove('display-none-style');
-  modalRatingMenu.classList.add('display-none-style');
-}
+// function closeRatingOpenModal() {
+//   modal.classList.remove('display-none-style');
+//   modalRatingBackdrop.classList.add('display-none-style');
+// }
+
+// function closeModalOpenRating() {
+//   modal.classList.add('display-none-style');
+//   modalRatingMenu.classList.remove('display-none-style');
+// }
 
 function closeModalOpenRating() {
-  modal.classList.add('display-none-style');
-  modalRatingMenu.classList.remove('display-none-style');
+  modalExercisesBackdrop.classList.remove('is-open');
+  modalRatingBackdrop.classList.add('is-open');
+  modalRatingClose();
 }
+
+// ---------------   functions of opening and closing of modal   ---------------
+
+function modalRatingClose() {
+  document.addEventListener('keydown', closeByEsc);
+  closeButtonRating.addEventListener('click', closeByBtn);
+  modalRatingBackdrop.addEventListener('click', closeByBackdrop);
+
+  function closeByBtn() {
+    modalExercisesBackdrop.classList.add('is-open');
+    modalRatingBackdrop.classList.remove('is-open');
+    //scrollController.enabledScroll();
+  }
+
+  function closeByBackdrop(event) {
+    if (!event.target.hasAttribute('data-rating-modal')) {
+      return;
+    }
+    closeByBtn();
+  }
+
+  function closeByEsc(event) {
+    if (event.code === 'Escape') {
+      modalRatingBackdrop.classList.remove('is-open');
+      modalExercisesBackdrop.classList.add('is-open');
+      document.removeEventListener('keydown', closeByEsc);
+      //scrollController.enabledScroll();
+    }
+  }
+}
+
+// ------------------------------
+
 //
 //
 function fillStars(event) {
