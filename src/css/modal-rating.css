@@ -7,7 +7,7 @@
     z-index: 99;
     top: 0;
     left: 0;
-    background-color: rgba(27, 27, 27, 0.6);
+    background-color: transparent;
     transform: translateX(150%);
     transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: auto;

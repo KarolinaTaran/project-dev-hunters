@@ -7,7 +7,7 @@ const BASE_URL = 'https://energyflow.b.goit.study/api/exercises';
 const modalRatingMenu = document.querySelector('.rating-form-container');
 const modalRatingBackdrop = document.querySelector('.rating-form-backdrop');
 const closeButtonRating = modalRatingMenu.firstElementChild;
-//const modal = document.querySelector('.exercises-modal');
+const modal = document.querySelector('.exercises-modal');
 const modalExercisesBackdrop = document.querySelector('.backdrop-exercises-modal');
 const ratingForm = document.querySelector('.rating-form');
 const radioButtonsContainer = document.querySelector('.radios');
@@ -28,13 +28,8 @@ export function chooseModalCloseButton() {
 //   modalRatingBackdrop.classList.add('display-none-style');
 // }
 
-// function closeModalOpenRating() {
-//   modal.classList.add('display-none-style');
-//   modalRatingMenu.classList.remove('display-none-style');
-// }
-
 function closeModalOpenRating() {
-  modalExercisesBackdrop.classList.remove('is-open');
+  modal.classList.add('display-none-style')
   modalRatingBackdrop.classList.add('is-open');
   modalRatingClose();
 }
@@ -42,13 +37,14 @@ function closeModalOpenRating() {
 // ---------------   functions of opening and closing of modal   ---------------
 
 function modalRatingClose() {
-  document.addEventListener('keydown', closeByEsc);
+  document.addEventListener('keydown', closeRatingByEsc);
   closeButtonRating.addEventListener('click', closeByBtn);
   modalRatingBackdrop.addEventListener('click', closeByBackdrop);
 
   function closeByBtn() {
-    modalExercisesBackdrop.classList.add('is-open');
+   // modalExercisesBackdrop.classList.add('is-open');
     modalRatingBackdrop.classList.remove('is-open');
+    modal.classList.remove('display-none-style');
     //scrollController.enabledScroll();
   }
 
@@ -59,13 +55,21 @@ function modalRatingClose() {
     closeByBtn();
   }
 
-  function closeByEsc(event) {
+  function closeRatingByEsc(event) {
     if (event.code === 'Escape') {
       modalRatingBackdrop.classList.remove('is-open');
+      modal.classList.remove('display-none-style');
       modalExercisesBackdrop.classList.add('is-open');
-      document.removeEventListener('keydown', closeByEsc);
+      document.removeEventListener('keydown', closeRatingByEsc);
+      document.addEventListener('keydown', closeExercisesModalByEsc);
       //scrollController.enabledScroll();
     }
+  }
+
+  function closeExercisesModalByEsc(ev) {
+    if (ev.code === 'Escape') {
+      modalExercisesBackdrop.classList.remove('is-open');
+      }
   }
 }
 
