@@ -15,7 +15,6 @@ const starsContainer = document.querySelector('.stars-form-container');
 let openModalButton;
 
 radioButtonsContainer.addEventListener('click', fillStars);
-//closeButtonRating.addEventListener('click', closeRatingOpenModal);
 ratingForm.addEventListener('submit', ratingFormProcessing);
 
 export function chooseModalCloseButton() {
@@ -23,10 +22,10 @@ export function chooseModalCloseButton() {
   openModalButton.addEventListener('click', closeModalOpenRating);
 }
 
-// function closeRatingOpenModal() {
-//   modal.classList.remove('display-none-style');
-//   modalRatingBackdrop.classList.add('display-none-style');
-// }
+function closeRatingOpenModal() {
+  modal.classList.remove('display-none-style');
+  modalRatingBackdrop.classList.add('display-none-style');
+}
 
 function closeModalOpenRating() {
   modal.classList.add('display-none-style')
@@ -42,10 +41,8 @@ function modalRatingClose() {
   modalRatingBackdrop.addEventListener('click', closeByBackdrop);
 
   function closeByBtn() {
-   // modalExercisesBackdrop.classList.add('is-open');
     modalRatingBackdrop.classList.remove('is-open');
     modal.classList.remove('display-none-style');
-    //scrollController.enabledScroll();
   }
 
   function closeByBackdrop(event) {
@@ -62,7 +59,6 @@ function modalRatingClose() {
       modalExercisesBackdrop.classList.add('is-open');
       document.removeEventListener('keydown', closeRatingByEsc);
       document.addEventListener('keydown', closeExercisesModalByEsc);
-      //scrollController.enabledScroll();
     }
   }
 
