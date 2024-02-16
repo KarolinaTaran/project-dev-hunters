@@ -178,11 +178,8 @@ function removeItemForFavorites(event) {
 //SCROLL FUNCTION
 //
 export function addRemoveScroll() {
-  if (
-    window.innerWidth >= 768 &&
-    window.innerWidth < 1440 &&
-    resultList.children.length > 8
-  ) {
+  if (window.innerWidth < 1440 && resultList.children.length > 8) {
+    console.log('here');
     classAddScroll();
   } else if (window.innerWidth >= 1440 && resultList.children.length > 9) {
     classAddScroll();
