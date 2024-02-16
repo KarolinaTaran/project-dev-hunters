@@ -52,6 +52,10 @@ async function createExersiceCard() {
   }
 }
 
+//
+/*
+
+*/
 // ---------------   functions for drawing modal content   ---------------
 
 function drawExercisesModal({
