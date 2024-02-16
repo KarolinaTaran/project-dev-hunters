@@ -8,10 +8,13 @@ const modalRatingMenu = document.querySelector('.rating-form-container');
 const modalRatingBackdrop = document.querySelector('.rating-form-backdrop');
 const closeButtonRating = modalRatingMenu.firstElementChild;
 const modal = document.querySelector('.exercises-modal');
-const modalExercisesBackdrop = document.querySelector('.backdrop-exercises-modal');
+const modalExercisesBackdrop = document.querySelector(
+  '.backdrop-exercises-modal'
+);
 const ratingForm = document.querySelector('.rating-form');
 const radioButtonsContainer = document.querySelector('.radios');
 const starsContainer = document.querySelector('.stars-form-container');
+
 let openModalButton;
 
 radioButtonsContainer.addEventListener('click', fillStars);
@@ -28,7 +31,7 @@ function closeRatingOpenModal() {
 }
 
 function closeModalOpenRating() {
-  modal.classList.add('display-none-style')
+  modal.classList.add('display-none-style');
   modalRatingBackdrop.classList.add('is-open');
   modalRatingClose();
 }
@@ -65,7 +68,7 @@ function modalRatingClose() {
   function closeExercisesModalByEsc(ev) {
     if (ev.code === 'Escape') {
       modalExercisesBackdrop.classList.remove('is-open');
-      }
+    }
   }
 }
 
